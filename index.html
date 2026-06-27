@@ -3,52 +3,125 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fitinerary — Pack smart for every trip</title>
-  <meta name="description" content="Fitinerary tells you what to pack or buy for your trip, based on your dates, your destination, and the weather." />
+  <title>Fitinerary — Your travel wardrobe, sorted!</title>
+  <meta name="description" content="Tell Fitinerary where you're going and when — it picks what to pack or buy, based on the real weather." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="sky"></div>
+  <!-- Floating decorations -->
+  <div class="deco deco-star1">✦</div>
+  <div class="deco deco-star2">★</div>
+  <div class="deco deco-star3">✦</div>
+  <div class="deco deco-sun">☀️</div>
+  <div class="deco deco-palm">🌴</div>
+  <div class="deco deco-flower">🌺</div>
 
   <main class="page">
+    <!-- Header -->
     <header class="brand">
-      <span class="brand-mark">✈</span>
+      <div class="brand-logo">
+        <span>👗</span>
+      </div>
       <span class="brand-name">Fitinerary</span>
+      <div class="brand-badge">✈︎ beta</div>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
-      <p class="kicker">Your travel wardrobe assistant</p>
-      <h1>Pack smart for<br />every&nbsp;trip.</h1>
+      <div class="hero-tag">AS IF you'd over-pack again!</div>
+      <h1>Your travel<br /><span class="h1-accent">wardrobe</span><br />sorted!</h1>
       <p class="lede">
-        Tell Fitinerary where you're going and when. It checks the weather at your
-        destination and tells you exactly what clothes to bring — or buy before you go.
+        Tell us where you're headed and when 📅<br />
+        We'll check the weather and build your<br />
+        perfect packing list — or shopping list! 🛍️
       </p>
-      <span class="badge">✨ Coming soon</span>
+      <a class="cta-btn" href="#">
+        ✨ Get your packing list
+      </a>
     </section>
 
-    <section class="cards" aria-label="How it works">
-      <article class="card">
-        <span class="card-emoji">📅</span>
-        <h2>Your dates</h2>
-        <p>Add when you're traveling so we know the season you're packing for.</p>
-      </article>
-      <article class="card">
-        <span class="card-emoji">📍</span>
-        <h2>Your destination</h2>
-        <p>Pick where you're headed — a beach, a city, the mountains, anywhere.</p>
-      </article>
-      <article class="card">
-        <span class="card-emoji">🌤️</span>
-        <h2>Your perfect list</h2>
-        <p>Get a packing list matched to the real weather, with shopping tips.</p>
-      </article>
+    <!-- Fake retro wardrobe computer screen -->
+    <div class="screen-wrap">
+      <div class="screen">
+        <div class="screen-bar">
+          <span class="screen-dot dot-r"></span>
+          <span class="screen-dot dot-y"></span>
+          <span class="screen-dot dot-g"></span>
+          <span class="screen-title">FITINERARY v1.0 — wardrobe.exe</span>
+        </div>
+        <div class="screen-body">
+          <div class="outfit-grid">
+            <div class="outfit-card selected">
+              <span class="outfit-icon">👙</span>
+              <span class="outfit-label">Beach day</span>
+              <span class="outfit-check">✓</span>
+            </div>
+            <div class="outfit-card">
+              <span class="outfit-icon">🧥</span>
+              <span class="outfit-label">Cool night</span>
+            </div>
+            <div class="outfit-card selected">
+              <span class="outfit-icon">👒</span>
+              <span class="outfit-label">Sun hat</span>
+              <span class="outfit-check">✓</span>
+            </div>
+            <div class="outfit-card">
+              <span class="outfit-icon">🩴</span>
+              <span class="outfit-label">Sandals</span>
+            </div>
+            <div class="outfit-card selected">
+              <span class="outfit-icon">🕶️</span>
+              <span class="outfit-label">Sunnies</span>
+              <span class="outfit-check">✓</span>
+            </div>
+            <div class="outfit-card">
+              <span class="outfit-icon">🌂</span>
+              <span class="outfit-label">Just in case</span>
+            </div>
+          </div>
+          <div class="screen-status">
+            <span class="blink">▌</span> Analyzing weather for: <strong>Bali, June 12–19</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How it works -->
+    <section class="how">
+      <h2 class="section-title">How it works ✨</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <span class="step-icon">🗺️</span>
+          <h3>Pick your spot</h3>
+          <p>Type in where you're going — a beach, a city, the mountains, wherever!</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <span class="step-icon">📅</span>
+          <h3>Add your dates</h3>
+          <p>Tell us when you're leaving and when you're back.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <span class="step-icon">🌤️</span>
+          <h3>Get your list!</h3>
+          <p>We check the actual forecast and hand you a custom packing list — done!</p>
+        </div>
+      </div>
     </section>
 
+    <!-- Footer -->
     <footer class="foot">
-      <p>Made with 💛 — a passion project in the making.</p>
+      <div class="foot-inner">
+        <span class="foot-logo">👗 Fitinerary</span>
+        <p>A passion project made with 💛 — coming soon!</p>
+      </div>
     </footer>
   </main>
 </body>
