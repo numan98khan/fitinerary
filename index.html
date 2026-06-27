@@ -3,129 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fitinerary — Pack perfectly for every trip</title>
-  <meta name="description" content="Tell Fitinerary where you're going and when. It reads the weather and builds your perfect packing list — or shopping list." />
+  <title>Fitinerary — Your travel wardrobe, sorted!</title>
+  <meta name="description" content="Tell Fitinerary where you're going and when — it picks what to pack or buy, based on the real weather." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <!-- Fixed beach photo -->
-  <div class="bg-photo"></div>
-
-  <!-- Scroll-driven overlays (controlled by JS) -->
-  <div class="overlay overlay-day"    id="overlayDay"></div>
-  <div class="overlay overlay-sunset" id="overlaySunset"></div>
+  <!-- Floating decorations -->
+  <div class="deco deco-star1">✦</div>
+  <div class="deco deco-star2">★</div>
+  <div class="deco deco-star3">✦</div>
+  <div class="deco deco-sun">☀️</div>
+  <div class="deco deco-palm">🌴</div>
+  <div class="deco deco-flower">🌺</div>
 
   <main class="page">
-
-    <!-- Nav -->
-    <nav class="nav">
-      <span class="nav-logo">Fitinerary</span>
-      <a class="nav-cta" href="#">Join the waitlist</a>
-    </nav>
+    <!-- Header -->
+    <header class="brand">
+      <div class="brand-logo">
+        <span>👗</span>
+      </div>
+      <span class="brand-name">Fitinerary</span>
+      <div class="brand-badge">✈︎ beta</div>
+    </header>
 
     <!-- Hero -->
     <section class="hero">
-      <p class="hero-eyebrow">Your travel wardrobe assistant</p>
-      <h1>Pack perfectly.<br /><em>Every time.</em></h1>
-      <p class="hero-sub">
-        Tell us where you're headed and when. We check the real forecast
-        and hand you a packing list built for your exact trip — not a
-        generic one-size-fits-nobody checklist.
+      <div class="hero-tag">AS IF you'd over-pack again!</div>
+      <h1>Your travel<br /><span class="h1-accent">wardrobe</span><br />sorted!</h1>
+      <p class="lede">
+        Tell us where you're headed and when 📅<br />
+        We'll check the weather and build your<br />
+        perfect packing list — or shopping list! 🛍️
       </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#">Get your packing list</a>
-        <a class="btn btn-ghost" href="#how">See how it works</a>
-      </div>
+      <a class="cta-btn" href="#">
+        ✨ Get your packing list
+      </a>
     </section>
 
-    <!-- Stats strip -->
-    <div class="stats">
-      <div class="stat">
-        <span class="stat-n">3 min</span>
-        <span class="stat-l">to your list</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-n">200+</span>
-        <span class="stat-l">destinations</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-n">Live</span>
-        <span class="stat-l">weather data</span>
+    <!-- Fake retro wardrobe computer screen -->
+    <div class="screen-wrap">
+      <div class="screen">
+        <div class="screen-bar">
+          <span class="screen-dot dot-r"></span>
+          <span class="screen-dot dot-y"></span>
+          <span class="screen-dot dot-g"></span>
+          <span class="screen-title">FITINERARY v1.0 — wardrobe.exe</span>
+        </div>
+        <div class="screen-body">
+          <div class="outfit-grid">
+            <div class="outfit-card selected">
+              <span class="outfit-icon">👙</span>
+              <span class="outfit-label">Beach day</span>
+              <span class="outfit-check">✓</span>
+            </div>
+            <div class="outfit-card">
+              <span class="outfit-icon">🧥</span>
+              <span class="outfit-label">Cool night</span>
+            </div>
+            <div class="outfit-card selected">
+              <span class="outfit-icon">👒</span>
+              <span class="outfit-label">Sun hat</span>
+              <span class="outfit-check">✓</span>
+            </div>
+            <div class="outfit-card">
+              <span class="outfit-icon">🩴</span>
+              <span class="outfit-label">Sandals</span>
+            </div>
+            <div class="outfit-card selected">
+              <span class="outfit-icon">🕶️</span>
+              <span class="outfit-label">Sunnies</span>
+              <span class="outfit-check">✓</span>
+            </div>
+            <div class="outfit-card">
+              <span class="outfit-icon">🌂</span>
+              <span class="outfit-label">Just in case</span>
+            </div>
+          </div>
+          <div class="screen-status">
+            <span class="blink">▌</span> Analyzing weather for: <strong>Bali, June 12–19</strong>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- How it works -->
-    <section class="section" id="how">
-      <p class="section-eyebrow">How it works</p>
-      <h2 class="section-title">Three steps to a stress-free suitcase</h2>
-      <div class="cards">
-        <div class="card">
-          <div class="card-icon">🗺️</div>
-          <h3>Pick your destination</h3>
-          <p>Type in anywhere — a beach resort, a bustling city, a mountain lodge. We know them all.</p>
+    <section class="how">
+      <h2 class="section-title">How it works ✨</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <span class="step-icon">🗺️</span>
+          <h3>Pick your spot</h3>
+          <p>Type in where you're going — a beach, a city, the mountains, wherever!</p>
         </div>
-        <div class="card">
-          <div class="card-icon">📅</div>
-          <h3>Add your travel dates</h3>
-          <p>We pull the actual forecast for when you'll be there, not just the season average.</p>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <span class="step-icon">📅</span>
+          <h3>Add your dates</h3>
+          <p>Tell us when you're leaving and when you're back.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">✨</div>
-          <h3>Get your perfect list</h3>
-          <p>Receive a tailored packing list — with shopping suggestions for anything you still need.</p>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <span class="step-icon">🌤️</span>
+          <h3>Get your list!</h3>
+          <p>We check the actual forecast and hand you a custom packing list — done!</p>
         </div>
       </div>
     </section>
 
-    <!-- Quote / pull section -->
-    <section class="quote-section">
-      <blockquote>
-        "No more landing in Bali with three sweaters and zero swimsuits."
-      </blockquote>
-      <cite>— What our first users told us</cite>
-    </section>
-
-    <!-- CTA section -->
-    <section class="section cta-section">
-      <h2 class="section-title">Ready to travel lighter?</h2>
-      <p class="cta-sub">Be the first to know when Fitinerary launches.</p>
-      <form class="waitlist-form" onsubmit="return false;">
-        <input type="email" placeholder="your@email.com" class="waitlist-input" />
-        <button type="submit" class="btn btn-primary">Notify me</button>
-      </form>
-    </section>
-
     <!-- Footer -->
-    <footer class="footer">
-      <span class="nav-logo">Fitinerary</span>
-      <p class="footer-tagline">A passion project made with love — coming soon.</p>
+    <footer class="foot">
+      <div class="foot-inner">
+        <span class="foot-logo">👗 Fitinerary</span>
+        <p>A passion project made with 💛 — coming soon!</p>
+      </div>
     </footer>
-
   </main>
-
-  <script>
-    const overlayDay    = document.getElementById('overlayDay');
-    const overlaySunset = document.getElementById('overlaySunset');
-
-    function onScroll() {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = maxScroll > 0 ? Math.max(0, Math.min(1, window.scrollY / maxScroll)) : 0;
-
-      // Day: bright warm tint at top, fades as you scroll
-      overlayDay.style.opacity = (1 - ratio) * 0.18;
-
-      // Sunset: starts invisible, sweeps in as you scroll down
-      overlaySunset.style.opacity = ratio * 0.82;
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // run on load
-  </script>
 </body>
 </html>
