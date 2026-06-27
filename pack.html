@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitinerary — Plan Your Trip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Pack page extras ── */
+    body { min-height: 100vh; }
+
+    /* Progress bar */
+    .progress-wrap {
+      margin: 1rem 0 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .prog-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      position: relative;
+      cursor: default;
+    }
+    .prog-circle {
+      width: 2rem; height: 2rem;
+      border-radius: 50%;
+      background: #fff;
+      border: var(--border);
+      display: grid; place-items: center;
+      font-size: 0.78rem;
+      font-weight: 900;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 1;
+      transition: background 0.2s, color 0.2s;
+    }
+    .prog-step.done .prog-circle   { background: var(--teal); color: #fff; }
+    .prog-step.active .prog-circle { background: var(--ink);  color: var(--yellow); }
+    .prog-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.5;
+    }
+    .prog-step.active .prog-label,
+    .prog-step.done  .prog-label { opacity: 1; }
+    .prog-line {
+      flex: 1;
+      height: 3px;
+      background: var(--ink);
+      opacity: 0.15;
+      margin-bottom: 1.4rem;
+      transition: opacity 0.2s;
+    }
+    .prog-line.done { opacity: 1; background: var(--teal); }
+
+    /* Steps */
+    .step-page { display: none; animation: stepIn 0.3s ease; }
+    .step-page.active { display: block; }
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .step-h { font-family: "Pacifico", cursive; font-size: clamp(1.8rem,5vw,2.8rem); margin-bottom: 0.4rem; }
+    .step-sub { color: #3d2e5e; font-size: 1rem; margin-bottom: 1.8rem; }
+
+    /* City cards */
+    .city-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.85rem;
+      margin-bottom: 1.4rem;
+    }
+    .city-card {
+      border-radius: 18px;
+      border: var(--border);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      aspect-ratio: 3/4;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.7rem 0.6rem 0.8rem;
+      user-select: none;
+    }
+    .city-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .city-card.selected { outline: 4px solid var(--pink); outline-offset: 2px; }
+    .city-card .city-check {
+      position: absolute; top: 8px; right: 8px;
+      background: var(--pink); color: #fff;
+      width: 22px; height: 22px; border-radius: 50%;
+      display: none; place-items: center;
+      font-size: 0.75rem; font-weight: 900;
+      border: 2px solid #fff;
+    }
+    .city-card.selected .city-check { display: grid; }
+    .city-big-emoji {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -65%);
+      font-size: 3rem; line-height: 1;
+    }
+    .city-name {
+      font-family: "Pacifico", cursive;
+      font-size: 1rem; color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      position: relative; z-index: 1;
+    }
+    .city-era {
+      font-size: 0.62rem; font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+
+    /* Retro city gradients */
+    .city-tokyo   { background: repeating-linear-gradient(0deg,rgba(255,0,160,.06) 0,transparent 2px,transparent 6px), linear-gradient(145deg,#0D0020,#3D0080 40%,#8B00FF 68%,#FF00A0); }
+    .city-newyork { background: repeating-linear-gradient(45deg,rgba(255,215,0,.08) 0,rgba(255,215,0,.08) 2px,transparent 2px,transparent 12px), linear-gradient(145deg,#2A0800,#8B2500 35%,#FF5500 65%,#FFD700); }
+    .city-london  { background: repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0,transparent 2px,transparent 22px),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0,transparent 2px,transparent 22px), linear-gradient(145deg,#00003D,#0A0AAA 42%,#CC0000 72%,#FF5555); }
+    .city-paris   { background: radial-gradient(circle at 30% 30%,rgba(255,255,255,.18) 2px,transparent 2px) 0 0/14px 14px, linear-gradient(145deg,#1A0033,#6B0080 40%,#E040FB 68%,#FFD54F); }
+    .city-bali    { background: repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0,rgba(255,255,255,.06) 2px,transparent 2px,transparent 14px), linear-gradient(145deg,#001A0D,#00695C 38%,#FF8F00 66%,#FF5722); }
+
+    /* Search bar */
+    .search-wrap { position: relative; margin-bottom: 0.8rem; }
+    .search-input {
+      width: 100%; padding: 0.85rem 1.2rem 0.85rem 2.8rem;
+      font-family: "Nunito", sans-serif; font-size: 1rem; font-weight: 600;
+      border: var(--border); border-radius: 12px;
+      background: #fff; box-shadow: var(--shadow);
+      outline: none; color: var(--ink);
+    }
+    .search-input:focus { outline: 3px solid var(--teal); }
+    .search-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); font-size: 1.1rem; pointer-events: none; }
+    .search-dropdown {
+      display: none; position: absolute; top: 110%; left: 0; right: 0;
+      background: #fff; border: var(--border); border-radius: 12px;
+      box-shadow: var(--shadow-lg); z-index: 10; overflow: hidden;
+    }
+    .search-dropdown.open { display: block; }
+    .search-result {
+      padding: 0.75rem 1.2rem; cursor: pointer;
+      font-weight: 600; display: flex; align-items: center; gap: 0.5rem;
+      transition: background 0.12s;
+    }
+    .search-result:hover { background: var(--yellow); }
+    .search-result-sub { font-size: 0.8rem; color: #888; font-weight: 400; margin-left: auto; }
+    .or-divider {
+      text-align: center; color: #888; font-size: 0.82rem;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      margin: 0.8rem 0;
+    }
+
+    /* Date inputs */
+    .date-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .date-field label {
+      display: block; font-weight: 700; font-size: 0.85rem;
+      margin-bottom: 0.4rem; letter-spacing: 0.04em;
+    }
+    .date-field input[type="date"] {
+      width: 100%; padding: 0.8rem 1rem;
+      font-family: "Nunito", sans-serif; font-size: 0.95rem; font-weight: 600;
+      border: var(--border); border-radius: 12px;
+      background: #fff; box-shadow: var(--shadow); color: var(--ink); outline: none;
+    }
+    .date-field input:focus { outline: 3px solid var(--teal); }
+    .trip-length {
+      text-align: center; font-size: 0.9rem; font-weight: 700;
+      color: var(--purple); margin-top: 0.3rem;
+    }
+
+    /* Vibe cards */
+    .vibe-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.85rem;
+      margin-bottom: 1.4rem;
+    }
+    .vibe-card {
+      background: #fff; border: var(--border); border-radius: 16px;
+      padding: 1.3rem 0.8rem; text-align: center; cursor: pointer;
+      box-shadow: var(--shadow); transition: transform 0.15s, box-shadow 0.15s;
+      user-select: none;
+    }
+    .vibe-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .vibe-card.selected { background: var(--ink); color: #fff; outline: 3px solid var(--pink); }
+    .vibe-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+    .vibe-name { font-weight: 900; font-size: 0.9rem; display: block; }
+    .vibe-desc { font-size: 0.72rem; margin-top: 0.2rem; opacity: 0.7; }
+
+    /* Wardrobe checkboxes */
+    .wardrobe-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .wardrobe-item {
+      display: flex; align-items: center; gap: 0.55rem;
+      background: #fff; border: var(--border); border-radius: 10px;
+      padding: 0.6rem 0.8rem; cursor: pointer; user-select: none;
+      font-weight: 700; font-size: 0.88rem; box-shadow: var(--shadow);
+      transition: background 0.15s;
+    }
+    .wardrobe-item input[type="checkbox"] { display: none; }
+    .wardrobe-item.checked { background: var(--teal); color: #fff; }
+    .wardrobe-item .wi-box {
+      width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--ink);
+      display: grid; place-items: center; flex-shrink: 0; font-size: 0.7rem;
+      background: #fff; color: var(--ink);
+    }
+    .wardrobe-item.checked .wi-box { background: var(--ink); color: #fff; }
+    .wardrobe-note {
+      font-size: 0.85rem; color: #3d2e5e; margin-bottom: 0.8rem;
+    }
+    .wardrobe-extra {
+      width: 100%; padding: 0.75rem 1rem; font-family: "Nunito", sans-serif;
+      font-size: 0.9rem; border: var(--border); border-radius: 12px;
+      background: #fff; box-shadow: var(--shadow); resize: vertical; outline: none;
+      min-height: 80px; color: var(--ink);
+    }
+    .wardrobe-extra:focus { outline: 3px solid var(--teal); }
+
+    /* Budget cards */
+    .budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-bottom: 1.4rem; }
+    .budget-card {
+      background: #fff; border: var(--border); border-radius: 20px;
+      padding: 1.8rem 1.4rem; text-align: center; cursor: pointer;
+      box-shadow: var(--shadow); transition: transform 0.15s, box-shadow 0.15s;
+      user-select: none;
+    }
+    .budget-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .budget-card.selected { outline: 4px solid var(--pink); background: #fff8f0; }
+    .budget-card h3 { font-family: "Pacifico", cursive; font-size: 1.4rem; margin: 0.6rem 0 0.4rem; }
+    .budget-card p { font-size: 0.85rem; color: #555; margin-bottom: 0.8rem; }
+    .budget-card .budget-emoji { font-size: 2.5rem; }
+    .budget-stores { display: flex; flex-wrap: wrap; gap: 0.3rem; justify-content: center; }
+    .budget-store-tag {
+      background: var(--yellow); border: 2px solid var(--ink);
+      border-radius: 999px; font-size: 0.7rem; font-weight: 900;
+      padding: 0.15rem 0.55rem;
+    }
+    .budget-card.selected .budget-store-tag { background: var(--pink); color: #fff; }
+
+    /* Nav buttons */
+    .step-nav { display: flex; gap: 0.7rem; align-items: center; margin-top: 1.8rem; }
+    .btn-back {
+      background: #fff; color: var(--ink); border: var(--border);
+      border-radius: 10px; font-family: "Nunito", sans-serif;
+      font-weight: 900; font-size: 1rem; padding: 0.7rem 1.5rem;
+      cursor: pointer; box-shadow: var(--shadow); transition: transform .12s;
+    }
+    .btn-back:hover { transform: translate(-2px,-2px); }
+    .btn-next {
+      background: var(--ink); color: var(--yellow); border: var(--border);
+      border-radius: 10px; font-family: "Nunito", sans-serif;
+      font-weight: 900; font-size: 1.05rem; padding: 0.75rem 2rem;
+      cursor: pointer; box-shadow: var(--shadow-lg); transition: transform .12s, box-shadow .12s;
+      flex: 1;
+    }
+    .btn-next:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--ink); }
+    .btn-skip {
+      background: transparent; color: #888; border: 2px solid #ddd;
+      border-radius: 10px; font-family: "Nunito", sans-serif;
+      font-weight: 700; font-size: 0.9rem; padding: 0.7rem 1.2rem;
+      cursor: pointer; transition: border-color .15s;
+    }
+    .btn-skip:hover { border-color: var(--ink); color: var(--ink); }
+    .btn-go {
+      background: var(--pink); color: #fff; border: var(--border);
+      border-radius: 10px; font-family: "Pacifico", cursive;
+      font-size: 1.2rem; padding: 0.85rem 2.2rem;
+      cursor: pointer; box-shadow: var(--shadow-lg);
+      transition: transform .12s, box-shadow .12s; flex: 1;
+    }
+    .btn-go:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--ink); }
+
+    .error-msg { color: #e00; font-size: 0.85rem; font-weight: 700; margin-top: 0.5rem; display: none; }
+    .error-msg.show { display: block; }
+
+    @media (max-width: 720px) {
+      .city-grid  { grid-template-columns: repeat(3, 1fr); }
+      .vibe-grid  { grid-template-columns: repeat(3, 1fr); }
+      .wardrobe-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .city-grid  { grid-template-columns: repeat(2, 1fr); }
+      .vibe-grid  { grid-template-columns: repeat(2, 1fr); }
+      .date-row   { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:.6rem;text-decoration:none;color:inherit;">
+        <div class="brand-logo panic-logo"><span>🧳</span></div>
+        <span class="brand-name">Fitinerary</span>
+      </a>
+      <div class="brand-badge">✈︎ beta</div>
+    </header>
+
+    <!-- Progress -->
+    <div class="progress-wrap" id="progressBar">
+      <div class="prog-step active" data-step="1">
+        <div class="prog-circle">1</div>
+        <span class="prog-label">Where</span>
+      </div>
+      <div class="prog-line" id="line-1"></div>
+      <div class="prog-step" data-step="2">
+        <div class="prog-circle">2</div>
+        <span class="prog-label">When</span>
+      </div>
+      <div class="prog-line" id="line-2"></div>
+      <div class="prog-step" data-step="3">
+        <div class="prog-circle">3</div>
+        <span class="prog-label">Vibe</span>
+      </div>
+      <div class="prog-line" id="line-3"></div>
+      <div class="prog-step" data-step="4">
+        <div class="prog-circle">4</div>
+        <span class="prog-label">Wardrobe</span>
+      </div>
+      <div class="prog-line" id="line-4"></div>
+      <div class="prog-step" data-step="5">
+        <div class="prog-circle">5</div>
+        <span class="prog-label">Budget</span>
+      </div>
+    </div>
+
+    <!-- ── STEP 1: WHERE ── -->
+    <div class="step-page active" id="step-1">
+      <h1 class="step-h">Where to? 🌍</h1>
+      <p class="step-sub">Pick a city below or search for yours.</p>
+
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="citySearch" placeholder="Search any city..." autocomplete="off" />
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+      <p class="or-divider">— or choose a vibe —</p>
+
+      <div class="city-grid">
+        <div class="city-card city-tokyo" data-city="Tokyo" data-country="Japan" data-lat="35.6762" data-lon="139.6503">
+          <div class="city-check">✓</div>
+          <span class="city-big-emoji">🗼</span>
+          <span class="city-name">Tokyo</span>
+          <span class="city-era">90s Neon</span>
+        </div>
+        <div class="city-card city-newyork" data-city="New York" data-country="USA" data-lat="40.7128" data-lon="-74.0060">
+          <div class="city-check">✓</div>
+          <span class="city-big-emoji">🗽</span>
+          <span class="city-name">New York</span>
+          <span class="city-era">90s Grunge</span>
+        </div>
+        <div class="city-card city-london" data-city="London" data-country="UK" data-lat="51.5074" data-lon="-0.1278">
+          <div class="city-check">✓</div>
+          <span class="city-big-emoji">🎡</span>
+          <span class="city-name">London</span>
+          <span class="city-era">Britpop Era</span>
+        </div>
+        <div class="city-card city-paris" data-city="Paris" data-country="France" data-lat="48.8566" data-lon="2.3522">
+          <div class="city-check">✓</div>
+          <span class="city-big-emoji">🗼</span>
+          <span class="city-name">Paris</span>
+          <span class="city-era">90s Chic</span>
+        </div>
+        <div class="city-card city-bali" data-city="Bali" data-country="Indonesia" data-lat="-8.3405" data-lon="115.0920">
+          <div class="city-check">✓</div>
+          <span class="city-big-emoji">🌴</span>
+          <span class="city-name">Bali</span>
+          <span class="city-era">90s Tropical</span>
+        </div>
+      </div>
+
+      <p class="error-msg" id="err-1">Pick a city to continue!</p>
+      <div class="step-nav">
+        <button class="btn-next" onclick="nextStep(1)">Next →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: WHEN ── -->
+    <div class="step-page" id="step-2">
+      <h1 class="step-h">When's the trip? 📅</h1>
+      <p class="step-sub">We'll check the real forecast for those exact dates.</p>
+
+      <div class="date-row">
+        <div class="date-field">
+          <label>✈︎ Leaving</label>
+          <input type="date" id="departureDate" onchange="updateTripLength()" />
+        </div>
+        <div class="date-field">
+          <label>🏠 Coming back</label>
+          <input type="date" id="returnDate" onchange="updateTripLength()" />
+        </div>
+      </div>
+      <p class="trip-length" id="tripLengthMsg"></p>
+
+      <p class="error-msg" id="err-2">Please pick your travel dates!</p>
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(2)">← Back</button>
+        <button class="btn-next" onclick="nextStep(2)">Next →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: VIBE ── -->
+    <div class="step-page" id="step-3">
+      <h1 class="step-h">What's your vibe? ✨</h1>
+      <p class="step-sub">This shapes your whole packing list.</p>
+
+      <div class="vibe-grid">
+        <div class="vibe-card" data-vibe="comfort">
+          <span class="vibe-icon">😌</span>
+          <span class="vibe-name">Comfort First</span>
+          <span class="vibe-desc">Cozy, casual, zero stress</span>
+        </div>
+        <div class="vibe-card" data-vibe="fancy">
+          <span class="vibe-icon">💎</span>
+          <span class="vibe-name">Fancy & Elevated</span>
+          <span class="vibe-desc">Chic, occasion-ready</span>
+        </div>
+        <div class="vibe-card" data-vibe="streetwear">
+          <span class="vibe-icon">🛹</span>
+          <span class="vibe-name">Streetwear</span>
+          <span class="vibe-desc">Urban, trendy, cool fits</span>
+        </div>
+        <div class="vibe-card" data-vibe="beach">
+          <span class="vibe-icon">🌊</span>
+          <span class="vibe-name">Beach & Resort</span>
+          <span class="vibe-desc">Swimwear, sundresses</span>
+        </div>
+        <div class="vibe-card" data-vibe="adventure">
+          <span class="vibe-icon">🏔️</span>
+          <span class="vibe-name">Adventure Mode</span>
+          <span class="vibe-desc">Sporty, functional</span>
+        </div>
+      </div>
+
+      <p class="error-msg" id="err-3">Pick your travel vibe!</p>
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(3)">← Back</button>
+        <button class="btn-next" onclick="nextStep(3)">Next →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 4: WARDROBE ── -->
+    <div class="step-page" id="step-4">
+      <h1 class="step-h">What do you already have? 👜</h1>
+      <p class="step-sub">Tick off what's already in your wardrobe — we'll skip those on your list.</p>
+      <p class="wardrobe-note">This step is <strong>optional</strong> — skip it if you want a full packing list.</p>
+
+      <div class="wardrobe-grid" id="wardrobeGrid">
+        <label class="wardrobe-item" data-key="jeans"><div class="wi-box"></div>👖 Jeans/trousers</label>
+        <label class="wardrobe-item" data-key="tshirts"><div class="wi-box"></div>👕 T-shirts (5+)</label>
+        <label class="wardrobe-item" data-key="sneakers"><div class="wi-box"></div>👟 Sneakers</label>
+        <label class="wardrobe-item" data-key="lightjacket"><div class="wi-box"></div>🧥 Light jacket</label>
+        <label class="wardrobe-item" data-key="warmcoat"><div class="wi-box"></div>🧣 Warm coat</label>
+        <label class="wardrobe-item" data-key="formaloutfit"><div class="wi-box"></div>👔 Formal outfit</label>
+        <label class="wardrobe-item" data-key="swimwear"><div class="wi-box"></div>👙 Swimwear</label>
+        <label class="wardrobe-item" data-key="rainjacket"><div class="wi-box"></div>☂️ Rain jacket/umbrella</label>
+        <label class="wardrobe-item" data-key="sunglasses"><div class="wi-box"></div>🕶️ Sunglasses</label>
+        <label class="wardrobe-item" data-key="sunhat"><div class="wi-box"></div>👒 Sun hat</label>
+        <label class="wardrobe-item" data-key="boots"><div class="wi-box"></div>👢 Boots</label>
+        <label class="wardrobe-item" data-key="workout"><div class="wi-box"></div>🏃 Workout clothes</label>
+      </div>
+
+      <textarea class="wardrobe-extra" id="wardrobeExtra" placeholder="Anything else? e.g. 'I have a nice black dress' or 'lots of summer tops already'"></textarea>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(4)">← Back</button>
+        <button class="btn-skip" onclick="skipWardrobe()">Skip</button>
+        <button class="btn-next" onclick="nextStep(4)">Next →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 5: BUDGET ── -->
+    <div class="step-page" id="step-5">
+      <h1 class="step-h">Budget or Bougie? 💸</h1>
+      <p class="step-sub">We'll find links to the right shops for you.</p>
+
+      <div class="budget-grid">
+        <div class="budget-card" data-budget="budget">
+          <span class="budget-emoji">💸</span>
+          <h3>Budget Babe</h3>
+          <p>Cute, affordable finds from the best high-street stores.</p>
+          <div class="budget-stores">
+            <span class="budget-store-tag">Zara</span>
+            <span class="budget-store-tag">H&M</span>
+            <span class="budget-store-tag">SHEIN</span>
+            <span class="budget-store-tag">ASOS</span>
+          </div>
+        </div>
+        <div class="budget-card" data-budget="luxury">
+          <span class="budget-emoji">✨</span>
+          <h3>Luxury Lover</h3>
+          <p>Elevated pieces from the best premium fashion destinations.</p>
+          <div class="budget-stores">
+            <span class="budget-store-tag">Revolve</span>
+            <span class="budget-store-tag">Net-a-Porter</span>
+            <span class="budget-store-tag">Nordstrom</span>
+            <span class="budget-store-tag">Saks</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="error-msg" id="err-5">Pick your shopping style!</p>
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(5)">← Back</button>
+        <button class="btn-go" onclick="goToResults()">Let's Go! ✈️</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    let currentStep = 1;
+    const userData = { destination: null, departure: null, return: null, vibe: null, wardrobe: [], wardrobeNote: '', budget: null };
+
+    // ── Progress bar ──
+    function updateProgress() {
+      document.querySelectorAll('.prog-step').forEach((el, i) => {
+        const s = i + 1;
+        el.classList.toggle('active', s === currentStep);
+        el.classList.toggle('done', s < currentStep);
+      });
+      for (let i = 1; i <= 4; i++) {
+        const line = document.getElementById('line-' + i);
+        if (line) line.classList.toggle('done', i < currentStep);
+      }
+    }
+
+    // ── Navigation ──
+    function showStep(n) {
+      document.getElementById('step-' + currentStep).classList.remove('active');
+      currentStep = n;
+      document.getElementById('step-' + currentStep).classList.add('active');
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function nextStep(from) {
+      // Validate
+      if (from === 1 && !userData.destination) {
+        document.getElementById('err-1').classList.add('show'); return;
+      }
+      if (from === 2 && (!userData.departure || !userData.return)) {
+        document.getElementById('err-2').classList.add('show'); return;
+      }
+      if (from === 2 && userData.departure >= userData.return) {
+        document.getElementById('err-2').textContent = 'Return date must be after departure!';
+        document.getElementById('err-2').classList.add('show'); return;
+      }
+      if (from === 3 && !userData.vibe) {
+        document.getElementById('err-3').classList.add('show'); return;
+      }
+      if (from === 4) saveWardrobe();
+      if (from === 5 && !userData.budget) {
+        document.getElementById('err-5').classList.add('show'); return;
+      }
+      ['err-1','err-2','err-3','err-5'].forEach(id => document.getElementById(id)?.classList.remove('show'));
+      showStep(from + 1);
+    }
+
+    function prevStep(from) { showStep(from - 1); }
+
+    function skipWardrobe() {
+      userData.wardrobe = [];
+      userData.wardrobeNote = '';
+      showStep(5);
+    }
+
+    function saveWardrobe() {
+      userData.wardrobe = [...document.querySelectorAll('.wardrobe-item.checked')].map(el => el.dataset.key);
+      userData.wardrobeNote = document.getElementById('wardrobeExtra').value.trim();
+    }
+
+    // ── City cards ──
+    document.querySelectorAll('.city-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.city-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        userData.destination = {
+          name: card.dataset.city,
+          country: card.dataset.country,
+          lat: parseFloat(card.dataset.lat),
+          lon: parseFloat(card.dataset.lon),
+          preset: true
+        };
+      });
+    });
+
+    // ── City search ──
+    let searchTimer;
+    const searchInput  = document.getElementById('citySearch');
+    const dropdown     = document.getElementById('searchDropdown');
+
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim();
+      clearTimeout(searchTimer);
+      if (q.length < 3) { dropdown.classList.remove('open'); return; }
+      searchTimer = setTimeout(async () => {
+        try {
+          const r = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=5&addressdetails=1`, {
+            headers: { 'Accept-Language': 'en', 'User-Agent': 'FitineraryApp/1.0' }
+          });
+          const data = await r.json();
+          const places = data.filter(d => ['city','town','village','municipality'].includes(d.type) || d.class === 'place');
+          if (!places.length) { dropdown.innerHTML = '<div class="search-result" style="color:#888">No cities found — try another name</div>'; dropdown.classList.add('open'); return; }
+          dropdown.innerHTML = places.slice(0, 5).map(p => {
+            const name = p.address?.city || p.address?.town || p.address?.village || p.name;
+            const country = p.address?.country || '';
+            return `<div class="search-result" data-name="${name}" data-country="${country}" data-lat="${p.lat}" data-lon="${p.lon}">
+              📍 <strong>${name}</strong> <span class="search-result-sub">${country}</span></div>`;
+          }).join('');
+          dropdown.classList.add('open');
+          dropdown.querySelectorAll('.search-result').forEach(el => {
+            el.addEventListener('click', () => {
+              userData.destination = { name: el.dataset.name, country: el.dataset.country, lat: parseFloat(el.dataset.lat), lon: parseFloat(el.dataset.lon), preset: false };
+              searchInput.value = el.dataset.name + (el.dataset.country ? ', ' + el.dataset.country : '');
+              dropdown.classList.remove('open');
+              document.querySelectorAll('.city-card').forEach(c => c.classList.remove('selected'));
+            });
+          });
+        } catch { dropdown.classList.remove('open'); }
+      }, 500);
+    });
+    document.addEventListener('click', e => { if (!e.target.closest('.search-wrap')) dropdown.classList.remove('open'); });
+
+    // ── Dates ──
+    document.getElementById('departureDate').addEventListener('change', e => { userData.departure = e.target.value; updateTripLength(); });
+    document.getElementById('returnDate').addEventListener('change',   e => { userData.return    = e.target.value; updateTripLength(); });
+    function updateTripLength() {
+      const d = userData.departure, r = userData.return;
+      if (!d || !r) return;
+      const days = Math.round((new Date(r) - new Date(d)) / 86400000);
+      const msg  = document.getElementById('tripLengthMsg');
+      msg.textContent = days > 0 ? `🎉 That's a ${days}-night trip!` : days === 0 ? 'Dates must be different!' : 'Return must be after departure!';
+    }
+    // Set min date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('departureDate').min = today;
+    document.getElementById('returnDate').min    = today;
+
+    // ── Vibe cards ──
+    document.querySelectorAll('.vibe-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.vibe-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        userData.vibe = card.dataset.vibe;
+      });
+    });
+
+    // ── Wardrobe checkboxes ──
+    document.querySelectorAll('.wardrobe-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('checked');
+        item.querySelector('.wi-box').textContent = item.classList.contains('checked') ? '✓' : '';
+      });
+    });
+
+    // ── Budget cards ──
+    document.querySelectorAll('.budget-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.budget-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        userData.budget = card.dataset.budget;
+      });
+    });
+
+    // ── Go! ──
+    function goToResults() {
+      if (!userData.budget) { document.getElementById('err-5').classList.add('show'); return; }
+      saveWardrobe();
+      localStorage.setItem('fitinerary_data', JSON.stringify(userData));
+      window.location.href = 'results.html';
+    }
+  </script>
+</body>
+</html>

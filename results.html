@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitinerary — Your Packing List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .results-page { max-width: 860px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+
+    /* Trip summary */
+    .trip-banner {
+      background: var(--ink); color: #fff;
+      border-radius: 20px; border: var(--border);
+      box-shadow: var(--shadow-lg);
+      padding: 1.4rem 1.6rem;
+      display: flex; align-items: center; gap: 1.2rem;
+      margin-bottom: 1.8rem; flex-wrap: wrap;
+    }
+    .trip-dest { font-family: "Pacifico", cursive; font-size: 1.8rem; color: var(--yellow); }
+    .trip-meta { display: flex; flex-direction: column; gap: 0.2rem; flex: 1; }
+    .trip-dates { font-size: 0.9rem; color: rgba(255,255,255,.75); font-weight: 600; }
+    .trip-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.3rem; }
+    .trip-tag {
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.65rem;
+      text-transform: capitalize;
+    }
+    .trip-edit {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.3);
+      color: #fff; border-radius: 8px; padding: 0.4rem 0.9rem;
+      font-family: "Nunito", sans-serif; font-size: 0.82rem; font-weight: 700;
+      cursor: pointer; text-decoration: none; white-space: nowrap;
+    }
+
+    /* Weather */
+    .section-card {
+      background: var(--white); border: var(--border); border-radius: 20px;
+      box-shadow: var(--shadow); padding: 1.4rem 1.5rem; margin-bottom: 1.4rem;
+    }
+    .card-title {
+      font-family: "Pacifico", cursive; font-size: 1.4rem; margin-bottom: 1rem;
+    }
+    .weather-loading {
+      text-align: center; padding: 1.5rem 0;
+      font-weight: 700; color: var(--purple);
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .weather-summary {
+      display: flex; gap: 0.8rem; align-items: center;
+      background: linear-gradient(120deg, var(--yellow), var(--orange));
+      border: var(--border); border-radius: 14px; padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .weather-big-icon { font-size: 2.5rem; }
+    .weather-summary-text h3 { font-size: 1.05rem; font-weight: 900; }
+    .weather-summary-text p  { font-size: 0.88rem; color: #3d2e5e; }
+
+    .forecast-scroll {
+      display: flex; gap: 0.6rem; overflow-x: auto; padding-bottom: 0.4rem;
+    }
+    .forecast-scroll::-webkit-scrollbar { height: 4px; }
+    .forecast-scroll::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 99px; }
+    .forecast-day {
+      min-width: 72px; flex-shrink: 0; text-align: center;
+      background: #fff; border: var(--border); border-radius: 12px;
+      padding: 0.7rem 0.5rem; box-shadow: var(--shadow);
+    }
+    .forecast-day .fd-name   { font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+    .forecast-day .fd-icon   { font-size: 1.4rem; display: block; margin: 0.3rem 0; }
+    .forecast-day .fd-hi     { font-size: 0.85rem; font-weight: 900; }
+    .forecast-day .fd-lo     { font-size: 0.72rem; color: #888; }
+    .forecast-day .fd-rain   { font-size: 0.65rem; color: var(--teal); font-weight: 700; margin-top: 0.15rem; }
+
+    /* Packing list */
+    .pack-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .pack-item {
+      display: flex; align-items: center; gap: 0.7rem;
+      background: #fff; border: 2px solid var(--line,#efe3d2); border-radius: 10px;
+      padding: 0.65rem 0.9rem; font-weight: 600;
+      transition: background .15s;
+    }
+    .pack-item.have { opacity: 0.55; text-decoration: line-through; }
+    .pack-item .pi-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .pack-item .pi-name { flex: 1; }
+    .pack-item .pi-have { font-size: 0.72rem; color: var(--teal); font-weight: 700; }
+    .pack-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .pack-cat h4 {
+      font-size: 0.78rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--purple); margin-bottom: 0.5rem;
+    }
+
+    /* Itinerary */
+    .itinerary-toggle {
+      background: none; border: var(--border); border-radius: 12px;
+      font-family: "Nunito", sans-serif; font-weight: 900; font-size: 1rem;
+      padding: 0.7rem 1.4rem; cursor: pointer; box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 0.5rem; width: 100%;
+      justify-content: space-between; margin-bottom: 0.5rem;
+    }
+    .itinerary-toggle .arrow { transition: transform .25s; }
+    .itinerary-toggle.open .arrow { transform: rotate(180deg); }
+    .itinerary-body { display: none; }
+    .itinerary-body.open { display: block; }
+    .itin-day {
+      display: flex; gap: 1rem; padding: 0.8rem 0;
+      border-bottom: 2px dashed rgba(0,0,0,.08);
+    }
+    .itin-day:last-child { border-bottom: none; }
+    .itin-day-num {
+      background: var(--yellow); border: var(--border); border-radius: 8px;
+      font-weight: 900; font-size: 0.78rem; padding: 0.3rem 0.6rem;
+      height: fit-content; white-space: nowrap;
+    }
+    .itin-day-content h4 { font-weight: 900; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .itin-day-content p  { font-size: 0.85rem; color: #555; line-height: 1.55; }
+
+    /* Shopping */
+    .shop-intro {
+      font-size: 0.9rem; color: #555; margin-bottom: 1rem; line-height: 1.6;
+    }
+    .shop-item { margin-bottom: 1.1rem; }
+    .shop-item-name {
+      font-weight: 900; font-size: 0.95rem; margin-bottom: 0.4rem;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .shop-links { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .shop-link {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      background: #fff; border: var(--border); border-radius: 999px;
+      padding: 0.3rem 0.9rem; font-size: 0.8rem; font-weight: 700;
+      text-decoration: none; color: var(--ink);
+      box-shadow: 2px 2px 0 var(--ink);
+      transition: transform .12s, box-shadow .12s;
+    }
+    .shop-link:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--ink); }
+    .shop-link.lux { background: var(--purple); color: #fff; }
+
+    .confetti { text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+    @media (max-width: 600px) {
+      .pack-cats { grid-template-columns: 1fr; }
+      .trip-banner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="results-page">
+
+    <header class="brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:.6rem;text-decoration:none;color:inherit;">
+        <div class="brand-logo panic-logo"><span>🧳</span></div>
+        <span class="brand-name">Fitinerary</span>
+      </a>
+      <div class="brand-badge">✈︎ beta</div>
+    </header>
+
+    <div id="noData" style="display:none; text-align:center; padding:3rem 0;">
+      <p style="font-size:1.1rem;font-weight:700;">Hmm, no trip data found!</p>
+      <a href="pack.html" class="cta-btn" style="margin-top:1rem;display:inline-block;">← Start planning</a>
+    </div>
+
+    <div id="resultsContent" style="display:none;">
+      <!-- Trip banner -->
+      <div class="trip-banner">
+        <span id="destEmoji" style="font-size:2.2rem;"></span>
+        <div class="trip-meta">
+          <div class="trip-dest" id="bannerDest"></div>
+          <div class="trip-dates" id="bannerDates"></div>
+          <div class="trip-tags" id="bannerTags"></div>
+        </div>
+        <a href="pack.html" class="trip-edit">✏️ Edit trip</a>
+      </div>
+
+      <!-- Weather -->
+      <div class="section-card">
+        <div class="card-title">☀️ Weather forecast</div>
+        <div id="weatherLoading" class="weather-loading">Checking the forecast... 🌤️</div>
+        <div id="weatherContent" style="display:none;"></div>
+      </div>
+
+      <!-- Packing list -->
+      <div class="section-card">
+        <div class="card-title">🧳 Your packing list</div>
+        <div id="packingContent"></div>
+      </div>
+
+      <!-- Itinerary -->
+      <div class="section-card">
+        <button class="itinerary-toggle" id="itinToggle" onclick="toggleItinerary()">
+          <span>🗺️ Optional: Quick itinerary ideas</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="itinerary-body" id="itinBody"></div>
+      </div>
+
+      <!-- Shopping -->
+      <div class="section-card">
+        <div class="card-title" id="shopTitle">🛍️ Time to shop!</div>
+        <p class="shop-intro" id="shopIntro"></p>
+        <div id="shoppingContent"></div>
+      </div>
+
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="pack.html" class="cta-btn">Plan another trip 🌍</a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+  // ── Load data ──
+  const raw = localStorage.getItem('fitinerary_data');
+  if (!raw) {
+    document.getElementById('noData').style.display = 'block';
+  } else {
+    document.getElementById('resultsContent').style.display = 'block';
+    const trip = JSON.parse(raw);
+    init(trip);
+  }
+
+  async function init(trip) {
+    renderBanner(trip);
+    const weather = await fetchWeather(trip);
+    renderWeather(weather, trip);
+    const packItems = buildPackingList(trip, weather);
+    renderPacking(packItems, trip);
+    renderItinerary(trip);
+    renderShopping(packItems, trip);
+  }
+
+  // ── Banner ──
+  function renderBanner(trip) {
+    const EMOJIS = { Tokyo:'🗼', 'New York':'🗽', London:'🎡', Paris:'🗼', Bali:'🌴' };
+    document.getElementById('destEmoji').textContent = EMOJIS[trip.destination.name] || '📍';
+    document.getElementById('bannerDest').textContent = trip.destination.name + (trip.destination.country ? ', ' + trip.destination.country : '');
+    const d1 = fmtDate(trip.departure), d2 = fmtDate(trip.return);
+    const nights = Math.round((new Date(trip.return) - new Date(trip.departure)) / 86400000);
+    document.getElementById('bannerDates').textContent = `${d1} → ${d2}  (${nights} nights)`;
+    const tagData = [
+      { label: vibeLabel(trip.vibe), color: '' },
+      { label: trip.budget === 'luxury' ? '✨ Luxury' : '💸 Budget', color: '' }
+    ];
+    document.getElementById('bannerTags').innerHTML = tagData.map(t => `<span class="trip-tag">${t.label}</span>`).join('');
+  }
+
+  function fmtDate(s) {
+    if (!s) return '';
+    return new Date(s + 'T00:00:00').toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  }
+  function vibeLabel(v) {
+    return { comfort:'😌 Comfort First', fancy:'💎 Fancy', streetwear:'🛹 Streetwear', beach:'🌊 Beach & Resort', adventure:'🏔️ Adventure' }[v] || v;
+  }
+
+  // ── Weather ──
+  async function fetchWeather(trip) {
+    const { lat, lon } = trip.destination;
+    const start = trip.departure, end = trip.return;
+    if (!lat || !lon) return null;
+
+    const today = new Date(), depDate = new Date(start + 'T00:00:00');
+    const daysAhead = Math.ceil((depDate - today) / 86400000);
+    let url, isHistorical = false;
+
+    if (daysAhead <= 16) {
+      url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=auto&start_date=${start}&end_date=${end}`;
+    } else {
+      isHistorical = true;
+      const ly = d => { const dt = new Date(d+'T00:00:00'); dt.setFullYear(dt.getFullYear()-1); return dt.toISOString().split('T')[0]; };
+      url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto&start_date=${ly(start)}&end_date=${ly(end)}`;
+    }
+
+    try {
+      const r = await fetch(url);
+      const data = await r.json();
+      return { ...data, isHistorical };
+    } catch { return null; }
+  }
+
+  const WMO = {
+    0:'☀️',1:'🌤️',2:'⛅',3:'🌥️',45:'🌫️',48:'🌫️',
+    51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',
+    71:'🌨️',73:'🌨️',75:'❄️',80:'🌦️',81:'🌦️',82:'🌧️',
+    85:'❄️',86:'❄️',95:'⛈️',96:'⛈️',99:'⛈️'
+  };
+  function wmoIcon(code) { return WMO[code] || '🌤️'; }
+  function wmoDesc(code) {
+    if (code === 0) return 'Clear sky';
+    if (code <= 3) return 'Partly cloudy';
+    if (code <= 48) return 'Foggy';
+    if (code <= 67) return 'Rain expected';
+    if (code <= 77) return 'Snow possible';
+    if (code <= 82) return 'Rain showers';
+    if (code <= 99) return 'Thunderstorms possible';
+    return 'Mixed conditions';
+  }
+  function cToF(c) { return Math.round(c * 9/5 + 32); }
+
+  function renderWeather(data, trip) {
+    document.getElementById('weatherLoading').style.display = 'none';
+    const el = document.getElementById('weatherContent');
+    el.style.display = 'block';
+
+    if (!data || !data.daily) {
+      el.innerHTML = '<p style="color:#888;">Weather data unavailable — check a weather app for ' + trip.destination.name + '!</p>';
+      return;
+    }
+
+    const d = data.daily;
+    const maxTemps = d.temperature_2m_max || [];
+    const minTemps = d.temperature_2m_min || [];
+    const codes    = d.weathercode      || [];
+    const rainPct  = d.precipitation_probability_max || d.precipitation_sum || [];
+
+    const avgHi = maxTemps.length ? Math.round(maxTemps.reduce((a,b)=>a+b,0)/maxTemps.length) : null;
+    const avgLo = minTemps.length ? Math.round(minTemps.reduce((a,b)=>a+b,0)/minTemps.length) : null;
+    const willRain = rainPct.some(r => r > 40);
+    const dominantCode = codes.length ? codes.sort((a,b) => codes.filter(x=>x===b).length - codes.filter(x=>x===a).length)[0] : 0;
+
+    trip._weather = { avgHi, avgLo, willRain, dominantCode };
+
+    const histNote = data.isHistorical ? '<p style="font-size:.8rem;color:#888;margin-top:.5rem;">📊 Based on last year\'s data — your trip is more than 16 days away.</p>' : '';
+
+    const days = d.time || [];
+    const forecastCards = days.slice(0,7).map((date, i) => {
+      const code = codes[i] || 0;
+      const hi   = maxTemps[i] != null ? `${Math.round(maxTemps[i])}°C / ${cToF(maxTemps[i])}°F` : '–';
+      const lo   = minTemps[i] != null ? `${Math.round(minTemps[i])}°C / ${cToF(minTemps[i])}°F` : '';
+      const rain = rainPct[i] != null ? (data.isHistorical ? '' : `💧 ${Math.round(rainPct[i])}%`) : '';
+      const dayName = new Date(date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
+      return `<div class="forecast-day">
+        <div class="fd-name">${dayName}</div>
+        <span class="fd-icon">${wmoIcon(code)}</span>
+        <div class="fd-hi">${hi}</div>
+        <div class="fd-lo">${lo}</div>
+        ${rain ? `<div class="fd-rain">${rain}</div>` : ''}
+      </div>`;
+    }).join('');
+
+    el.innerHTML = `
+      <div class="weather-summary">
+        <div class="weather-big-icon">${wmoIcon(dominantCode)}</div>
+        <div class="weather-summary-text">
+          <h3>Mostly ${wmoDesc(dominantCode).toLowerCase()} in ${trip.destination.name}</h3>
+          <p>Avg highs ${avgHi != null ? avgHi+'°C / '+cToF(avgHi)+'°F' : '–'} · Avg lows ${avgLo != null ? avgLo+'°C / '+cToF(avgLo)+'°F' : '–'} ${willRain ? '· ☔ Bring a rain layer!' : '· 🌞 Mostly dry!'}</p>
+        </div>
+      </div>
+      <div class="forecast-scroll">${forecastCards}</div>
+      ${histNote}`;
+  }
+
+  // ── Packing list ──
+  function buildPackingList(trip, weatherData) {
+    const w = trip._weather || {};
+    const avgHi = w.avgHi != null ? w.avgHi : 22;
+    const willRain = !!w.willRain;
+    const vibe = trip.vibe;
+    const have = trip.wardrobe || [];
+    const nights = Math.round((new Date(trip.return) - new Date(trip.departure)) / 86400000);
+
+    const isHot = avgHi >= 25, isCold = avgHi <= 12, isMild = !isHot && !isCold;
+
+    const tops = Math.max(3, Math.ceil(nights * 0.8));
+    const bottoms = Math.max(2, Math.ceil(nights / 2.5));
+
+    const clothing = [];
+    const accessories = [];
+    const essentials = [
+      { icon:'🛂', name:'Passport / ID', key:'none' },
+      { icon:'💊', name:'Any medications', key:'none' },
+      { icon:'🔌', name:'Phone charger & adapter', key:'none' },
+      { icon:'🧴', name:'Toiletries bag', key:'none' },
+      { icon:'☀️', name:'Sunscreen SPF 30+', key:'none' },
+    ];
+
+    // Temperature-driven clothing
+    if (isHot) {
+      clothing.push({ icon:'👕', name:`Lightweight tops (×${tops})`, key:'tshirts', searchTerm:'light summer top women' });
+      clothing.push({ icon:'🩳', name:`Shorts or light trousers (×${bottoms})`, key:'jeans', searchTerm:'summer shorts women' });
+      clothing.push({ icon:'👡', name:'Sandals or open shoes', key:'sneakers', searchTerm:'sandals women summer' });
+    } else if (isCold) {
+      clothing.push({ icon:'🧥', name:`Warm jumpers / tops (×${tops})`, key:'tshirts', searchTerm:'knit jumper women' });
+      clothing.push({ icon:'👖', name:`Warm trousers / jeans (×${bottoms})`, key:'jeans', searchTerm:'warm jeans women' });
+      clothing.push({ icon:'🧣', name:'Heavy coat or puffer jacket', key:'warmcoat', searchTerm:'puffer coat women' });
+      clothing.push({ icon:'🥾', name:'Warm boots', key:'boots', searchTerm:'ankle boots women winter' });
+      clothing.push({ icon:'🧤', name:'Scarf, gloves & hat', key:'none', searchTerm:'scarf gloves women' });
+    } else {
+      clothing.push({ icon:'👕', name:`T-shirts & casual tops (×${tops})`, key:'tshirts', searchTerm:'casual top women' });
+      clothing.push({ icon:'👖', name:`Jeans or trousers (×${bottoms})`, key:'jeans', searchTerm:'jeans women' });
+      clothing.push({ icon:'🧥', name:'Light jacket or cardigan', key:'lightjacket', searchTerm:'light jacket women' });
+      clothing.push({ icon:'👟', name:'Comfortable shoes/sneakers', key:'sneakers', searchTerm:'sneakers women white' });
+    }
+
+    // Vibe extras
+    if (vibe === 'fancy') {
+      clothing.push({ icon:'👗', name:'Dressy / evening outfit', key:'formaloutfit', searchTerm:'evening dress women' });
+      clothing.push({ icon:'👠', name:'Heels or smart shoes', key:'none', searchTerm:'heels women evening' });
+      accessories.push({ icon:'💍', name:'Statement jewellery', key:'none', searchTerm:'statement jewellery women' });
+      accessories.push({ icon:'👜', name:'Evening bag / clutch', key:'none', searchTerm:'clutch bag women evening' });
+    }
+    if (vibe === 'beach') {
+      clothing.push({ icon:'👙', name:'Swimsuit or bikini (×2)', key:'swimwear', searchTerm:'bikini women swimwear' });
+      clothing.push({ icon:'🩱', name:'Beach cover-up / kaftan', key:'none', searchTerm:'beach cover up women' });
+      clothing.push({ icon:'🩴', name:'Flip flops', key:'sneakers', searchTerm:'flip flops women' });
+      accessories.push({ icon:'🏖️', name:'Beach bag (big enough for towel)', key:'none', searchTerm:'beach bag tote women' });
+    }
+    if (vibe === 'streetwear') {
+      clothing.push({ icon:'🧢', name:'Baseball cap or bucket hat', key:'sunhat', searchTerm:'bucket hat women streetwear' });
+      clothing.push({ icon:'👖', name:'Cargo or wide-leg trousers', key:'jeans', searchTerm:'cargo pants women streetwear' });
+      accessories.push({ icon:'🎒', name:'Crossbody or mini backpack', key:'none', searchTerm:'crossbody bag women streetwear' });
+    }
+    if (vibe === 'adventure') {
+      clothing.push({ icon:'🏃', name:'Moisture-wicking activewear', key:'workout', searchTerm:'activewear women outdoor' });
+      clothing.push({ icon:'🥾', name:'Hiking / activity shoes', key:'boots', searchTerm:'hiking shoes women' });
+      accessories.push({ icon:'🎒', name:'Daypack / hydration bag', key:'none', searchTerm:'daypack women hiking' });
+      essentials.push({ icon:'🩹', name:'Mini first-aid kit', key:'none' });
+    }
+    if (vibe === 'comfort') {
+      clothing.push({ icon:'🩰', name:'Comfy flats or loafers', key:'sneakers', searchTerm:'flats loafers women comfortable' });
+      clothing.push({ icon:'🧤', name:'Cosy knit / loungewear', key:'none', searchTerm:'loungewear set women' });
+    }
+
+    // Rain layer
+    if (willRain) {
+      clothing.push({ icon:'🌂', name:'Compact umbrella or rain jacket', key:'rainjacket', searchTerm:'compact umbrella travel' });
+    }
+
+    // Accessories base
+    accessories.push({ icon:'🕶️', name:'Sunglasses', key:'sunglasses', searchTerm:'sunglasses women' });
+    if (isHot || vibe === 'beach') {
+      accessories.push({ icon:'👒', name:'Sun hat', key:'sunhat', searchTerm:'sun hat women wide brim' });
+    }
+
+    // Mark "have" items
+    function mark(items) {
+      return items.map(item => ({
+        ...item,
+        have: item.key !== 'none' && have.includes(item.key)
+      }));
+    }
+
+    return { clothing: mark(clothing), accessories: mark(accessories), essentials: mark(essentials) };
+  }
+
+  function renderPacking(items, trip) {
+    function renderList(arr) {
+      return `<ul class="pack-list">${arr.map(item => `
+        <li class="pack-item ${item.have ? 'have' : ''}">
+          <span class="pi-icon">${item.icon}</span>
+          <span class="pi-name">${item.name}</span>
+          ${item.have ? '<span class="pi-have">✓ you have this</span>' : ''}
+        </li>`).join('')}</ul>`;
+    }
+
+    document.getElementById('packingContent').innerHTML = `
+      <div class="pack-cats">
+        <div class="pack-cat"><h4>👔 Clothing</h4>${renderList(items.clothing)}</div>
+        <div class="pack-cat">
+          <h4>💍 Accessories</h4>${renderList(items.accessories)}
+          <h4 style="margin-top:1rem;">✅ Essentials</h4>${renderList(items.essentials)}
+        </div>
+      </div>`;
+  }
+
+  // ── Itinerary ──
+  const ITINERARIES = {
+    'Tokyo': [
+      { title:'Arrive + Shibuya', desc:'Land, check in, wander Shibuya Crossing and Harajuku. Grab ramen for dinner.' },
+      { title:'Asakusa & Ueno', desc:'Senso-ji temple at sunrise, Ueno Park, Tokyo National Museum.' },
+      { title:'Akihabara & teamLab', desc:'Electric Town for gadgets and anime, then immersive digital art at teamLab Borderless.' },
+      { title:'Day trip: Hakone or Nikko', desc:'Mt Fuji views from Hakone, or the stunning Tosho-gu shrine in Nikko.' },
+      { title:'Shinjuku & departure', desc:'Shinjuku Gyoen garden, robot restaurant, last-minute shopping in Takeshita Street.' },
+    ],
+    'New York': [
+      { title:'Arrive + Midtown', desc:'Central Park, Times Square, Fifth Avenue window shopping.' },
+      { title:'Culture day', desc:'MoMA or the Met, High Line walk, Chelsea Market for lunch.' },
+      { title:'Brooklyn', desc:'Brooklyn Bridge walk, DUMBO, coffee and vintage shops in Williamsburg.' },
+      { title:'SoHo & Lower East Side', desc:'Shopping, street art, and the best brunch in the city.' },
+      { title:'Statue of Liberty + departure', desc:'Ferry to the Statue of Liberty and Ellis Island before heading home.' },
+    ],
+    'London': [
+      { title:'Arrive + Westminster', desc:'Big Ben, Buckingham Palace, walk along the Thames to Borough Market.' },
+      { title:'Museums & Covent Garden', desc:'British Museum (free!), afternoon in Covent Garden for street performers and shops.' },
+      { title:'Camden & Primrose Hill', desc:'Camden Market for vintage and street food, sunset from Primrose Hill.' },
+      { title:'South Bank & Tate Modern', desc:'Tate Modern, Millennium Bridge, Borough Market for the best cheese toasties.' },
+      { title:'Notting Hill + departure', desc:'Portobello Road Market, pastel houses, and a proper English pub lunch.' },
+    ],
+    'Paris': [
+      { title:'Arrive + Eiffel Tower', desc:'Arrive, Trocadéro for the iconic view, stroll along the Seine at dusk.' },
+      { title:'The Louvre & Palais Royal', desc:'Louvre for a few hours (don\'t try to see it all!), Tuileries gardens, Palais Royal arcades.' },
+      { title:'Montmartre', desc:'Sacré-Cœur, artist squares, the best croissant you\'ve ever had from a local boulangerie.' },
+      { title:'Le Marais & shopping', desc:'Vintage boutiques, falafel on Rue des Rosiers, Place des Vosges for a picnic.' },
+      { title:'Versailles or depart', desc:'Day trip to the Palace of Versailles or Giverny (Monet\'s garden), then fly home.' },
+    ],
+    'Bali': [
+      { title:'Arrive + Seminyak', desc:'Beach club sunset, Seminyak beach, dinner at a warung by the water.' },
+      { title:'Ubud', desc:'Rice terraces in Tegalalang, Sacred Monkey Forest, Ubud market for batik.' },
+      { title:'Temples & Sunset', desc:'Tanah Lot sea temple at sunset, Uluwatu cliff temple with kecak fire dance.' },
+      { title:'Beach & Spa day', desc:'Kuta or Nusa Dua beach, traditional Balinese massage (less than $15!).' },
+      { title:'Nusa Penida or depart', desc:'Snorkelling with manta rays at Nusa Penida, or a sunrise hike up Mount Batur.' },
+    ],
+  };
+
+  function renderItinerary(trip) {
+    const dest = trip.destination.name;
+    const nights = Math.round((new Date(trip.return) - new Date(trip.departure)) / 86400000);
+    const template = ITINERARIES[dest] || null;
+
+    let days;
+    if (template) {
+      days = template.slice(0, Math.min(nights, template.length));
+    } else {
+      days = [
+        { title:'Arrive & explore the neighbourhood', desc:'Check in, walk around, find a local café and let yourself settle in.' },
+        { title:'Main sights', desc:'Hit the top highlights — markets, museums, or whatever ' + dest + ' is famous for.' },
+        { title:'Off the beaten path', desc:'Ask locals for their favourite spots — the real magic is never in the guidebook.' },
+        { title:'Food & shopping day', desc:'Local markets, street food, and picking up a few things to take home.' },
+        { title:'Wind down & depart', desc:'Slow morning, last coffee, pack, and head to the airport.' },
+      ].slice(0, Math.min(nights, 5));
+    }
+
+    const body = document.getElementById('itinBody');
+    body.innerHTML = `<div style="margin-top:.8rem;">${days.map((d, i) => `
+      <div class="itin-day">
+        <span class="itin-day-num">Day ${i+1}</span>
+        <div class="itin-day-content"><h4>${d.title}</h4><p>${d.desc}</p></div>
+      </div>`).join('')}</div>`;
+  }
+
+  function toggleItinerary() {
+    const btn  = document.getElementById('itinToggle');
+    const body = document.getElementById('itinBody');
+    btn.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+
+  // ── Shopping ──
+  const STORES = {
+    budget: [
+      { name:'Zara', url: q => `https://www.zara.com/us/en/search?searchTerm=${encodeURIComponent(q)}`, emoji:'🛍️' },
+      { name:'H&M',  url: q => `https://www2.hm.com/en_us/search-results.html?q=${encodeURIComponent(q)}`, emoji:'🛍️' },
+      { name:'SHEIN', url: q => `https://us.shein.com/pdsearch/${encodeURIComponent(q.replace(/\s/g,'-'))}/`, emoji:'🛍️' },
+      { name:'ASOS',  url: q => `https://www.asos.com/search/?q=${encodeURIComponent(q)}`, emoji:'🛍️' },
+    ],
+    luxury: [
+      { name:'Revolve',      url: q => `https://www.revolve.com/search/?q=${encodeURIComponent(q)}`, emoji:'✨' },
+      { name:'Net-a-Porter', url: q => `https://www.net-a-porter.com/en-us/shop/search?q=${encodeURIComponent(q)}`, emoji:'✨' },
+      { name:'Nordstrom',    url: q => `https://www.nordstrom.com/sr?origin=keywordsearch&keyword=${encodeURIComponent(q)}`, emoji:'✨' },
+      { name:'Saks',         url: q => `https://www.saksfifthavenue.com/search?q=${encodeURIComponent(q)}`, emoji:'✨' },
+    ]
+  };
+
+  function renderShopping(packItems, trip) {
+    const budget = trip.budget;
+    const stores = STORES[budget] || STORES.budget;
+    const isLux  = budget === 'luxury';
+
+    const needToBuy = [...packItems.clothing, ...packItems.accessories].filter(i => !i.have && i.searchTerm);
+
+    document.getElementById('shopTitle').textContent = isLux ? '✨ Let\'s go shopping (luxury picks!)' : '💸 Let\'s go shopping (budget finds!)';
+    document.getElementById('shopIntro').textContent = `Here are ${isLux ? 'elevated' : 'affordable'} options for the things you still need to pack for ${trip.destination.name}. Click any store to search!`;
+
+    const html = needToBuy.slice(0, 8).map(item => `
+      <div class="shop-item">
+        <div class="shop-item-name">${item.icon} ${item.name}</div>
+        <div class="shop-links">
+          ${stores.map(s => `<a href="${s.url(item.searchTerm)}" target="_blank" rel="noopener" class="shop-link ${isLux?'lux':''}">${s.emoji} ${s.name}</a>`).join('')}
+        </div>
+      </div>`).join('');
+
+    document.getElementById('shoppingContent').innerHTML = html ||
+      '<p style="color:#888;">Looks like you\'ve already got everything! Nothing to buy. 🎉</p>';
+  }
+  </script>
+</body>
+</html>
