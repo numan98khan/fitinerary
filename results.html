@@ -171,11 +171,27 @@
     .product-store { font-size: 0.6rem; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: .04em; }
     .no-products { font-size: 0.82rem; color: #999; margin: 0.2rem 0 0.6rem; }
 
-    /* Per-vibe style edit sections */
-    .vibe-edit { margin-bottom: 1.5rem; padding-bottom: 1.3rem; border-bottom: 2px dashed rgba(0,0,0,0.1); }
-    .vibe-edit:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .vibe-edit-title { font-family: "Pacifico", cursive; font-size: 1.35rem; display: block; }
-    .vibe-edit-blurb { font-size: 0.9rem; color: #3d2e5e; margin: 0.3rem 0 0.9rem; line-height: 1.5; }
+    /* City edit subsections (Tops / Bottoms / Shoes / Accessories) */
+    .edit-sub { margin-bottom: 1.4rem; }
+    .edit-sub:last-child { margin-bottom: 0; }
+    .edit-sub-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.55rem; }
+    .edit-sub-head h3 { font-family: "Pacifico", cursive; font-size: 1.2rem; }
+    .edit-more { font-size: 0.76rem; font-weight: 800; color: var(--purple); text-decoration: none; white-space: nowrap; }
+    .edit-more:hover { text-decoration: underline; }
+
+    /* Look card (shoes / accessories — styled card + shop link, no image) */
+    .look-card {
+      flex: 0 0 156px; width: 156px;
+      background: #fff; border: var(--border); border-radius: 14px; box-shadow: var(--shadow);
+      padding: 0.9rem 0.8rem; text-decoration: none; color: var(--ink);
+      display: flex; flex-direction: column; gap: 0.25rem;
+      transition: transform 0.14s ease, box-shadow 0.14s ease;
+    }
+    .look-card:hover { transform: translate(-2px,-2px); box-shadow: var(--shadow-lg); }
+    .look-emoji { font-size: 1.6rem; }
+    .look-name { font-weight: 900; font-size: 0.86rem; }
+    .look-note { font-size: 0.73rem; color: #555; line-height: 1.35; flex: 1; }
+    .look-shop { font-size: 0.75rem; font-weight: 800; color: var(--coral, #e8703a); margin-top: 0.2rem; }
 
     .confetti { text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; }
 
@@ -274,17 +290,17 @@
     init(trip);
   }
 
-  let CATALOG = {};
+  let CITYSTYLE = {};
   async function init(trip) {
     renderBanner(trip);
-    // Load the product catalog (real items with images + buy links)
-    try { CATALOG = await (await fetch('products.json')).json(); } catch { CATALOG = {}; }
+    // Load the per-country style guide (curated edits with images + shop links)
+    try { CITYSTYLE = await (await fetch('city-style.json')).json(); } catch { CITYSTYLE = {}; }
     const weather = await fetchWeather(trip);
     renderWeather(weather, trip);
     const packItems = buildPackingList(trip, weather);
     renderPacking(packItems, trip);
     renderItinerary(trip);
-    renderStyleEdits(trip);
+    renderCityEdit(trip);
   }
 
   function tripVibes(trip) {
@@ -580,14 +596,6 @@
     ]
   };
 
-  // Stylist blurb per vibe (city-aware)
-  const VIBE_BLURB = {
-    fancy:      c => `Elevated pieces for ${c} nights out — dinner reservations, rooftop bars, that one fancy photo.`,
-    beach:      c => `Breezy, sun-ready picks for ${c} — sand, sea and golden-hour strolls.`,
-    streetwear: c => `Cool, easy layers to explore ${c} like a local.`,
-    comfort:    c => `Soft, throw-on pieces for travel days and slow mornings in ${c}.`,
-    adventure:  c => `Go-anywhere, do-anything pieces for active days around ${c}.`,
-  };
   function weatherNote(trip) {
     const w = trip._weather || {};
     if (w.willRain) return ' Pack a light layer — showers are likely. ☔';
@@ -596,43 +604,58 @@
     return '';
   }
 
-  function renderStyleEdits(trip) {
-    const vibes = tripVibes(trip);
-    const city  = trip.destination.name;
+  // Search keyword that captures each city's aesthetic (for "find more" links)
+  const CITY_KW = {
+    Tokyo:'tokyo street style', 'New York':'new york clean girl', London:'london street style',
+    Paris:'parisian chic', Bali:'bali resort', default:'minimalist'
+  };
+  function gshop(q, isLux) {
+    return 'https://www.google.com/search?tbm=shop&q=' + encodeURIComponent((isLux ? 'designer ' : '') + q);
+  }
+
+  // ── The City Edit (country-coded, organised by item type) ──
+  function renderCityEdit(trip) {
+    const city = trip.destination.name;
+    const p = CITYSTYLE[city] || CITYSTYLE['default'] || { intro:'', tops:[], bottoms:[], shoes:[], accessories:[] };
+    const kw = CITY_KW[city] || CITY_KW['default'];
     const isLux = trip.budget === 'luxury';
-    const stores = STORES[trip.budget] || STORES.budget;
+    const vibes = tripVibes(trip).map(v => vibeLabel(v).replace(/^\S+\s/, '')); // labels minus emoji
 
-    document.getElementById('shopTitle').textContent = '🛍️ Your style edits';
-    document.getElementById('shopIntro').textContent =
-      `Hand-picked looks for ${city} — a separate edit for each vibe you chose. Tap any piece to shop it.`;
+    document.getElementById('shopTitle').textContent = `✨ The ${city} Edit`;
+    const vibeLine = vibes.length ? ` Leaning into your ${vibes.join(' + ')} mood.` : '';
+    document.getElementById('shopIntro').textContent = (p.intro || '') + vibeLine + weatherNote(trip);
 
-    const sections = vibes.map(v => {
-      const data = CATALOG[v];
-      if (!data || !data.items || !data.items.length) return '';
-      const blurb = (VIBE_BLURB[v] ? VIBE_BLURB[v](city) : '') + weatherNote(trip);
-      const cards = data.items.map(p => `
-        <a class="product-card" href="${p.url}" target="_blank" rel="noopener">
-          <div class="product-img" style="background-image:url('${p.img}')"></div>
-          <div class="product-info">
-            <span class="product-name">${p.name}</span>
-            <span class="product-meta"><span class="product-price">${p.price}</span><span class="product-store">${p.store}</span></span>
-          </div>
-        </a>`).join('');
-      const term = `${data.label} outfit women`;
-      return `
-        <div class="vibe-edit">
-          <span class="vibe-edit-title">${data.emoji} ${data.label}</span>
-          <p class="vibe-edit-blurb">${blurb}</p>
-          <div class="product-scroll">${cards}</div>
-          <div class="shop-links">
-            <span class="shop-links-label">More ${data.label.toLowerCase()} at:</span>
-            ${stores.map(s => `<a href="${s.url(term)}" target="_blank" rel="noopener" class="shop-link ${isLux?'lux':''}">${s.emoji} ${s.name}</a>`).join('')}
-          </div>
-        </div>`;
-    }).join('');
+    const productCards = items => (items || []).map(it => `
+      <a class="product-card" href="${it.url}" target="_blank" rel="noopener">
+        <div class="product-img" style="background-image:url('${it.img}')"></div>
+        <div class="product-info">
+          <span class="product-name">${it.name}</span>
+          <span class="product-meta"><span class="product-price">${it.price}</span><span class="product-store">${it.store}</span></span>
+        </div>
+      </a>`).join('');
 
-    document.getElementById('shoppingContent').innerHTML = sections ||
-      '<p style="color:#888;">Pick a vibe to see your style edit!</p>';
+    const lookCards = (items, emoji) => (items || []).map(it => `
+      <a class="look-card" href="${gshop(it.q, isLux)}" target="_blank" rel="noopener">
+        <span class="look-emoji">${emoji}</span>
+        <span class="look-name">${it.name}</span>
+        <span class="look-note">${it.note}</span>
+        <span class="look-shop">Shop this →</span>
+      </a>`).join('');
+
+    const section = (title, inner, moreQ) => `
+      <div class="edit-sub">
+        <div class="edit-sub-head">
+          <h3>${title}</h3>
+          <a class="edit-more" href="${gshop(moreQ, isLux)}" target="_blank" rel="noopener">Find more →</a>
+        </div>
+        <div class="product-scroll">${inner}</div>
+      </div>`;
+
+    document.getElementById('shoppingContent').innerHTML =
+      section('👚 Tops',        productCards(p.tops),    `${kw} top women`) +
+      section('👖 Bottoms',     productCards(p.bottoms), `${kw} pants women`) +
+      section('👟 Shoes',       lookCards(p.shoes, '👟'),       `${kw} shoes women`) +
+      section('👜 Accessories', lookCards(p.accessories, '👜'), `${kw} bag women`);
   }
   </script>
 </body>

@@ -1,0 +1,426 @@
+{
+ "Tokyo": {
+  "intro": "Tokyo street style — relaxed, neutral and a little undone. Crisp basics, baggy denim, and a sharp, unexpected shoe.",
+  "tops": [
+   {
+    "name": "Ribbed Cropped Bra Top",
+    "price": "$19.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482195/item/usgoods_60_482195_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E482195-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Ribbed Mini T-Shirt",
+    "price": "$9.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484457/item/usgoods_50_484457_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E484457-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "bottoms": [
+   {
+    "name": "Denim Culottes",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/488781/item/usgoods_65_488781_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E488781-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Barrel Jeans",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/479000/item/usgoods_69_479000_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E479000-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Baggy Jeans",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/488450/item/goods_65_488450_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E488450-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "shoes": [
+   {
+    "name": "Tabi split-toe flats",
+    "note": "The Tokyo shoe — black leather split-toe ballet flats.",
+    "q": "tabi split toe ballet flats women"
+   },
+   {
+    "name": "Mesh ballet flats",
+    "note": "Sheer mesh flats, very now.",
+    "q": "mesh ballet flats women"
+   }
+  ],
+  "accessories": [
+   {
+    "name": "Structured mini bag",
+    "note": "A boxy structured shoulder bag in cream or tan.",
+    "q": "structured boxy mini shoulder bag"
+   },
+   {
+    "name": "Metal hair clips",
+    "note": "Slicked-back hair + silver clips.",
+    "q": "silver metal hair clips set"
+   }
+  ]
+ },
+ "New York": {
+  "intro": "NYC off-duty — clean-girl minimalism. A perfect white tank, easy greys, and a great bag do all the talking.",
+  "tops": [
+   {
+    "name": "Ribbed Cropped Bra Top",
+    "price": "$19.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482195/item/usgoods_60_482195_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E482195-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Racer Back Bra Top",
+    "price": "$19.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482839/item/usgoods_57_482839_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E482839-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Front Open Shell Top",
+    "price": "$19.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484226/item/usgoods_00_484226_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E484226-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "bottoms": [
+   {
+    "name": "Straight Sweatpants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483285/item/usgoods_69_483285_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E483285-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Wide Sweatpants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483282/item/usgoods_03_483282_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E483282-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Sweat Wide Pants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487617/item/usgoods_60_487617_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E487617-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "shoes": [
+   {
+    "name": "White ballet flats",
+    "note": "Crisp leather ballet flats.",
+    "q": "white leather ballet flats women"
+   },
+   {
+    "name": "Tabi flats",
+    "note": "Split-toe flats for an editor edge.",
+    "q": "tabi flats women"
+   }
+  ],
+  "accessories": [
+   {
+    "name": "Suede tote",
+    "note": "A slouchy suede tote in sand.",
+    "q": "suede slouchy tote bag"
+   },
+   {
+    "name": "Camo cap",
+    "note": "A broken-in camo baseball cap.",
+    "q": "camo baseball cap"
+   }
+  ]
+ },
+ "London": {
+  "intro": "London cool — layered and a bit moody. Knitwear, straight denim, and shoes with an edge.",
+  "tops": [
+   {
+    "name": "Crochet V-Neck Cardigan",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485724/item/usgoods_61_485724_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E485724-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "UV Protection Cardigan",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465484/item/usgoods_60_465484_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E465484-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Washable Milano Ribbed Full-Zip Cardigan",
+    "price": "$69.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/481731/item/goods_78_481731_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E481731-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "bottoms": [
+   {
+    "name": "Straight Jeans",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482279/item/usgoods_69_482279_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E482279-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Barrel Jeans",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/479000/item/usgoods_69_479000_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E479000-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Slim Straight Jeans",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487978/item/usgoods_66_487978_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E487978-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "shoes": [
+   {
+    "name": "Chunky loafers",
+    "note": "Polished loafers with a chunky sole.",
+    "q": "chunky leather loafers women"
+   },
+   {
+    "name": "Mary Jane flats",
+    "note": "A little prim, a little punk.",
+    "q": "mary jane flats women"
+   }
+  ],
+  "accessories": [
+   {
+    "name": "Leather shoulder bag",
+    "note": "A worn-in black leather shoulder bag.",
+    "q": "black leather shoulder bag"
+   },
+   {
+    "name": "Rectangle sunglasses",
+    "note": "Slim rectangular shades.",
+    "q": "slim rectangle sunglasses"
+   }
+  ]
+ },
+ "Paris": {
+  "intro": "Parisian chic — effortless and tailored. Breton stripes, neat trousers, ladylike flats. Nothing tries too hard.",
+  "tops": [
+   {
+    "name": "Mini T-Shirt | Striped",
+    "price": "$14.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487277/item/usgoods_14_487277_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E487277-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "AIRism Cotton T-Shirt | Striped",
+    "price": "$24.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/480054/item/usgoods_09_480054_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E480054-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "bottoms": [
+   {
+    "name": "Linen Blend Easy Pants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_69_473791_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E473791-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Ultra Stretch Active Wide Pants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/474481/item/usgoods_32_474481_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E474481-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Jersey Barrel Pants",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475344/item/usgoods_09_475344_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E475344-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "shoes": [
+   {
+    "name": "Ballet flats",
+    "note": "The eternal Parisian flat.",
+    "q": "leather ballet flats women"
+   },
+   {
+    "name": "Slingback kitten heels",
+    "note": "For dinner, naturellement.",
+    "q": "slingback kitten heels women"
+   }
+  ],
+  "accessories": [
+   {
+    "name": "Leather baguette bag",
+    "note": "A compact shoulder baguette.",
+    "q": "leather baguette shoulder bag"
+   },
+   {
+    "name": "Silk neck scarf",
+    "note": "Tied at the neck or on the bag.",
+    "q": "silk neck scarf"
+   }
+  ]
+ },
+ "Bali": {
+  "intro": "Bali resort — breezy and sun-soaked. Linen everything, easy shapes, and barely-there sandals.",
+  "tops": [
+   {
+    "name": "Premium Linen Skipper Collar Shirt",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475649/item/usgoods_65_475649_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E475649-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Premium Linen Shirt",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475647/item/usgoods_68_475647_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E475647-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Premium Linen Skipper Collar 3/4 Sleeve Shirt | St",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483872/item/usgoods_31_483872_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E483872-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "bottoms": [
+   {
+    "name": "Linen Cotton Shorts",
+    "price": "$29.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482171/item/usgoods_32_482171_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E482171-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Linen Cotton Tapered Pants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483305/item/usgoods_57_483305_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E483305-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Linen Blend Easy Shorts",
+    "price": "$19.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485251/item/usgoods_69_485251_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E485251-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "shoes": [
+   {
+    "name": "Leather slides",
+    "note": "Simple tan leather slide sandals.",
+    "q": "leather slide sandals women"
+   },
+   {
+    "name": "Raffia flats",
+    "note": "Woven flats for sand-to-street.",
+    "q": "raffia woven flats women"
+   }
+  ],
+  "accessories": [
+   {
+    "name": "Straw tote",
+    "note": "A roomy woven straw tote.",
+    "q": "straw woven tote bag"
+   },
+   {
+    "name": "Straw bucket hat",
+    "note": "Sun protection, chicly.",
+    "q": "straw bucket hat"
+   }
+  ]
+ },
+ "default": {
+  "intro": "An elevated everyday edit — versatile pieces that travel anywhere, dressed up or down.",
+  "tops": [
+   {
+    "name": "Mini T-Shirt",
+    "price": "$14.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465760/item/usgoods_69_465760_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E465760-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Ribbed Cropped Bra Top",
+    "price": "$19.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482195/item/usgoods_60_482195_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E482195-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Shirring Boat Neck Sleeveless T-Shirt",
+    "price": "$14.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485673/item/usgoods_69_485673_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E485673-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "bottoms": [
+   {
+    "name": "Linen Blend Easy Pants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_69_473791_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E473791-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Jersey Barrel Pants",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475344/item/usgoods_09_475344_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E475344-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Cotton Culottes",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483042/item/usgoods_31_483042_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E483042-000/00",
+    "store": "Uniqlo"
+   }
+  ],
+  "shoes": [
+   {
+    "name": "White sneakers",
+    "note": "Clean minimal leather sneakers.",
+    "q": "minimal white leather sneakers women"
+   },
+   {
+    "name": "Ballet flats",
+    "note": "Easy day-to-night flats.",
+    "q": "leather ballet flats women"
+   }
+  ],
+  "accessories": [
+   {
+    "name": "Everyday tote",
+    "note": "A go-with-everything tote.",
+    "q": "leather tote bag women"
+   },
+   {
+    "name": "Sunglasses",
+    "note": "A flattering classic frame.",
+    "q": "classic sunglasses women"
+   }
+  ]
+ }
+}
