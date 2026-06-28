@@ -401,7 +401,7 @@
   async function init(trip) {
     renderBanner(trip);
     // Load the per-country style guide (curated edits with images + shop links)
-    try { CITYSTYLE = await (await fetch('city-style.json')).json(); } catch { CITYSTYLE = {}; }
+    try { CITYSTYLE = await (await fetch('city-style.json?v=' + Date.now(), { cache: 'no-store' })).json(); } catch { CITYSTYLE = {}; }
     const weather = await fetchWeather(trip);
     renderWeather(weather, trip);
     const packItems = buildPackingList(trip, weather);

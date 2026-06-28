@@ -100,104 +100,104 @@
   "accessories_q": "shoulder bag"
  },
  "New York": {
-  "intro": "NYC off-duty — clean-girl minimalism. A perfect white tank, easy greys, and a great bag do all the talking.",
+  "intro": "New York à la Carrie Bradshaw — tutus, slip tops, heels worth skipping rent for, and the bag that started it all. Romantic, maximalist, unapologetically dressed-up.",
   "tops": [
    {
-    "name": "Kasper Cinched Longline Tank Top White",
-    "price": "$35",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-chiara-us4_55d936d5-d044-4cb2-9283-474c7c0ea927.jpg",
-    "url": "https://us.princesspolly.com/products/kasper-cinched-longline-tank-top-white",
-    "store": "Princess Polly"
+    "name": "Edin Leopard Print Mesh Bra Top",
+    "price": "$12.40",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_03_26_20246487.jpg",
+    "url": "https://edikted.com/products/s16382_brown",
+    "store": "Edikted"
    },
    {
-    "name": "Zenaide Lace Detail Halter Tank Top White",
-    "price": "$45",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-milla-us2_f385e902-7747-4950-96a4-ceec92e8f056.jpg",
-    "url": "https://us.princesspolly.com/products/zenaide-lace-detail-halter-tank-top-white",
-    "store": "Princess Polly"
+    "name": "Embroidered Floral Sheer Bra Top",
+    "price": "$31",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_05_22_2025225383_2913cdcb-7777-4a14-bc49-c8c1c1f2fbb2.jpg",
+    "url": "https://edikted.com/products/s20361_yellow",
+    "store": "Edikted"
    },
    {
-    "name": "Ceyla Layered Tank Top White",
-    "price": "$45",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-alex-us2_9deb5d92-0a5f-49d8-9f01-4af6b4ec3c9d.jpg",
-    "url": "https://us.princesspolly.com/products/ceyla-layered-tank-white",
-    "store": "Princess Polly"
+    "name": "Lover Satin Effect Corset Top",
+    "price": "$15",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/products/7.181348.jpg",
+    "url": "https://edikted.com/products/s12541_red",
+    "store": "Edikted"
    }
   ],
   "bottoms": [
    {
-    "name": "Khaki Parachute Cargo Pants",
-    "price": "£65",
-    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/JMCP2420_FLF2_0326_6ad20866-2ec4-47fd-bfeb-3209be8b0fc2.jpg",
-    "url": "https://www.jadedldn.com/products/khaki-parachute-cargo-pants",
-    "store": "Jaded London"
+    "name": "Roselin Mesh Maxi Skirt Blue Floral",
+    "price": "$59",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-jihan-us2_18145df6-51db-4930-a05d-c2dae05c47ee.jpg",
+    "url": "https://us.princesspolly.com/products/roselin-mesh-maxi-skirt-blue-floral",
+    "store": "Princess Polly"
    },
    {
-    "name": "Black Parachute Cargo Pants",
-    "price": "£65",
-    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/Artboard2_4387974e-e336-44d3-9812-0128a1c224a3.jpg",
-    "url": "https://www.jadedldn.com/products/black-parachute-cargo-pants-1",
-    "store": "Jaded London"
+    "name": "Roselin Mesh Maxi Skirt Brown Floral",
+    "price": "$29.50",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1-modelinfo-maddison-us2_7c208be5-ea21-46c6-be30-3d9745d03dfc.jpg",
+    "url": "https://us.princesspolly.com/products/roselin-mesh-maxi-skirt-brown-floral",
+    "store": "Princess Polly"
    },
    {
-    "name": "Brown Parachute Cargo Pants",
-    "price": "£65",
-    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/WW27MAR5741.jpg",
-    "url": "https://www.jadedldn.com/products/brown-parachute-cargo-pants-1",
-    "store": "Jaded London"
+    "name": "Quancita Mesh Maxi Skirt Red",
+    "price": "$11",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1-modelinfo-elly-us2_dc587e2b-54c8-425d-a91b-7360f9c826c6.jpg",
+    "url": "https://us.princesspolly.com/products/quancita-mesh-maxi-skirt-red",
+    "store": "Princess Polly"
    }
   ],
   "shoes": [
    {
-    "name": "Oliny Ballet Flats Burgundy",
-    "price": "$50",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_2_b9c68faa-4ed4-442b-abbe-dcba95a1e070.jpg",
-    "url": "https://us.princesspolly.com/products/oliny-ballet-flats-burgundy",
+    "name": "Evena Strappy Heels Black",
+    "price": "$45",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_afde078e-ced6-40b7-b92a-830aaeff469d.jpg",
+    "url": "https://us.princesspolly.com/products/evena-strappy-heels-black",
     "store": "Princess Polly"
    },
    {
-    "name": "Ballet Club Flats Red",
-    "price": "$55",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_974a9433-3f65-4a1d-b796-891383ffd4d1.jpg",
-    "url": "https://us.princesspolly.com/products/ballet-club-flats-red",
+    "name": "Everlasting Satin Platform Heels Champagne",
+    "price": "$30",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/products/0_147923f3-b7ac-4faa-9ae2-76040f58477d.jpg",
+    "url": "https://us.princesspolly.com/products/everlasting-satin-platform-heels-champagne",
     "store": "Princess Polly"
    },
    {
-    "name": "Nova Ballet Flats Black",
-    "price": "$13",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/NOVABALLETFLATSBLACK.jpg",
-    "url": "https://us.princesspolly.com/products/nova-ballet-flats-black",
+    "name": "Billini Effy Heels Black Satin Diamante",
+    "price": "$29",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_0aec24cb-f5cb-4357-bdad-a1aa1774bb58.jpg",
+    "url": "https://us.princesspolly.com/products/billini-effy-heels-black-satin-diamante",
     "store": "Princess Polly"
    }
   ],
   "accessories": [
    {
-    "name": "Summer Sorbet Tote Bag Jelly Mint",
-    "price": "$49",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_e7acf63c-aeeb-4b55-9d71-c04595d1cf37.jpg",
-    "url": "https://us.princesspolly.com/products/summer-sorbet-tote-bag-jelly-mint",
+    "name": "Jayalen Shoulder Bag Brown",
+    "price": "$45",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/Jayalen-Shoulder-Bag-Brown_54bd9ea9-c956-46fe-b02a-be6d89081339.jpg",
+    "url": "https://us.princesspolly.com/products/jayalen-shoulder-bag-brown",
     "store": "Princess Polly"
    },
    {
-    "name": "Toddy Tote Bag Cream",
-    "price": "$17.50",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/Tote-bag-Crochet-material-Fixed-shoulder-straps-Toddy-Tote-Bag-Cream-Tote-bag-Crochet-material-Fixed-shoulder-straps-Toddy-tote-bag-cream.jpg",
-    "url": "https://us.princesspolly.com/products/toddy-tote-bag-cream",
+    "name": "Scotlyn Shoulder Bag Red",
+    "price": "$40",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/SCOTLYN-SHOULDER-BAG-RED-1.jpg",
+    "url": "https://us.princesspolly.com/products/scotlyn-shoulder-bag-red",
     "store": "Princess Polly"
    },
    {
-    "name": "Isolda Mesh Tote Bag Khaki",
-    "price": "$19.50",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_4220f540-7da4-41f6-86f5-4b5ca716b808.jpg",
-    "url": "https://us.princesspolly.com/products/isolda-mesh-tote-bag-khaki",
+    "name": "Piper Shoulder Bag Cherry Red",
+    "price": "$23",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_bf496b00-d053-4e33-965f-1ced0a119487.jpg",
+    "url": "https://us.princesspolly.com/products/piper-shoulder-bag-cherry-red",
     "store": "Princess Polly"
    }
   ],
   "country": "USA",
-  "tops_q": "white tank top",
-  "bottoms_q": "parachute pants",
-  "shoes_q": "ballet flats",
-  "accessories_q": "tote bag"
+  "tops_q": "corset top",
+  "bottoms_q": "tulle skirt",
+  "shoes_q": "strappy heels",
+  "accessories_q": "baguette bag"
  },
  "London": {
   "intro": "London cool — layered and a bit moody. Knitwear, straight denim, and shoes with an edge.",
