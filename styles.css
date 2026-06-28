@@ -115,8 +115,40 @@ body::before {
 
 /* ───── Hero ───── */
 .hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2.5rem 0 1.5rem;
+  flex-wrap: wrap;
   text-align: center;
-  padding: 3.5rem 0 2rem;
+}
+.hero-text { flex: 1 1 340px; max-width: 480px; }
+.hero-girl { flex: 0 0 auto; width: 230px; max-width: 46vw; }
+
+/* ── Character ── */
+.girl { width: 100%; height: auto; display: block; }
+.girl .happy-only { display: none; }
+.girl .panic-only { display: block; }
+.girl.is-happy .happy-only { display: block; }
+.girl.is-happy .panic-only { display: none; }
+.hero-girl .girl { animation: girlWobble 3s ease-in-out infinite; transform-origin: 50% 92%; }
+@keyframes girlWobble { 0%,100% { transform: rotate(-2.5deg); } 50% { transform: rotate(2.5deg); } }
+
+/* ── Get Packing CTA with the (sorted!) character behind ── */
+.cta-pack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5rem 0 1rem;
+}
+.cta-girl { width: 200px; margin-bottom: -26px; }
+.cta-girl .girl { animation: girlBounce 2.4s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes girlBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+.cta-btn-big { position: relative; z-index: 2; font-size: 1.3rem; padding: 1rem 2.8rem; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-girl .girl, .cta-girl .girl { animation: none; }
 }
 .hero-tag {
   display: inline-block;
