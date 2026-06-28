@@ -547,10 +547,13 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function nextStep(from) {
-      // Validate
-      if (from === 1 && !userData.destination) {
-        document.getElementById('err-1').classList.add('show'); return;
+    async function nextStep(from) {
+      // Step 1: make sure the destination matches what's typed in the search box
+      if (from === 1) {
+        const ok = await confirmDestinationStep1();
+        if (!ok) { document.getElementById('err-1').classList.add('show'); return; }
+        document.getElementById('err-1').classList.remove('show');
+        showStep(2); return;
       }
       if (from === 2 && (!userData.departure || !userData.return)) {
         document.getElementById('err-2').classList.add('show'); return;
@@ -566,8 +569,58 @@
       if (from === 5 && !userData.budget) {
         document.getElementById('err-5').classList.add('show'); return;
       }
-      ['err-1','err-2','err-3','err-5'].forEach(id => document.getElementById(id)?.classList.remove('show'));
+      ['err-2','err-3','err-5'].forEach(id => document.getElementById(id)?.classList.remove('show'));
       showStep(from + 1);
+    }
+
+    // If the user typed a city in the search box, resolve THAT — so a leftover
+    // card selection (e.g. Tokyo) can't sneak through when they typed Amsterdam.
+    async function confirmDestinationStep1() {
+      const typed = searchInput.value.trim();
+      if (typed && (searchDirty || !userData.destination || userData.destination.preset)) {
+        const btn = document.querySelector('#step-1 .btn-next');
+        const label = btn ? btn.textContent : '';
+        if (btn) { btn.textContent = 'Finding your city… 🔎'; btn.disabled = true; }
+        const place = await geocodeCity(typed);
+        if (btn) { btn.textContent = label; btn.disabled = false; }
+        if (!place) {
+          document.getElementById('err-1').textContent = `Couldn't find "${typed}" — try a nearby bigger city.`;
+          return false;
+        }
+        userData.destination = place;
+        searchDirty = false;
+        searchInput.value = place.name + (place.country ? ', ' + place.country : '');
+        document.querySelectorAll('.city-card').forEach(c => c.classList.remove('selected'));
+        return true;
+      }
+      return !!userData.destination;
+    }
+
+    // Rank geocoder results so real towns/cities beat random islands etc.,
+    // then by how well-known the place is (importance).
+    function rankPlaces(data) {
+      const isSettlement = d =>
+        ['city','town','village','municipality','hamlet'].includes(d.addresstype) ||
+        ['city','town','village','municipality','hamlet'].includes(d.type);
+      // Keep the geocoder's best-match-first order; just push non-settlements
+      // (islands, regions) down. Array.sort is stable, so the top text match wins.
+      return data.slice().sort((a, b) => {
+        const sa = isSettlement(a) ? 1 : 0, sb = isSettlement(b) ? 1 : 0;
+        return sb - sa;
+      });
+    }
+    function placeName(p) {
+      return p.address?.city || p.address?.town || p.address?.village || p.address?.municipality ||
+        (p.display_name ? p.display_name.split(',')[0].trim() : p.name);
+    }
+    async function geocodeCity(q) {
+      try {
+        const r = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8&addressdetails=1&accept-language=en`);
+        const data = await r.json();
+        const p = rankPlaces(data)[0];
+        if (!p) return null;
+        return { name: placeName(p), country: p.address?.country || '', lat: parseFloat(p.lat), lon: parseFloat(p.lon), preset: false };
+      } catch { return null; }
     }
 
     function prevStep(from) { showStep(from - 1); }
@@ -595,28 +648,36 @@
           lon: parseFloat(card.dataset.lon),
           preset: true
         };
+        // clear any typed search so the card is unambiguously the choice
+        searchInput.value = '';
+        searchDirty = false;
+        dropdown.classList.remove('open');
+        document.getElementById('err-1').classList.remove('show');
       });
     });
 
     // ── City search ──
     let searchTimer;
+    let searchDirty = false;
     const searchInput  = document.getElementById('citySearch');
     const dropdown     = document.getElementById('searchDropdown');
 
     searchInput.addEventListener('input', () => {
       const q = searchInput.value.trim();
+      // typing means the city cards are no longer the choice
+      searchDirty = true;
+      document.querySelectorAll('.city-card').forEach(c => c.classList.remove('selected'));
+      document.getElementById('err-1').classList.remove('show');
       clearTimeout(searchTimer);
       if (q.length < 3) { dropdown.classList.remove('open'); return; }
       searchTimer = setTimeout(async () => {
         try {
-          const r = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=5&addressdetails=1`, {
-            headers: { 'Accept-Language': 'en', 'User-Agent': 'FitineraryApp/1.0' }
-          });
+          const r = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8&addressdetails=1&accept-language=en`);
           const data = await r.json();
-          const places = data.filter(d => ['city','town','village','municipality'].includes(d.type) || d.class === 'place');
+          const places = rankPlaces(data);
           if (!places.length) { dropdown.innerHTML = '<div class="search-result" style="color:#888">No cities found — try another name</div>'; dropdown.classList.add('open'); return; }
           dropdown.innerHTML = places.slice(0, 5).map(p => {
-            const name = p.address?.city || p.address?.town || p.address?.village || p.name;
+            const name = placeName(p);
             const country = p.address?.country || '';
             return `<div class="search-result" data-name="${name}" data-country="${country}" data-lat="${p.lat}" data-lon="${p.lon}">
               📍 <strong>${name}</strong> <span class="search-result-sub">${country}</span></div>`;
@@ -626,6 +687,7 @@
             el.addEventListener('click', () => {
               userData.destination = { name: el.dataset.name, country: el.dataset.country, lat: parseFloat(el.dataset.lat), lon: parseFloat(el.dataset.lon), preset: false };
               searchInput.value = el.dataset.name + (el.dataset.country ? ', ' + el.dataset.country : '');
+              searchDirty = false;
               dropdown.classList.remove('open');
               document.querySelectorAll('.city-card').forEach(c => c.classList.remove('selected'));
             });
