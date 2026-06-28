@@ -3,505 +3,593 @@
   "intro": "Tokyo street style — relaxed, neutral and a little undone. Crisp basics, baggy denim, and a sharp, unexpected shoe.",
   "tops": [
    {
-    "name": "Ribbed Cropped Bra Top",
-    "price": "$19.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482195/item/usgoods_60_482195_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E482195-000/00",
-    "store": "Uniqlo"
+    "name": "Linda Ribbed Scoop Neck Tank Top",
+    "price": "$15",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/S22978_GRAY-MELANGE_e6a63eda-3f80-4cce-8535-247c740984b7.jpg",
+    "url": "https://edikted.com/products/s22978_gray-melange",
+    "store": "Edikted"
    },
    {
-    "name": "Ribbed Mini T-Shirt",
-    "price": "$9.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484457/item/usgoods_50_484457_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E484457-000/00",
-    "store": "Uniqlo"
+    "name": "Edikted Girly Ribbed Tank Top",
+    "price": "$19",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Frame38_e0728cd5-c4cb-4643-87df-1f8c93d3c9dc.jpg",
+    "url": "https://edikted.com/products/s23924_burgundy",
+    "store": "Edikted"
+   },
+   {
+    "name": "Lalisa V Neck Ribbed Tank Top",
+    "price": "$18",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/s23773_light-gray-melange_13-04-2628copy.jpg",
+    "url": "https://edikted.com/products/s23773_light-gray-melange",
+    "store": "Edikted"
    }
   ],
   "bottoms": [
    {
-    "name": "Denim Culottes",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/488781/item/usgoods_65_488781_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E488781-000/00",
-    "store": "Uniqlo"
+    "name": "Woodland Camo Colossus Baggy Jeans",
+    "price": "£80",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/15JANWWECCOM1725_b7eeee80-0a2c-46b7-8113-65b6913bdb0a.jpg",
+    "url": "https://www.jadedldn.com/products/woodland-camo-colossus-baggy-jeans-womens",
+    "store": "Jaded London"
    },
    {
-    "name": "Barrel Jeans",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/479000/item/usgoods_69_479000_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E479000-000/00",
-    "store": "Uniqlo"
+    "name": "Zae Panelled Low Rise Baggy Jeans",
+    "price": "£85",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/Jaded.8.12_EDIT6_6bd3f124-b517-4f95-9b31-973466f13926.jpg",
+    "url": "https://www.jadedldn.com/products/zae-panelled-low-rise-baggy-jeans",
+    "store": "Jaded London"
    },
    {
-    "name": "Baggy Jeans",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/488450/item/goods_65_488450_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E488450-000/00",
-    "store": "Uniqlo"
-   },
-   {
-    "name": "Linen Blend Easy Pants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_30_473791_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E473791-000/00",
-    "store": "Uniqlo"
+    "name": "Sonic Embroidered Baggy Jeans",
+    "price": "£75",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/24_WW_ECCOM35040-2.jpg",
+    "url": "https://www.jadedldn.com/products/embroidered-loose-fit-turn-up-jeans",
+    "store": "Jaded London"
    }
   ],
   "shoes": [
    {
-    "name": "Tabi split-toe flats",
-    "note": "The Tokyo shoe — black leather split-toe ballet flats.",
-    "q": "tabi split toe ballet flats women"
+    "name": "Zevra Sporty Ballet Flats Brown",
+    "price": "$60",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_f67c4323-6021-4508-9670-abb19c96e54b.jpg",
+    "url": "https://us.princesspolly.com/products/zevra-sporty-ballet-flats-brown",
+    "store": "Princess Polly"
    },
    {
-    "name": "Mesh ballet flats",
-    "note": "Sheer mesh flats, very now.",
-    "q": "mesh ballet flats women"
+    "name": "Therapy Harajuku Split Toe Ballet Flats Black",
+    "price": "$79.95",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_36568a9b-98fa-4fb4-a98b-e7bfc2378975.jpg",
+    "url": "https://us.princesspolly.com/products/therapy-tabi-ballet-flats-black",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Adienne Ballet Flats Black",
+    "price": "$70",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_1ed4ed35-4760-4e82-a74e-bce13948bf0d.jpg",
+    "url": "https://us.princesspolly.com/products/adienne-ballet-flats-black",
+    "store": "Princess Polly"
    }
   ],
   "accessories": [
    {
-    "name": "Structured mini bag",
-    "note": "A boxy structured shoulder bag in cream or tan.",
-    "q": "structured boxy mini shoulder bag"
+    "name": "Patty Shoulder Bag Brown",
+    "price": "$45",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/Patty-shoulder-bag-brown_62a1193c-84ff-427f-ad6a-49b6762b8455.jpg",
+    "url": "https://us.princesspolly.com/products/patty-shoulder-bag-brown",
+    "store": "Princess Polly"
    },
    {
-    "name": "Metal hair clips",
-    "note": "Slicked-back hair + silver clips.",
-    "q": "silver metal hair clips set"
+    "name": "Glazier Shoulder Bag Black",
+    "price": "$40",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/glazier-shoulder-bag-black_fdce8223-5202-4100-8692-9be707de20cc.jpg",
+    "url": "https://us.princesspolly.com/products/glazier-shoulder-bag-black",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Scotlyn Shoulder Bag Black",
+    "price": "$20",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_fc3e535c-7e2a-48ff-bf02-a69f6a5492b6.jpg",
+    "url": "https://us.princesspolly.com/products/scotlyn-shoulder-bag-black",
+    "store": "Princess Polly"
    }
   ],
   "country": "Japan",
-  "tops_q": "ribbed mock neck top",
-  "bottoms_q": "baggy wide leg jeans"
+  "tops_q": "ribbed top",
+  "bottoms_q": "baggy jeans",
+  "shoes_q": "ballet flats",
+  "accessories_q": "shoulder bag"
  },
  "New York": {
   "intro": "NYC off-duty — clean-girl minimalism. A perfect white tank, easy greys, and a great bag do all the talking.",
   "tops": [
    {
-    "name": "Ribbed Cropped Bra Top",
-    "price": "$19.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482195/item/usgoods_60_482195_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E482195-000/00",
-    "store": "Uniqlo"
+    "name": "Baseline Square Neck Rib Tank Top Black",
+    "price": "$35",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-olivia-us2_7ae45795-34e9-46fe-b0ad-188202bed78a.jpg",
+    "url": "https://us.princesspolly.com/products/baseline-square-neck-rib-to-black",
+    "store": "Princess Polly"
    },
    {
-    "name": "Racer Back Bra Top",
-    "price": "$19.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482839/item/usgoods_57_482839_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E482839-000/00",
-    "store": "Uniqlo"
+    "name": "Baseline Square Neck Rib Tank Top White",
+    "price": "$35",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-leiza-us2.jpg",
+    "url": "https://us.princesspolly.com/products/baseline-square-neck-rib-top-white-1",
+    "store": "Princess Polly"
    },
    {
-    "name": "Front Open Shell Top",
-    "price": "$19.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484226/item/usgoods_00_484226_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E484226-000/00",
-    "store": "Uniqlo"
-   },
-   {
-    "name": "Soft Ribbed T-Shirt | Striped",
-    "price": "$24.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483536/item/usgoods_01_483536_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E483536-000/00",
-    "store": "Uniqlo"
+    "name": "Baseline V Neck Rib Tank Top White",
+    "price": "$35",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-lauren-us2_a4dd748f-00c3-4399-9bdc-eb53e689d31b.jpg",
+    "url": "https://us.princesspolly.com/products/baseline-v-neck-rib-tank-top-white",
+    "store": "Princess Polly"
    }
   ],
   "bottoms": [
    {
-    "name": "Straight Sweatpants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483285/item/usgoods_69_483285_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E483285-000/00",
-    "store": "Uniqlo"
+    "name": "Khaki Parachute Cargo Pants",
+    "price": "£65",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/JMCP2420_FLF2_0326_6ad20866-2ec4-47fd-bfeb-3209be8b0fc2.jpg",
+    "url": "https://www.jadedldn.com/products/khaki-parachute-cargo-pants",
+    "store": "Jaded London"
    },
    {
-    "name": "Wide Sweatpants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483282/item/usgoods_03_483282_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E483282-000/00",
-    "store": "Uniqlo"
+    "name": "Black Parachute Cargo Pants",
+    "price": "£65",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/Artboard2_4387974e-e336-44d3-9812-0128a1c224a3.jpg",
+    "url": "https://www.jadedldn.com/products/black-parachute-cargo-pants-1",
+    "store": "Jaded London"
    },
    {
-    "name": "Sweat Wide Pants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487617/item/usgoods_60_487617_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E487617-000/00",
-    "store": "Uniqlo"
-   },
-   {
-    "name": "Linen Blend Easy Pants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_30_473791_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E473791-000/00",
-    "store": "Uniqlo"
+    "name": "Brown Parachute Cargo Pants",
+    "price": "£65",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/WW27MAR5741.jpg",
+    "url": "https://www.jadedldn.com/products/brown-parachute-cargo-pants-1",
+    "store": "Jaded London"
    }
   ],
   "shoes": [
    {
-    "name": "White ballet flats",
-    "note": "Crisp leather ballet flats.",
-    "q": "white leather ballet flats women"
+    "name": "Zevra Sporty Ballet Flats Brown",
+    "price": "$60",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_f67c4323-6021-4508-9670-abb19c96e54b.jpg",
+    "url": "https://us.princesspolly.com/products/zevra-sporty-ballet-flats-brown",
+    "store": "Princess Polly"
    },
    {
-    "name": "Tabi flats",
-    "note": "Split-toe flats for an editor edge.",
-    "q": "tabi flats women"
+    "name": "Therapy Harajuku Split Toe Ballet Flats Black",
+    "price": "$79.95",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_36568a9b-98fa-4fb4-a98b-e7bfc2378975.jpg",
+    "url": "https://us.princesspolly.com/products/therapy-tabi-ballet-flats-black",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Adienne Ballet Flats Black",
+    "price": "$70",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_1ed4ed35-4760-4e82-a74e-bce13948bf0d.jpg",
+    "url": "https://us.princesspolly.com/products/adienne-ballet-flats-black",
+    "store": "Princess Polly"
    }
   ],
   "accessories": [
    {
-    "name": "Suede tote",
-    "note": "A slouchy suede tote in sand.",
-    "q": "suede slouchy tote bag"
+    "name": "Summer Sorbet Tote Bag Jelly Mint",
+    "price": "$49",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_e7acf63c-aeeb-4b55-9d71-c04595d1cf37.jpg",
+    "url": "https://us.princesspolly.com/products/summer-sorbet-tote-bag-jelly-mint",
+    "store": "Princess Polly"
    },
    {
-    "name": "Camo cap",
-    "note": "A broken-in camo baseball cap.",
-    "q": "camo baseball cap"
+    "name": "Toddy Tote Bag Cream",
+    "price": "$17.50",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/Tote-bag-Crochet-material-Fixed-shoulder-straps-Toddy-Tote-Bag-Cream-Tote-bag-Crochet-material-Fixed-shoulder-straps-Toddy-tote-bag-cream.jpg",
+    "url": "https://us.princesspolly.com/products/toddy-tote-bag-cream",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Isolda Mesh Tote Bag Khaki",
+    "price": "$19.50",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_4220f540-7da4-41f6-86f5-4b5ca716b808.jpg",
+    "url": "https://us.princesspolly.com/products/isolda-mesh-tote-bag-khaki",
+    "store": "Princess Polly"
    }
   ],
   "country": "USA",
-  "tops_q": "white ribbed tank top",
-  "bottoms_q": "grey sweatpants wide"
+  "tops_q": "ribbed tank top",
+  "bottoms_q": "parachute pants",
+  "shoes_q": "ballet flats",
+  "accessories_q": "tote bag"
  },
  "London": {
   "intro": "London cool — layered and a bit moody. Knitwear, straight denim, and shoes with an edge.",
   "tops": [
    {
-    "name": "Crochet V-Neck Cardigan",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485724/item/usgoods_61_485724_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E485724-000/00",
-    "store": "Uniqlo"
+    "name": "Ombre No.13 Football Baby Tee",
+    "price": "£45",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/WW-13-MAR-2622517.jpg",
+    "url": "https://www.jadedldn.com/products/ombre-no-13-football-baby-tee",
+    "store": "Jaded London"
    },
    {
-    "name": "UV Protection Cardigan",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465484/item/usgoods_60_465484_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E465484-000/00",
-    "store": "Uniqlo"
+    "name": "Sever Macrame Football Baby Tee",
+    "price": "£48",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/WW-13-MAR-2620898.jpg",
+    "url": "https://www.jadedldn.com/products/sever-macrame-football-baby-tee",
+    "store": "Jaded London"
    },
    {
-    "name": "Washable Milano Ribbed Full-Zip Cardigan",
-    "price": "$69.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/481731/item/goods_78_481731_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E481731-000/00",
-    "store": "Uniqlo"
-   },
-   {
-    "name": "Pointelle Cardigan",
-    "price": "$29.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484939/item/usgoods_17_484939_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E484939-000/00",
-    "store": "Uniqlo"
+    "name": "Amerela Airbrush Vintage Baby Tee",
+    "price": "£45",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/JWT6041_5.jpg",
+    "url": "https://www.jadedldn.com/products/amerela-airbrush-vintage-baby-tee",
+    "store": "Jaded London"
    }
   ],
   "bottoms": [
    {
-    "name": "Straight Jeans",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482279/item/usgoods_69_482279_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E482279-000/00",
-    "store": "Uniqlo"
+    "name": "Italy Muse Straight Leg Jeans",
+    "price": "£90",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/JMJE6706_B1_0526.jpg",
+    "url": "https://www.jadedldn.com/products/italy-muse-straight-leg-jeans",
+    "store": "Jaded London"
    },
    {
-    "name": "Barrel Jeans",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/479000/item/usgoods_69_479000_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E479000-000/00",
-    "store": "Uniqlo"
+    "name": "Rider Low Rise Straight Leg Jeans in Light Wash",
+    "price": "£75",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/WW_ECOM_17_JUNE69977.jpg",
+    "url": "https://www.jadedldn.com/products/cooper-jeans-light-blue-slub-wash-copy-1",
+    "store": "Jaded London"
    },
    {
-    "name": "Slim Straight Jeans",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487978/item/usgoods_66_487978_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E487978-000/00",
-    "store": "Uniqlo"
-   },
-   {
-    "name": "Baggy Jeans",
-    "price": "$19.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483999/item/usgoods_67_483999_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E483999-000/00",
-    "store": "Uniqlo"
+    "name": "Hunter Loose Straight Leg Jeans in Blue Wash",
+    "price": "£75",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/JMH5975_FLF2_0325_3d91f7a7-68df-4e3a-9b23-c06fbdfdf06a.jpg",
+    "url": "https://www.jadedldn.com/products/hunter-loose-straight-leg-jeans-in-blue-wash",
+    "store": "Jaded London"
    }
   ],
   "shoes": [
    {
-    "name": "Chunky loafers",
-    "note": "Polished loafers with a chunky sole.",
-    "q": "chunky leather loafers women"
+    "name": "Capri Loafers Black",
+    "price": "$65",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_9a4b61ad-1413-471f-9e58-c6c64de068d4.jpg",
+    "url": "https://us.princesspolly.com/products/capri-loafers-black",
+    "store": "Princess Polly"
    },
    {
-    "name": "Mary Jane flats",
-    "note": "A little prim, a little punk.",
-    "q": "mary jane flats women"
+    "name": "Penny Lane Loafers Black",
+    "price": "$75",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_2633cf2e-a4ae-42d1-ba21-66ddb692b571.jpg",
+    "url": "https://us.princesspolly.com/products/recycled-pu-penny-lane-loafer-black",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Therapy Albert Faux Suede Loafers Brown",
+    "price": "$24",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_1cc98373-1f98-44ce-ad22-a6e8f28e45be.jpg",
+    "url": "https://us.princesspolly.com/products/therapy-albert-faux-suede-loafers-brown",
+    "store": "Princess Polly"
    }
   ],
   "accessories": [
    {
-    "name": "Leather shoulder bag",
-    "note": "A worn-in black leather shoulder bag.",
-    "q": "black leather shoulder bag"
+    "name": "Perfect Pairing Faux Leather Shoulder Bag",
+    "price": "$20.40",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Accessories_11_14_20230265_430923f8-50c0-4ba5-91ea-cd9928b2e0d0.jpg",
+    "url": "https://edikted.com/products/acc0659_black",
+    "store": "Edikted"
    },
    {
-    "name": "Rectangle sunglasses",
-    "note": "Slim rectangular shades.",
-    "q": "slim rectangle sunglasses"
+    "name": "City Barbie™ Beaded Shoulder Bag",
+    "price": "$39",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/acc2468_pink_25-03-2671_059b09fb-2197-471f-830b-91a6646c0fd4.jpg",
+    "url": "https://edikted.com/products/acc2468_pink",
+    "store": "Edikted"
+   },
+   {
+    "name": "So Chic Faux Leather Shoulder Bag",
+    "price": "$36",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/ACC1074_BROWN_0328.jpg",
+    "url": "https://edikted.com/products/acc1074_brown",
+    "store": "Edikted"
    }
   ],
   "country": "UK",
-  "tops_q": "knit cardigan",
-  "bottoms_q": "straight leg jeans"
+  "tops_q": "baby tee",
+  "bottoms_q": "straight leg jeans",
+  "shoes_q": "loafers",
+  "accessories_q": "shoulder bag"
  },
  "Paris": {
   "intro": "Parisian chic — effortless and tailored. Breton stripes, neat trousers, ladylike flats. Nothing tries too hard.",
   "tops": [
    {
-    "name": "Mini T-Shirt | Striped",
-    "price": "$14.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487277/item/usgoods_14_487277_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E487277-000/00",
-    "store": "Uniqlo"
+    "name": "Glennon Striped Top",
+    "price": "$21",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_06_25_2025252808.jpg",
+    "url": "https://edikted.com/products/s21004_red-and-white",
+    "store": "Edikted"
    },
    {
-    "name": "AIRism Cotton T-Shirt | Striped",
-    "price": "$24.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/480054/item/usgoods_09_480054_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E480054-000/00",
-    "store": "Uniqlo"
+    "name": "Lorenza Striped Halter Top",
+    "price": "$16",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/11_b7a9abf1-061a-4b9d-b159-3d2f3dc96f3f.jpg",
+    "url": "https://edikted.com/products/s19747_navy-and-white",
+    "store": "Edikted"
+   },
+   {
+    "name": "Chantal Asymmetric Striped Top",
+    "price": "$23",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Frame3_52b76859-20ae-45d1-a247-892c518879f5.jpg",
+    "url": "https://edikted.com/products/s24084_light-blue",
+    "store": "Edikted"
    }
   ],
   "bottoms": [
    {
-    "name": "Linen Blend Easy Pants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_69_473791_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E473791-000/00",
-    "store": "Uniqlo"
+    "name": "Oren Capri Trouser Ivory",
+    "price": "$64",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-rino-us4_2892d70b-0653-4650-b779-258c1c7e34f1.jpg",
+    "url": "https://us.princesspolly.com/products/oren-capri-trouser-ivory",
+    "store": "Princess Polly"
    },
    {
-    "name": "Ultra Stretch Active Wide Pants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/474481/item/usgoods_32_474481_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E474481-000/00",
-    "store": "Uniqlo"
+    "name": "Elka Wrap Trousers Truffle",
+    "price": "$30",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-olivia-us2_3618da25-cac3-45cf-8d97-f39f8e3d4b51.jpg",
+    "url": "https://us.princesspolly.com/products/elka-wrap-trousers-truffle",
+    "store": "Princess Polly"
    },
    {
-    "name": "Jersey Barrel Pants",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475344/item/usgoods_09_475344_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E475344-000/00",
-    "store": "Uniqlo"
-   },
-   {
-    "name": "Smart Wide Pants",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/479292/item/usgoods_30_479292_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E479292-000/00",
-    "store": "Uniqlo"
+    "name": "Enmu Capri Trouser Charcoal Grey",
+    "price": "$26.50",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-emmah-us2_1.jpg",
+    "url": "https://us.princesspolly.com/products/enmu-capri-trouser-charcoal-grey",
+    "store": "Princess Polly"
    }
   ],
   "shoes": [
    {
-    "name": "Ballet flats",
-    "note": "The eternal Parisian flat.",
-    "q": "leather ballet flats women"
+    "name": "Zevra Sporty Ballet Flats Brown",
+    "price": "$60",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_f67c4323-6021-4508-9670-abb19c96e54b.jpg",
+    "url": "https://us.princesspolly.com/products/zevra-sporty-ballet-flats-brown",
+    "store": "Princess Polly"
    },
    {
-    "name": "Slingback kitten heels",
-    "note": "For dinner, naturellement.",
-    "q": "slingback kitten heels women"
+    "name": "Therapy Harajuku Split Toe Ballet Flats Black",
+    "price": "$79.95",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_36568a9b-98fa-4fb4-a98b-e7bfc2378975.jpg",
+    "url": "https://us.princesspolly.com/products/therapy-tabi-ballet-flats-black",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Adienne Ballet Flats Black",
+    "price": "$70",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_1ed4ed35-4760-4e82-a74e-bce13948bf0d.jpg",
+    "url": "https://us.princesspolly.com/products/adienne-ballet-flats-black",
+    "store": "Princess Polly"
    }
   ],
   "accessories": [
    {
-    "name": "Leather baguette bag",
-    "note": "A compact shoulder baguette.",
-    "q": "leather baguette shoulder bag"
+    "name": "High Tide Mini Straw Bag",
+    "price": "$26",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_03_17_2025185083_4f570532-7667-403e-8379-1dcd5a21cdb2.jpg",
+    "url": "https://edikted.com/products/acc1441_brown",
+    "store": "Edikted"
    },
    {
-    "name": "Silk neck scarf",
-    "note": "Tied at the neck or on the bag.",
-    "q": "silk neck scarf"
+    "name": "Mini Edikted Tote Bag Keychain",
+    "price": "$4.80",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_09_24_202544614.jpg",
+    "url": "https://edikted.com/products/acc1829_cream",
+    "store": "Edikted"
+   },
+   {
+    "name": "Classic Faux Leather Mini Bag",
+    "price": "$25.60",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_01_29_2025160092_a03dca1b-b2fe-41cc-a2fc-9fd5d05ba0ed.jpg",
+    "url": "https://edikted.com/products/acc1352_ivory",
+    "store": "Edikted"
    }
   ],
   "country": "France",
-  "tops_q": "breton stripe top",
-  "bottoms_q": "tailored trousers"
+  "tops_q": "striped top",
+  "bottoms_q": "trousers",
+  "shoes_q": "ballet flats",
+  "accessories_q": "mini bag"
  },
  "Bali": {
   "intro": "Bali resort — breezy and sun-soaked. Linen everything, easy shapes, and barely-there sandals.",
   "tops": [
    {
-    "name": "Premium Linen Skipper Collar Shirt",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475649/item/usgoods_65_475649_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E475649-000/00",
-    "store": "Uniqlo"
+    "name": "Dudley Vest Top in Sequin Crochet Cream",
+    "price": "£29",
+    "img": "https://cdn.shopify.com/s/files/1/1444/3082/files/DUDLEY-VEST-TOP-RANUMI-MIDI-SKIRT-SEQUIN-CROCHET-CREAM_8121.jpg",
+    "url": "https://www.motelrocks.com/products/dudley-vest-top-sequin-crochet-cream",
+    "store": "Motel Rocks"
    },
    {
-    "name": "Premium Linen Shirt",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475647/item/usgoods_68_475647_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E475647-000/00",
-    "store": "Uniqlo"
+    "name": "Allyne Halter Top in Crochet Knit Aqua Sky",
+    "price": "£34",
+    "img": "https://cdn.shopify.com/s/files/1/1444/3082/files/ALLYNE-TOP-CROCHET-AQUA-SKY_7211.jpg",
+    "url": "https://www.motelrocks.com/products/allyne-hltr-top-crch-knt-aqua-sky-bk093",
+    "store": "Motel Rocks"
    },
    {
-    "name": "Premium Linen Skipper Collar 3/4 Sleeve Shirt | St",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483872/item/usgoods_31_483872_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E483872-000/00",
-    "store": "Uniqlo"
-   },
-   {
-    "name": "Linen Blend Blouse | Sleeveless",
-    "price": "$29.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483890/item/usgoods_58_483890_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E483890-000/00",
-    "store": "Uniqlo"
+    "name": "Halfi Long Sleeve Top in Hibiscus Crochet Lace I",
+    "price": "£39",
+    "img": "https://cdn.shopify.com/s/files/1/1444/3082/files/HALFI-TOP-HIBISCUS-CROCHET-LACE-IVORY-_3242-3-copy.jpg",
+    "url": "https://www.motelrocks.com/products/halfi-top-hibiscus-crochet-lace-ivory",
+    "store": "Motel Rocks"
    }
   ],
   "bottoms": [
    {
-    "name": "Linen Cotton Shorts",
-    "price": "$29.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482171/item/usgoods_32_482171_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E482171-000/00",
-    "store": "Uniqlo"
+    "name": "Ronney Linen Micro Shorts White",
+    "price": "$55",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-milla-us2_2312787b-8887-4536-b220-1e82ece76771.jpg",
+    "url": "https://us.princesspolly.com/products/ronney-linen-micro-shorts-white",
+    "store": "Princess Polly"
    },
    {
-    "name": "Linen Cotton Tapered Pants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483305/item/usgoods_57_483305_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E483305-000/00",
-    "store": "Uniqlo"
+    "name": "Cloud Crush Linen Drawstring Shorts White",
+    "price": "$49",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-dekota-us2_086bcc74-ca78-49ec-9c44-849ba932dcaa.jpg",
+    "url": "https://us.princesspolly.com/products/cloud-crush-linen-drawstring-shorts-white",
+    "store": "Princess Polly"
    },
    {
-    "name": "Linen Blend Easy Shorts",
-    "price": "$19.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485251/item/usgoods_69_485251_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E485251-000/00",
-    "store": "Uniqlo"
+    "name": "Lylie Linen Blend Tie Side Micro Shorts Cream Po",
+    "price": "$49",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-milla-us2_cb83151e-824d-4150-9476-fbbe63b59897.jpg",
+    "url": "https://us.princesspolly.com/products/lylie-linen-blend-tie-side-micro-shorts-cream-polka-dot",
+    "store": "Princess Polly"
    }
   ],
   "shoes": [
    {
-    "name": "Leather slides",
-    "note": "Simple tan leather slide sandals.",
-    "q": "leather slide sandals women"
+    "name": "Tampa Sandals Black",
+    "price": "$59",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_b988f9db-fbc8-41af-b7dc-3cebc6557874.jpg",
+    "url": "https://us.princesspolly.com/products/recycled-pu-tampa-sandals",
+    "store": "Princess Polly"
    },
    {
-    "name": "Raffia flats",
-    "note": "Woven flats for sand-to-street.",
-    "q": "raffia woven flats women"
+    "name": "Shoreside Sandals Natural",
+    "price": "$12",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_9abd28cc-99f9-4b59-9a70-5a82bbd7ac00.jpg",
+    "url": "https://us.princesspolly.com/products/shoreside-sandal-natural",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Voodoo Sandals Black",
+    "price": "$59",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_566189b0-5195-4dbf-82cd-1ea22ff1eecf.jpg",
+    "url": "https://us.princesspolly.com/products/voodoo-sandals-black",
+    "store": "Princess Polly"
    }
   ],
   "accessories": [
    {
-    "name": "Straw tote",
-    "note": "A roomy woven straw tote.",
-    "q": "straw woven tote bag"
+    "name": "Ramina Straw Shoulder Bag Tan",
+    "price": "$40",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_8c60172e-2378-412f-88d2-066e5c94729b.jpg",
+    "url": "https://us.princesspolly.com/products/ramina-straw-shoulder-bag-tan",
+    "store": "Princess Polly"
    },
    {
-    "name": "Straw bucket hat",
-    "note": "Sun protection, chicly.",
-    "q": "straw bucket hat"
+    "name": "Love Like This Straw Tote Bag Tan",
+    "price": "$28",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_06549823-9907-4017-862f-590b14ac0259.jpg",
+    "url": "https://us.princesspolly.com/products/love-like-this-straw-tote-bag-tan",
+    "store": "Princess Polly"
    }
   ],
   "country": "Indonesia",
-  "tops_q": "linen shirt",
-  "bottoms_q": "linen shorts"
+  "tops_q": "crochet top",
+  "bottoms_q": "linen shorts",
+  "shoes_q": "sandals",
+  "accessories_q": "straw bag"
  },
  "default": {
   "intro": "An elevated everyday edit — versatile pieces that travel anywhere, dressed up or down.",
   "tops": [
    {
-    "name": "Mini T-Shirt",
-    "price": "$14.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465760/item/usgoods_69_465760_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E465760-000/00",
-    "store": "Uniqlo"
+    "name": "Renara Halter Ribbed Button Top White",
+    "price": "$39",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-rino-us4_f274b35f-d96d-48c0-b307-5146648df23c.jpg",
+    "url": "https://us.princesspolly.com/products/renara-halter-ribbed-button-top-white",
+    "store": "Princess Polly"
    },
    {
-    "name": "Ribbed Cropped Bra Top",
-    "price": "$19.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482195/item/usgoods_60_482195_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E482195-000/00",
-    "store": "Uniqlo"
+    "name": "Nevaeh Ribbed Triangle Bikini Top Yellow",
+    "price": "$35",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2-modelinfo-lente-us2_e95d5232-9aff-4e5c-9cf9-ec27654efe56.jpg",
+    "url": "https://us.princesspolly.com/products/nevaeh-ribbed-triangle-bikini-top-yellow",
+    "store": "Princess Polly"
    },
    {
-    "name": "Shirring Boat Neck Sleeveless T-Shirt",
-    "price": "$14.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485673/item/usgoods_69_485673_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E485673-000/00",
-    "store": "Uniqlo"
-   },
-   {
-    "name": "Ultra Stretch Active T-Shirt",
-    "price": "$19.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483458/item/usgoods_68_483458_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E483458-000/00",
-    "store": "Uniqlo"
+    "name": "Renara Halter Ribbed Button Top Brown",
+    "price": "$39",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-rino-us4_b6c952cb-aa7f-46bb-973f-542a9a9932d8.jpg",
+    "url": "https://us.princesspolly.com/products/renara-halter-ribbed-button-top-brown",
+    "store": "Princess Polly"
    }
   ],
   "bottoms": [
    {
-    "name": "Linen Blend Easy Pants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_69_473791_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E473791-000/00",
-    "store": "Uniqlo"
+    "name": "Raiyne Low Rise Wide Leg Jeans",
+    "price": "$46",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/s14091_blue-washed_11-06-2622copy.jpg",
+    "url": "https://edikted.com/products/s21896_dark-blue",
+    "store": "Edikted"
    },
    {
-    "name": "Jersey Barrel Pants",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475344/item/usgoods_09_475344_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E475344-000/00",
-    "store": "Uniqlo"
+    "name": "Meredith Low Rise Wide Leg Jeans",
+    "price": "$39.20",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_07_21_2025279204_113b75f9-8731-45fb-8218-68f4de188b88.jpg",
+    "url": "https://edikted.com/products/s21133_blue",
+    "store": "Edikted"
    },
    {
-    "name": "Cotton Culottes",
-    "price": "$49.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483042/item/usgoods_31_483042_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E483042-000/00",
-    "store": "Uniqlo"
-   },
-   {
-    "name": "Ultra Stretch Active Wide Pants",
-    "price": "$39.90",
-    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/474481/item/usgoods_32_474481_3x4.jpg",
-    "url": "https://www.uniqlo.com/us/en/products/E474481-000/00",
-    "store": "Uniqlo"
+    "name": "Petite Meredith Low Rise Wide Leg Jeans",
+    "price": "$48",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_lookbook_01_15_202628847_ac39d85b-8a25-42e6-ba4e-0cf89f934eb3.jpg",
+    "url": "https://edikted.com/products/s21133p_blue",
+    "store": "Edikted"
    }
   ],
   "shoes": [
    {
-    "name": "White sneakers",
-    "note": "Clean minimal leather sneakers.",
-    "q": "minimal white leather sneakers women"
+    "name": "Zevra Sporty Ballet Flats Brown",
+    "price": "$60",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_f67c4323-6021-4508-9670-abb19c96e54b.jpg",
+    "url": "https://us.princesspolly.com/products/zevra-sporty-ballet-flats-brown",
+    "store": "Princess Polly"
    },
    {
-    "name": "Ballet flats",
-    "note": "Easy day-to-night flats.",
-    "q": "leather ballet flats women"
+    "name": "Therapy Harajuku Split Toe Ballet Flats Black",
+    "price": "$79.95",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_36568a9b-98fa-4fb4-a98b-e7bfc2378975.jpg",
+    "url": "https://us.princesspolly.com/products/therapy-tabi-ballet-flats-black",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Adienne Ballet Flats Black",
+    "price": "$70",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_1ed4ed35-4760-4e82-a74e-bce13948bf0d.jpg",
+    "url": "https://us.princesspolly.com/products/adienne-ballet-flats-black",
+    "store": "Princess Polly"
    }
   ],
   "accessories": [
    {
-    "name": "Everyday tote",
-    "note": "A go-with-everything tote.",
-    "q": "leather tote bag women"
+    "name": "Summer Sorbet Tote Bag Jelly Mint",
+    "price": "$49",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_e7acf63c-aeeb-4b55-9d71-c04595d1cf37.jpg",
+    "url": "https://us.princesspolly.com/products/summer-sorbet-tote-bag-jelly-mint",
+    "store": "Princess Polly"
    },
    {
-    "name": "Sunglasses",
-    "note": "A flattering classic frame.",
-    "q": "classic sunglasses women"
+    "name": "Toddy Tote Bag Cream",
+    "price": "$17.50",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/Tote-bag-Crochet-material-Fixed-shoulder-straps-Toddy-Tote-Bag-Cream-Tote-bag-Crochet-material-Fixed-shoulder-straps-Toddy-tote-bag-cream.jpg",
+    "url": "https://us.princesspolly.com/products/toddy-tote-bag-cream",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Isolda Mesh Tote Bag Khaki",
+    "price": "$19.50",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_4220f540-7da4-41f6-86f5-4b5ca716b808.jpg",
+    "url": "https://us.princesspolly.com/products/isolda-mesh-tote-bag-khaki",
+    "store": "Princess Polly"
    }
   ],
   "country": "default",
   "tops_q": "ribbed top",
-  "bottoms_q": "wide leg trousers"
+  "bottoms_q": "wide leg jeans",
+  "shoes_q": "ballet flats",
+  "accessories_q": "tote bag"
  }
 }

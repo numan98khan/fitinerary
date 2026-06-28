@@ -599,17 +599,17 @@
   const E = encodeURIComponent;
   const ASOS = { n:'ASOS', u:q=>`https://www.asos.com/search/?q=${E(q)}` };
   const LOCAL_BRANDS = {
-    'Japan':     [{n:'GU', u:q=>`https://www.gu-global.com/us/en/search?q=${E(q)}`}, {n:'Beams', u:q=>`https://www.beams.co.jp/search/?q=${E(q)}`}],
-    'USA':       [{n:'Aritzia', u:q=>`https://www.aritzia.com/us/en/search?q=${E(q)}`}, {n:'Madewell', u:q=>`https://www.madewell.com/search?q=${E(q)}`}],
-    'UK':        [{n:'COS', u:q=>`https://www.cos.com/en_usd/search.html?q=${E(q)}`}, {n:'& Other Stories', u:q=>`https://www.stories.com/en_usd/search.html?q=${E(q)}`}],
-    'France':    [{n:'Sézane', u:q=>`https://www.sezane.com/us/search?q=${E(q)}`}, {n:'Sandro', u:q=>`https://us.sandro-paris.com/en/search?q=${E(q)}`}],
-    'Indonesia': [{n:'Magali Pascal', u:q=>`https://magalipascal.com/search?q=${E(q)}`}, {n:'Reformation', u:q=>`https://www.thereformation.com/search?q=${E(q)}`}],
-    'default':   [{n:'COS', u:q=>`https://www.cos.com/en_usd/search.html?q=${E(q)}`}, {n:'Aritzia', u:q=>`https://www.aritzia.com/us/en/search?q=${E(q)}`}],
+    'Japan':     [{n:'GU', u:q=>`https://www.gu-global.com/us/en/search?q=${E(q)}`}, {n:'Edikted', u:q=>`https://edikted.com/search?q=${E(q)}`}],
+    'USA':       [{n:'Princess Polly', u:q=>`https://us.princesspolly.com/search?q=${E(q)}`}, {n:'Edikted', u:q=>`https://edikted.com/search?q=${E(q)}`}],
+    'UK':        [{n:'Jaded London', u:q=>`https://www.jadedldn.com/search?q=${E(q)}`}, {n:'Motel Rocks', u:q=>`https://www.motelrocks.com/search?q=${E(q)}`}],
+    'France':    [{n:'Princess Polly', u:q=>`https://us.princesspolly.com/search?q=${E(q)}`}, {n:'Edikted', u:q=>`https://edikted.com/search?q=${E(q)}`}],
+    'Indonesia': [{n:'Motel Rocks', u:q=>`https://www.motelrocks.com/search?q=${E(q)}`}, {n:'Princess Polly', u:q=>`https://us.princesspolly.com/search?q=${E(q)}`}],
+    'default':   [{n:'Princess Polly', u:q=>`https://us.princesspolly.com/search?q=${E(q)}`}, {n:'Edikted', u:q=>`https://edikted.com/search?q=${E(q)}`}],
   };
   function anchorBrand(isLux) {
     return isLux
       ? { n:'Net-a-Porter', u:q=>`https://www.net-a-porter.com/en-us/shop/search?q=${E(q)}` }
-      : { n:'Zara',         u:q=>`https://www.zara.com/us/en/search?searchTerm=${E(q)}` };
+      : { n:'H&M',          u:q=>`https://www2.hm.com/en_us/search-results.html?q=${E(q)}` };
   }
 
   // ── The City Edit (country-coded, organised by item type) ──
@@ -645,21 +645,11 @@
         ${brandRow(q)}
       </div>`;
 
-    const pieceSection = (title, items) => `
-      <div class="edit-sub">
-        <div class="edit-sub-head"><h3>${title}</h3></div>
-        ${(items||[]).map(it => `
-          <div class="piece">
-            <div class="piece-text"><span class="piece-name">${it.name}</span><span class="piece-note">${it.note}</span></div>
-            ${brandRow(it.q)}
-          </div>`).join('')}
-      </div>`;
-
     document.getElementById('shoppingContent').innerHTML =
-      cardSection('👚 Tops',        p.tops,    p.tops_q) +
-      cardSection('👖 Bottoms',     p.bottoms, p.bottoms_q) +
-      pieceSection('👟 Shoes',       p.shoes) +
-      pieceSection('👜 Accessories', p.accessories);
+      cardSection('👚 Tops',        p.tops,        p.tops_q) +
+      cardSection('👖 Bottoms',     p.bottoms,     p.bottoms_q) +
+      cardSection('👟 Shoes',       p.shoes,       p.shoes_q || 'shoes women') +
+      cardSection('👜 Accessories', p.accessories, p.accessories_q || 'bag women');
   }
   </script>
 </body>
