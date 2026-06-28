@@ -429,7 +429,7 @@
     <!-- ── STEP 3: VIBE ── -->
     <div class="step-page" id="step-3">
       <h1 class="step-h">What's your vibe? ✨</h1>
-      <p class="step-sub">This shapes your whole packing list.</p>
+      <p class="step-sub">Pick one or more — we'll make a separate style edit for each.</p>
 
       <div class="vibe-grid">
         <div class="vibe-card" data-vibe="comfort">
@@ -537,7 +537,7 @@
 
   <script>
     let currentStep = 1;
-    const userData = { destination: null, departure: null, return: null, vibe: null, wardrobe: [], wardrobeNote: '', budget: null };
+    const userData = { destination: null, departure: null, return: null, vibes: [], wardrobe: [], wardrobeNote: '', budget: null };
 
     // ── Progress bar ──
     function updateProgress() {
@@ -576,7 +576,7 @@
         document.getElementById('err-2').textContent = 'Return date must be after departure!';
         document.getElementById('err-2').classList.add('show'); return;
       }
-      if (from === 3 && !userData.vibe) {
+      if (from === 3 && !userData.vibes.length) {
         document.getElementById('err-3').classList.add('show'); return;
       }
       if (from === 4) saveWardrobe();
@@ -726,12 +726,12 @@
     document.getElementById('departureDate').min = today;
     document.getElementById('returnDate').min    = today;
 
-    // ── Vibe cards ──
+    // ── Vibe cards (multi-select) ──
     document.querySelectorAll('.vibe-card').forEach(card => {
       card.addEventListener('click', () => {
-        document.querySelectorAll('.vibe-card').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        userData.vibe = card.dataset.vibe;
+        card.classList.toggle('selected');
+        userData.vibes = [...document.querySelectorAll('.vibe-card.selected')].map(c => c.dataset.vibe);
+        if (userData.vibes.length) document.getElementById('err-3').classList.remove('show');
       });
     });
 

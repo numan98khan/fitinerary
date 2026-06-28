@@ -171,6 +171,12 @@
     .product-store { font-size: 0.6rem; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: .04em; }
     .no-products { font-size: 0.82rem; color: #999; margin: 0.2rem 0 0.6rem; }
 
+    /* Per-vibe style edit sections */
+    .vibe-edit { margin-bottom: 1.5rem; padding-bottom: 1.3rem; border-bottom: 2px dashed rgba(0,0,0,0.1); }
+    .vibe-edit:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .vibe-edit-title { font-family: "Pacifico", cursive; font-size: 1.35rem; display: block; }
+    .vibe-edit-blurb { font-size: 0.9rem; color: #3d2e5e; margin: 0.3rem 0 0.9rem; line-height: 1.5; }
+
     .confetti { text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; }
 
     @media (max-width: 600px) {
@@ -278,7 +284,11 @@
     const packItems = buildPackingList(trip, weather);
     renderPacking(packItems, trip);
     renderItinerary(trip);
-    renderShopping(packItems, trip);
+    renderStyleEdits(trip);
+  }
+
+  function tripVibes(trip) {
+    return (trip.vibes && trip.vibes.length) ? trip.vibes : (trip.vibe ? [trip.vibe] : []);
   }
 
   // ── Banner ──
@@ -289,11 +299,9 @@
     const d1 = fmtDate(trip.departure), d2 = fmtDate(trip.return);
     const nights = Math.round((new Date(trip.return) - new Date(trip.departure)) / 86400000);
     document.getElementById('bannerDates').textContent = `${d1} → ${d2}  (${nights} nights)`;
-    const tagData = [
-      { label: vibeLabel(trip.vibe), color: '' },
-      { label: trip.budget === 'luxury' ? '✨ Luxury' : '💸 Budget', color: '' }
-    ];
-    document.getElementById('bannerTags').innerHTML = tagData.map(t => `<span class="trip-tag">${t.label}</span>`).join('');
+    const tags = tripVibes(trip).map(v => vibeLabel(v));
+    tags.push(trip.budget === 'luxury' ? '✨ Luxury' : '💸 Budget');
+    document.getElementById('bannerTags').innerHTML = tags.map(t => `<span class="trip-tag">${t}</span>`).join('');
   }
 
   function fmtDate(s) {
@@ -406,7 +414,6 @@
     const w = trip._weather || {};
     const avgHi = w.avgHi != null ? w.avgHi : 22;
     const willRain = !!w.willRain;
-    const vibe = trip.vibe;
     const have = trip.wardrobe || [];
     const nights = Math.round((new Date(trip.return) - new Date(trip.departure)) / 86400000);
 
@@ -443,35 +450,6 @@
       clothing.push({ icon:'👟', name:'Comfortable shoes/sneakers', key:'sneakers', cat:null, searchTerm:'sneakers women white' });
     }
 
-    // Vibe extras
-    if (vibe === 'fancy') {
-      clothing.push({ icon:'👗', name:'Dressy / evening outfit', key:'formaloutfit', cat:'dress', searchTerm:'evening dress women' });
-      clothing.push({ icon:'👠', name:'Heels or smart shoes', key:'none', cat:null, searchTerm:'heels women evening' });
-      accessories.push({ icon:'💍', name:'Statement jewellery', key:'none', cat:null, searchTerm:'statement jewellery women' });
-      accessories.push({ icon:'👜', name:'Evening bag / clutch', key:'none', cat:null, searchTerm:'clutch bag women evening' });
-    }
-    if (vibe === 'beach') {
-      clothing.push({ icon:'👙', name:'Swimsuit or bikini (×2)', key:'swimwear', cat:null, searchTerm:'bikini women swimwear' });
-      clothing.push({ icon:'🩱', name:'Beach cover-up / kaftan', key:'none', cat:'dress', searchTerm:'beach cover up women' });
-      clothing.push({ icon:'🩴', name:'Flip flops', key:'sneakers', cat:null, searchTerm:'flip flops women' });
-      accessories.push({ icon:'🏖️', name:'Beach bag (big enough for towel)', key:'none', cat:null, searchTerm:'beach bag tote women' });
-    }
-    if (vibe === 'streetwear') {
-      clothing.push({ icon:'🧢', name:'Baseball cap or bucket hat', key:'sunhat', cat:null, searchTerm:'bucket hat women streetwear' });
-      clothing.push({ icon:'👖', name:'Cargo or wide-leg trousers', key:'jeans', cat:'trousers', searchTerm:'cargo pants women streetwear' });
-      accessories.push({ icon:'🎒', name:'Crossbody or mini backpack', key:'none', cat:null, searchTerm:'crossbody bag women streetwear' });
-    }
-    if (vibe === 'adventure') {
-      clothing.push({ icon:'🏃', name:'Moisture-wicking activewear', key:'workout', cat:'activewear', searchTerm:'activewear women outdoor' });
-      clothing.push({ icon:'🥾', name:'Hiking / activity shoes', key:'boots', cat:null, searchTerm:'hiking shoes women' });
-      accessories.push({ icon:'🎒', name:'Daypack / hydration bag', key:'none', cat:null, searchTerm:'daypack women hiking' });
-      essentials.push({ icon:'🩹', name:'Mini first-aid kit', key:'none' });
-    }
-    if (vibe === 'comfort') {
-      clothing.push({ icon:'🩰', name:'Comfy flats or loafers', key:'sneakers', cat:null, searchTerm:'flats loafers women comfortable' });
-      clothing.push({ icon:'🧤', name:'Cosy knit / loungewear', key:'none', cat:'loungewear', searchTerm:'loungewear set women' });
-    }
-
     // Rain layer
     if (willRain) {
       clothing.push({ icon:'🌂', name:'Compact umbrella or rain jacket', key:'rainjacket', cat:'light-jacket', searchTerm:'compact umbrella travel' });
@@ -479,7 +457,7 @@
 
     // Accessories base
     accessories.push({ icon:'🕶️', name:'Sunglasses', key:'sunglasses', cat:null, searchTerm:'sunglasses women' });
-    if (isHot || vibe === 'beach') {
+    if (isHot) {
       accessories.push({ icon:'👒', name:'Sun hat', key:'sunhat', cat:null, searchTerm:'sun hat women wide brim' });
     }
 
@@ -602,19 +580,37 @@
     ]
   };
 
-  function renderShopping(packItems, trip) {
-    const budget = trip.budget;
-    const stores = STORES[budget] || STORES.budget;
-    const isLux  = budget === 'luxury';
+  // Stylist blurb per vibe (city-aware)
+  const VIBE_BLURB = {
+    fancy:      c => `Elevated pieces for ${c} nights out — dinner reservations, rooftop bars, that one fancy photo.`,
+    beach:      c => `Breezy, sun-ready picks for ${c} — sand, sea and golden-hour strolls.`,
+    streetwear: c => `Cool, easy layers to explore ${c} like a local.`,
+    comfort:    c => `Soft, throw-on pieces for travel days and slow mornings in ${c}.`,
+    adventure:  c => `Go-anywhere, do-anything pieces for active days around ${c}.`,
+  };
+  function weatherNote(trip) {
+    const w = trip._weather || {};
+    if (w.willRain) return ' Pack a light layer — showers are likely. ☔';
+    if (w.avgHi != null && w.avgHi <= 12) return " It'll be chilly, so layer up warm. 🧥";
+    if (w.avgHi != null && w.avgHi >= 25) return ' It\'s warm, so keep fabrics light and airy. ☀️';
+    return '';
+  }
 
-    const needToBuy = [...packItems.clothing, ...packItems.accessories].filter(i => !i.have && i.searchTerm);
+  function renderStyleEdits(trip) {
+    const vibes = tripVibes(trip);
+    const city  = trip.destination.name;
+    const isLux = trip.budget === 'luxury';
+    const stores = STORES[trip.budget] || STORES.budget;
 
-    document.getElementById('shopTitle').textContent = isLux ? '✨ Time to shop (luxury picks!)' : '💸 Time to shop (budget finds!)';
-    document.getElementById('shopIntro').textContent = `Real pieces you can buy for the things you still need for ${trip.destination.name}. Tap a card to shop that exact item, or browse the category at your favourite stores.`;
+    document.getElementById('shopTitle').textContent = '🛍️ Your style edits';
+    document.getElementById('shopIntro').textContent =
+      `Hand-picked looks for ${city} — a separate edit for each vibe you chose. Tap any piece to shop it.`;
 
-    const html = needToBuy.slice(0, 8).map(item => {
-      const products = (item.cat && CATALOG[item.cat]) ? CATALOG[item.cat] : [];
-      const cards = products.map(p => `
+    const sections = vibes.map(v => {
+      const data = CATALOG[v];
+      if (!data || !data.items || !data.items.length) return '';
+      const blurb = (VIBE_BLURB[v] ? VIBE_BLURB[v](city) : '') + weatherNote(trip);
+      const cards = data.items.map(p => `
         <a class="product-card" href="${p.url}" target="_blank" rel="noopener">
           <div class="product-img" style="background-image:url('${p.img}')"></div>
           <div class="product-info">
@@ -622,24 +618,21 @@
             <span class="product-meta"><span class="product-price">${p.price}</span><span class="product-store">${p.store}</span></span>
           </div>
         </a>`).join('');
-
-      const productRow = cards
-        ? `<div class="product-scroll">${cards}</div>`
-        : `<p class="no-products">No saved picks for this one yet — browse it at the stores below 👇</p>`;
-
+      const term = `${data.label} outfit women`;
       return `
-        <div class="shop-item">
-          <div class="shop-item-name">${item.icon} ${item.name}</div>
-          ${productRow}
+        <div class="vibe-edit">
+          <span class="vibe-edit-title">${data.emoji} ${data.label}</span>
+          <p class="vibe-edit-blurb">${blurb}</p>
+          <div class="product-scroll">${cards}</div>
           <div class="shop-links">
-            <span class="shop-links-label">Browse at:</span>
-            ${stores.map(s => `<a href="${s.url(item.searchTerm)}" target="_blank" rel="noopener" class="shop-link ${isLux?'lux':''}">${s.emoji} ${s.name}</a>`).join('')}
+            <span class="shop-links-label">More ${data.label.toLowerCase()} at:</span>
+            ${stores.map(s => `<a href="${s.url(term)}" target="_blank" rel="noopener" class="shop-link ${isLux?'lux':''}">${s.emoji} ${s.name}</a>`).join('')}
           </div>
         </div>`;
     }).join('');
 
-    document.getElementById('shoppingContent').innerHTML = html ||
-      '<p style="color:#888;">Looks like you\'ve already got everything! Nothing to buy. 🎉</p>';
+    document.getElementById('shoppingContent').innerHTML = sections ||
+      '<p style="color:#888;">Pick a vibe to see your style edit!</p>';
   }
   </script>
 </body>
