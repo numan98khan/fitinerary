@@ -38,6 +38,13 @@
     "img": "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/488450/item/goods_65_488450_3x4.jpg",
     "url": "https://www.uniqlo.com/us/en/products/E488450-000/00",
     "store": "Uniqlo"
+   },
+   {
+    "name": "Linen Blend Easy Pants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_30_473791_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E473791-000/00",
+    "store": "Uniqlo"
    }
   ],
   "shoes": [
@@ -63,7 +70,10 @@
     "note": "Slicked-back hair + silver clips.",
     "q": "silver metal hair clips set"
    }
-  ]
+  ],
+  "country": "Japan",
+  "tops_q": "ribbed mock neck top",
+  "bottoms_q": "baggy wide leg jeans"
  },
  "New York": {
   "intro": "NYC off-duty — clean-girl minimalism. A perfect white tank, easy greys, and a great bag do all the talking.",
@@ -88,6 +98,13 @@
     "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484226/item/usgoods_00_484226_3x4.jpg",
     "url": "https://www.uniqlo.com/us/en/products/E484226-000/00",
     "store": "Uniqlo"
+   },
+   {
+    "name": "Soft Ribbed T-Shirt | Striped",
+    "price": "$24.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483536/item/usgoods_01_483536_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E483536-000/00",
+    "store": "Uniqlo"
    }
   ],
   "bottoms": [
@@ -110,6 +127,13 @@
     "price": "$39.90",
     "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487617/item/usgoods_60_487617_3x4.jpg",
     "url": "https://www.uniqlo.com/us/en/products/E487617-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Linen Blend Easy Pants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_30_473791_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E473791-000/00",
     "store": "Uniqlo"
    }
   ],
@@ -136,7 +160,10 @@
     "note": "A broken-in camo baseball cap.",
     "q": "camo baseball cap"
    }
-  ]
+  ],
+  "country": "USA",
+  "tops_q": "white ribbed tank top",
+  "bottoms_q": "grey sweatpants wide"
  },
  "London": {
   "intro": "London cool — layered and a bit moody. Knitwear, straight denim, and shoes with an edge.",
@@ -161,6 +188,13 @@
     "img": "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/481731/item/goods_78_481731_3x4.jpg",
     "url": "https://www.uniqlo.com/us/en/products/E481731-000/00",
     "store": "Uniqlo"
+   },
+   {
+    "name": "Pointelle Cardigan",
+    "price": "$29.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484939/item/usgoods_17_484939_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E484939-000/00",
+    "store": "Uniqlo"
    }
   ],
   "bottoms": [
@@ -183,6 +217,13 @@
     "price": "$49.90",
     "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487978/item/usgoods_66_487978_3x4.jpg",
     "url": "https://www.uniqlo.com/us/en/products/E487978-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Baggy Jeans",
+    "price": "$19.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483999/item/usgoods_67_483999_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E483999-000/00",
     "store": "Uniqlo"
    }
   ],
@@ -209,7 +250,10 @@
     "note": "Slim rectangular shades.",
     "q": "slim rectangle sunglasses"
    }
-  ]
+  ],
+  "country": "UK",
+  "tops_q": "knit cardigan",
+  "bottoms_q": "straight leg jeans"
  },
  "Paris": {
   "intro": "Parisian chic — effortless and tailored. Breton stripes, neat trousers, ladylike flats. Nothing tries too hard.",
@@ -250,6 +294,13 @@
     "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475344/item/usgoods_09_475344_3x4.jpg",
     "url": "https://www.uniqlo.com/us/en/products/E475344-000/00",
     "store": "Uniqlo"
+   },
+   {
+    "name": "Smart Wide Pants",
+    "price": "$49.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/479292/item/usgoods_30_479292_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E479292-000/00",
+    "store": "Uniqlo"
    }
   ],
   "shoes": [
@@ -275,7 +326,10 @@
     "note": "Tied at the neck or on the bag.",
     "q": "silk neck scarf"
    }
-  ]
+  ],
+  "country": "France",
+  "tops_q": "breton stripe top",
+  "bottoms_q": "tailored trousers"
  },
  "Bali": {
   "intro": "Bali resort — breezy and sun-soaked. Linen everything, easy shapes, and barely-there sandals.",
@@ -299,6 +353,13 @@
     "price": "$39.90",
     "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483872/item/usgoods_31_483872_3x4.jpg",
     "url": "https://www.uniqlo.com/us/en/products/E483872-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Linen Blend Blouse | Sleeveless",
+    "price": "$29.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483890/item/usgoods_58_483890_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E483890-000/00",
     "store": "Uniqlo"
    }
   ],
@@ -348,7 +409,10 @@
     "note": "Sun protection, chicly.",
     "q": "straw bucket hat"
    }
-  ]
+  ],
+  "country": "Indonesia",
+  "tops_q": "linen shirt",
+  "bottoms_q": "linen shorts"
  },
  "default": {
   "intro": "An elevated everyday edit — versatile pieces that travel anywhere, dressed up or down.",
@@ -373,6 +437,13 @@
     "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485673/item/usgoods_69_485673_3x4.jpg",
     "url": "https://www.uniqlo.com/us/en/products/E485673-000/00",
     "store": "Uniqlo"
+   },
+   {
+    "name": "Ultra Stretch Active T-Shirt",
+    "price": "$19.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483458/item/usgoods_68_483458_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E483458-000/00",
+    "store": "Uniqlo"
    }
   ],
   "bottoms": [
@@ -395,6 +466,13 @@
     "price": "$49.90",
     "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483042/item/usgoods_31_483042_3x4.jpg",
     "url": "https://www.uniqlo.com/us/en/products/E483042-000/00",
+    "store": "Uniqlo"
+   },
+   {
+    "name": "Ultra Stretch Active Wide Pants",
+    "price": "$39.90",
+    "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/474481/item/usgoods_32_474481_3x4.jpg",
+    "url": "https://www.uniqlo.com/us/en/products/E474481-000/00",
     "store": "Uniqlo"
    }
   ],
@@ -421,6 +499,9 @@
     "note": "A flattering classic frame.",
     "q": "classic sunglasses women"
    }
-  ]
+  ],
+  "country": "default",
+  "tops_q": "ribbed top",
+  "bottoms_q": "wide leg trousers"
  }
 }

@@ -176,22 +176,12 @@
     .edit-sub:last-child { margin-bottom: 0; }
     .edit-sub-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.55rem; }
     .edit-sub-head h3 { font-family: "Pacifico", cursive; font-size: 1.2rem; }
-    .edit-more { font-size: 0.76rem; font-weight: 800; color: var(--purple); text-decoration: none; white-space: nowrap; }
-    .edit-more:hover { text-decoration: underline; }
-
-    /* Look card (shoes / accessories — styled card + shop link, no image) */
-    .look-card {
-      flex: 0 0 156px; width: 156px;
-      background: #fff; border: var(--border); border-radius: 14px; box-shadow: var(--shadow);
-      padding: 0.9rem 0.8rem; text-decoration: none; color: var(--ink);
-      display: flex; flex-direction: column; gap: 0.25rem;
-      transition: transform 0.14s ease, box-shadow 0.14s ease;
-    }
-    .look-card:hover { transform: translate(-2px,-2px); box-shadow: var(--shadow-lg); }
-    .look-emoji { font-size: 1.6rem; }
-    .look-name { font-weight: 900; font-size: 0.86rem; }
-    .look-note { font-size: 0.73rem; color: #555; line-height: 1.35; flex: 1; }
-    .look-shop { font-size: 0.75rem; font-weight: 800; color: var(--coral, #e8703a); margin-top: 0.2rem; }
+    /* Shoes / accessories — a named piece + its own row of brand links */
+    .piece { padding: 0.6rem 0 0.8rem; border-bottom: 1px dashed rgba(0,0,0,0.08); }
+    .piece:last-child { border-bottom: none; }
+    .piece-text { margin-bottom: 0.45rem; }
+    .piece-name { font-weight: 900; font-size: 0.92rem; margin-right: 0.4rem; }
+    .piece-note { font-size: 0.8rem; color: #666; }
 
     .confetti { text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; }
 
@@ -604,26 +594,40 @@
     return '';
   }
 
-  // Search keyword that captures each city's aesthetic (for "find more" links)
-  const CITY_KW = {
-    Tokyo:'tokyo street style', 'New York':'new york clean girl', London:'london street style',
-    Paris:'parisian chic', Bali:'bali resort', default:'minimalist'
+  // Direct brand search links — ASOS (global) + country-local labels a stylist
+  // would actually send you to. Each links straight to the specific piece.
+  const E = encodeURIComponent;
+  const ASOS = { n:'ASOS', u:q=>`https://www.asos.com/search/?q=${E(q)}` };
+  const LOCAL_BRANDS = {
+    'Japan':     [{n:'GU', u:q=>`https://www.gu-global.com/us/en/search?q=${E(q)}`}, {n:'Beams', u:q=>`https://www.beams.co.jp/search/?q=${E(q)}`}],
+    'USA':       [{n:'Aritzia', u:q=>`https://www.aritzia.com/us/en/search?q=${E(q)}`}, {n:'Madewell', u:q=>`https://www.madewell.com/search?q=${E(q)}`}],
+    'UK':        [{n:'COS', u:q=>`https://www.cos.com/en_usd/search.html?q=${E(q)}`}, {n:'& Other Stories', u:q=>`https://www.stories.com/en_usd/search.html?q=${E(q)}`}],
+    'France':    [{n:'Sézane', u:q=>`https://www.sezane.com/us/search?q=${E(q)}`}, {n:'Sandro', u:q=>`https://us.sandro-paris.com/en/search?q=${E(q)}`}],
+    'Indonesia': [{n:'Magali Pascal', u:q=>`https://magalipascal.com/search?q=${E(q)}`}, {n:'Reformation', u:q=>`https://www.thereformation.com/search?q=${E(q)}`}],
+    'default':   [{n:'COS', u:q=>`https://www.cos.com/en_usd/search.html?q=${E(q)}`}, {n:'Aritzia', u:q=>`https://www.aritzia.com/us/en/search?q=${E(q)}`}],
   };
-  function gshop(q, isLux) {
-    return 'https://www.google.com/search?tbm=shop&q=' + encodeURIComponent((isLux ? 'designer ' : '') + q);
+  function anchorBrand(isLux) {
+    return isLux
+      ? { n:'Net-a-Porter', u:q=>`https://www.net-a-porter.com/en-us/shop/search?q=${E(q)}` }
+      : { n:'Zara',         u:q=>`https://www.zara.com/us/en/search?searchTerm=${E(q)}` };
   }
 
   // ── The City Edit (country-coded, organised by item type) ──
   function renderCityEdit(trip) {
     const city = trip.destination.name;
-    const p = CITYSTYLE[city] || CITYSTYLE['default'] || { intro:'', tops:[], bottoms:[], shoes:[], accessories:[] };
-    const kw = CITY_KW[city] || CITY_KW['default'];
+    const p = CITYSTYLE[city] || CITYSTYLE['default'] || { intro:'', tops:[], bottoms:[], shoes:[], accessories:[], country:'default', tops_q:'top', bottoms_q:'trousers' };
     const isLux = trip.budget === 'luxury';
-    const vibes = tripVibes(trip).map(v => vibeLabel(v).replace(/^\S+\s/, '')); // labels minus emoji
+    const locals = LOCAL_BRANDS[p.country] || LOCAL_BRANDS['default'];
+    const brands = [ASOS, ...locals, anchorBrand(isLux)];
+    const vibes = tripVibes(trip).map(v => vibeLabel(v).replace(/^\S+\s/, ''));
 
     document.getElementById('shopTitle').textContent = `✨ The ${city} Edit`;
     const vibeLine = vibes.length ? ` Leaning into your ${vibes.join(' + ')} mood.` : '';
     document.getElementById('shopIntro').textContent = (p.intro || '') + vibeLine + weatherNote(trip);
+
+    const brandRow = q => `<div class="shop-links"><span class="shop-links-label">Shop this:</span>${
+      brands.map(b => `<a class="shop-link ${isLux?'lux':''}" href="${b.u(q)}" target="_blank" rel="noopener">${b.n}</a>`).join('')
+    }</div>`;
 
     const productCards = items => (items || []).map(it => `
       <a class="product-card" href="${it.url}" target="_blank" rel="noopener">
@@ -634,28 +638,28 @@
         </div>
       </a>`).join('');
 
-    const lookCards = (items, emoji) => (items || []).map(it => `
-      <a class="look-card" href="${gshop(it.q, isLux)}" target="_blank" rel="noopener">
-        <span class="look-emoji">${emoji}</span>
-        <span class="look-name">${it.name}</span>
-        <span class="look-note">${it.note}</span>
-        <span class="look-shop">Shop this →</span>
-      </a>`).join('');
-
-    const section = (title, inner, moreQ) => `
+    const cardSection = (title, items, q) => `
       <div class="edit-sub">
-        <div class="edit-sub-head">
-          <h3>${title}</h3>
-          <a class="edit-more" href="${gshop(moreQ, isLux)}" target="_blank" rel="noopener">Find more →</a>
-        </div>
-        <div class="product-scroll">${inner}</div>
+        <div class="edit-sub-head"><h3>${title}</h3></div>
+        ${items && items.length ? `<div class="product-scroll">${productCards(items)}</div>` : ''}
+        ${brandRow(q)}
+      </div>`;
+
+    const pieceSection = (title, items) => `
+      <div class="edit-sub">
+        <div class="edit-sub-head"><h3>${title}</h3></div>
+        ${(items||[]).map(it => `
+          <div class="piece">
+            <div class="piece-text"><span class="piece-name">${it.name}</span><span class="piece-note">${it.note}</span></div>
+            ${brandRow(it.q)}
+          </div>`).join('')}
       </div>`;
 
     document.getElementById('shoppingContent').innerHTML =
-      section('👚 Tops',        productCards(p.tops),    `${kw} top women`) +
-      section('👖 Bottoms',     productCards(p.bottoms), `${kw} pants women`) +
-      section('👟 Shoes',       lookCards(p.shoes, '👟'),       `${kw} shoes women`) +
-      section('👜 Accessories', lookCards(p.accessories, '👜'), `${kw} bag women`);
+      cardSection('👚 Tops',        p.tops,    p.tops_q) +
+      cardSection('👖 Bottoms',     p.bottoms, p.bottoms_q) +
+      pieceSection('👟 Shoes',       p.shoes) +
+      pieceSection('👜 Accessories', p.accessories);
   }
   </script>
 </body>
