@@ -206,7 +206,7 @@
     /* Complete looks */
     .looks-block { background: #fff8ef; border: 2px dashed var(--line, #efe3d2); border-radius: 16px; padding: 1rem 1rem 0.4rem; }
     .outfit { margin-bottom: 1rem; }
-    .outfit-label { font-weight: 900; font-size: 0.92rem; margin-bottom: 0.45rem; }
+    .outfit-label { font-weight: 900; font-size: 0.92rem; margin-bottom: 0.45rem; color: var(--ink); letter-spacing: 0; text-transform: none; }
     .outfit-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55rem; }
     .look-thumb { display: block; text-decoration: none; }
     .lt-img { width: 100%; aspect-ratio: 3/4; background-size: cover; background-position: center top; background-color: #f3ece0; border: var(--border); border-radius: 10px; transition: transform 0.14s ease, box-shadow 0.14s ease; }
@@ -218,6 +218,10 @@
     .edit-sub:last-child { margin-bottom: 0; }
     .edit-sub-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.55rem; }
     .edit-sub-head h3 { font-family: "Pacifico", cursive; font-size: 1.2rem; }
+    .size-hint { font-size: 0.7rem; font-weight: 800; color: var(--teal, #00C4CC); background: var(--ink); padding: 0.15rem 0.55rem; border-radius: 999px; white-space: nowrap; }
+    .profile-nudge { display: block; background: #fff8ef; border: 2px dashed var(--pink, #ff6bb5); border-radius: 14px; padding: 0.8rem 1rem; margin-bottom: 1.2rem; font-weight: 800; color: var(--ink); text-decoration: none; box-shadow: var(--shadow); transition: transform .12s; }
+    .profile-nudge:hover { background: #fff; transform: translate(-1px,-1px); }
+    .pref-note { background: #fff8ef; border-left: 4px solid var(--teal, #00C4CC); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.7rem; font-size: 0.82rem; font-weight: 700; color: #3d2e5e; line-height: 1.45; }
     /* Shoes / accessories — a named piece + its own row of brand links */
     .piece { padding: 0.6rem 0 0.8rem; border-bottom: 1px dashed rgba(0,0,0,0.08); }
     .piece:last-child { border-bottom: none; }
@@ -255,6 +259,7 @@
         </div>
         <span class="brand-name">Fitinerary</span>
       </a>
+      <a href="profile.html" class="saved-link">✦ My Style</a>
       <a href="favorites.html" class="saved-link">♥ Saved</a>
       <div class="brand-badge">✈︎ beta</div>
     </header>
@@ -729,19 +734,75 @@
       : { n:'H&M',          u:q=>`https://www2.hm.com/en_us/search-results.html?q=${E(q)}` };
   }
 
+  // ── Personal style profile (tailors the edit to her) ──
+  function getProfile() { try { return JSON.parse(localStorage.getItem('fitinerary_profile') || '{}'); } catch { return {}; } }
+  const PROFILE = getProfile();
+  const COLOR_RX = {
+    black:/black|noir/i, white:/white|ivory|cream/i, beige:/beige|tan|nude|sand|stone|taupe|khaki/i,
+    brown:/brown|chocolate|mocha|coffee|camel/i, grey:/gr[ae]y|charcoal|melange|slate/i, navy:/navy/i,
+    blue:/blue|denim|cobalt|sky|azure/i, red:/red|cherry|burgundy|wine|scarlet|maroon/i,
+    pink:/pink|rose|blush|fuchsia|magenta/i, green:/green|olive|sage|emerald|forest/i,
+    yellow:/yellow|mustard|lemon|gold/i, orange:/orange|rust|terracotta|apricot/i, purple:/purple|lilac|lavender|plum|violet/i
+  };
+  const HEEL_RX = /heel|stiletto|\bpump|sling.?back|platform|wedge/i;
+  const REVEAL_RX = /\bcrop|\bmini\b|micro|bikini|bra top|bralette|sheer|cut.?out|halter|tube top|thong|backless|plunge/i;
+
+  function personalize(items, category) {
+    if (!items || !items.length) return items;
+    let out = items.slice();
+    const drop = rx => { const f = out.filter(it => !rx.test(it.name)); if (f.length >= 1) out = f; };
+    (PROFILE.avoidColors || []).forEach(c => { if (COLOR_RX[c]) drop(COLOR_RX[c]); });
+    if (PROFILE.noHeels && category === 'shoes') drop(HEEL_RX);
+    if (PROFILE.modest) drop(REVEAL_RX);
+    const love = (PROFILE.loveColors || []).filter(c => COLOR_RX[c]);
+    if (love.length) {
+      out = out.map((it, i) => ({ it, i, liked: love.some(c => COLOR_RX[c].test(it.name)) ? 0 : 1 }))
+               .sort((a, b) => a.liked - b.liked || a.i - b.i).map(x => x.it);
+    }
+    return out;
+  }
+  // When a preference can't be honoured because the whole category matches
+  // (e.g. an all-heels city), say so honestly instead of pretending it worked.
+  function prefNote(items, category) {
+    if (!items || !items.length) return '';
+    if (PROFILE.noHeels && category === 'shoes' && items.every(it => HEEL_RX.test(it.name)))
+      return `<p class="pref-note">👟 You said no heels — every pick here happens to be a heel, so tap a brand below to find the flat version in your size.</p>`;
+    if (PROFILE.modest && items.every(it => REVEAL_RX.test(it.name)))
+      return `<p class="pref-note">🧥 You like more coverage — these run cropped or sheer, so the brands below carry fuller-coverage cuts.</p>`;
+    return '';
+  }
+  function hasProfile() {
+    return !!(PROFILE.sizeTop || PROFILE.sizeBottom || PROFILE.sizeShoe || PROFILE.noHeels || PROFILE.modest ||
+      (PROFILE.loveColors || []).length || (PROFILE.avoidColors || []).length || PROFILE.notes || PROFILE.bodyShape);
+  }
+  function styledForLine() {
+    const b = [];
+    if (PROFILE.sizeTop) b.push('top ' + PROFILE.sizeTop);
+    if (PROFILE.sizeShoe) b.push('shoe ' + PROFILE.sizeShoe);
+    if (PROFILE.noHeels) b.push('no heels');
+    if (PROFILE.modest) b.push('more coverage');
+    if ((PROFILE.loveColors || []).length) b.push('loves ' + PROFILE.loveColors.slice(0, 3).join('/'));
+    return b.length ? ` ✨ Tailored to you — ${b.join(' · ')}.` : '';
+  }
+
   // ── The City Edit (country-coded, organised by item type) ──
   function renderCityEdit(trip) {
     const city = trip.destination.name;
-    const p = CITYSTYLE[city] || CITYSTYLE['default'] || { intro:'', tops:[], bottoms:[], shoes:[], accessories:[], country:'default', tops_q:'top', bottoms_q:'trousers' };
+    const base = CITYSTYLE[city] || CITYSTYLE['default'] || { intro:'', tops:[], bottoms:[], shoes:[], accessories:[], country:'default', tops_q:'top', bottoms_q:'trousers' };
+    const p = { ...base,
+      tops: personalize(base.tops, 'tops'),
+      bottoms: personalize(base.bottoms, 'bottoms'),
+      shoes: personalize(base.shoes, 'shoes'),
+      accessories: personalize(base.accessories, 'accessories') };
     const isLux = trip.budget === 'luxury';
-    const locals = LOCAL_BRANDS[p.country] || LOCAL_BRANDS['default'];
+    const locals = LOCAL_BRANDS[base.country] || LOCAL_BRANDS['default'];
     const brands = [ASOS, ...locals, anchorBrand(isLux)];
     const vibes = tripVibes(trip).map(v => vibeLabel(v).replace(/^\S+\s/, ''));
     currentEdit = { city, p, trip };
 
     document.getElementById('shopTitle').textContent = `✨ The ${city} Edit`;
     const vibeLine = vibes.length ? ` Leaning into your ${vibes.join(' + ')} mood.` : '';
-    document.getElementById('shopIntro').textContent = (p.intro || '') + vibeLine + weatherNote(trip);
+    document.getElementById('shopIntro').textContent = (base.intro || '') + vibeLine + weatherNote(trip) + (hasProfile() ? styledForLine() : '');
 
     const brandRow = q => `<div class="shop-links"><span class="shop-links-label">Shop this:</span>${
       brands.map(b => `<a class="shop-link ${isLux?'lux':''}" href="${b.u(q)}" target="_blank" rel="noopener">${b.n}</a>`).join('')
@@ -758,19 +819,24 @@
         </div>
       </a>`).join('');
 
-    const cardSection = (title, items, q) => `
+    const cardSection = (title, items, q, size, category) => `
       <div class="edit-sub">
-        <div class="edit-sub-head"><h3>${title}</h3></div>
+        <div class="edit-sub-head"><h3>${title}</h3>${size ? `<span class="size-hint">your size: ${size}</span>` : ''}</div>
+        ${prefNote(items, category)}
         ${items && items.length ? `<div class="product-scroll">${productCards(items)}</div>` : ''}
         ${brandRow(q)}
       </div>`;
 
+    const nudge = hasProfile() ? '' :
+      `<a class="profile-nudge" href="profile.html">✨ Set up “My Style” to tailor every pick to your sizes, colours &amp; fits →</a>`;
+
     document.getElementById('shoppingContent').innerHTML =
+      nudge +
       renderLooks(p) +
-      cardSection('👚 Tops',        p.tops,        p.tops_q) +
-      cardSection('👖 Bottoms',     p.bottoms,     p.bottoms_q) +
-      cardSection('👟 Shoes',       p.shoes,       p.shoes_q || 'shoes women') +
-      cardSection('👜 Accessories', p.accessories, p.accessories_q || 'bag women');
+      cardSection('👚 Tops',        p.tops,        p.tops_q, PROFILE.sizeTop, 'tops') +
+      cardSection('👖 Bottoms',     p.bottoms,     p.bottoms_q, PROFILE.sizeBottom, 'bottoms') +
+      cardSection('👟 Shoes',       p.shoes,       p.shoes_q || 'shoes women', PROFILE.sizeShoe, 'shoes') +
+      cardSection('👜 Accessories', p.accessories, p.accessories_q || 'bag women', '', 'accessories');
   }
 
   // Complete looks: combine one of each piece into styled outfits
