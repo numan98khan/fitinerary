@@ -10,17 +10,17 @@
     "store": "Edikted"
    },
    {
-    "name": "Edikted Girly Ribbed Tank Top",
-    "price": "$19",
-    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Frame38_e0728cd5-c4cb-4643-87df-1f8c93d3c9dc.jpg",
-    "url": "https://edikted.com/products/s23924_burgundy",
-    "store": "Edikted"
-   },
-   {
     "name": "Lalisa V Neck Ribbed Tank Top",
     "price": "$18",
     "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/s23773_light-gray-melange_13-04-2628copy.jpg",
     "url": "https://edikted.com/products/s23773_light-gray-melange",
+    "store": "Edikted"
+   },
+   {
+    "name": "Edikted Girly Ribbed Tank Top",
+    "price": "$19",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Frame38_e0728cd5-c4cb-4643-87df-1f8c93d3c9dc.jpg",
+    "url": "https://edikted.com/products/s23924_burgundy",
     "store": "Edikted"
    }
   ],
@@ -40,26 +40,26 @@
     "store": "Jaded London"
    },
    {
-    "name": "Sonic Embroidered Baggy Jeans",
-    "price": "£75",
-    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/24_WW_ECCOM35040-2.jpg",
-    "url": "https://www.jadedldn.com/products/embroidered-loose-fit-turn-up-jeans",
+    "name": "Woodland Camo Colossus Baggy Jeans",
+    "price": "£80",
+    "img": "https://cdn.shopify.com/s/files/1/0022/9824/9267/files/Artboard2_c14ab66c-1574-454d-94f4-43de481165f5.jpg",
+    "url": "https://www.jadedldn.com/products/woodland-camo-colossus-baggy-jeans-mens",
     "store": "Jaded London"
    }
   ],
   "shoes": [
    {
-    "name": "Zevra Sporty Ballet Flats Brown",
-    "price": "$60",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_f67c4323-6021-4508-9670-abb19c96e54b.jpg",
-    "url": "https://us.princesspolly.com/products/zevra-sporty-ballet-flats-brown",
-    "store": "Princess Polly"
-   },
-   {
     "name": "Therapy Harajuku Split Toe Ballet Flats Black",
     "price": "$79.95",
     "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_36568a9b-98fa-4fb4-a98b-e7bfc2378975.jpg",
     "url": "https://us.princesspolly.com/products/therapy-tabi-ballet-flats-black",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Zevra Sporty Ballet Flats Brown",
+    "price": "$60",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_f67c4323-6021-4508-9670-abb19c96e54b.jpg",
+    "url": "https://us.princesspolly.com/products/zevra-sporty-ballet-flats-brown",
     "store": "Princess Polly"
    },
    {
@@ -94,33 +94,33 @@
    }
   ],
   "country": "Japan",
-  "tops_q": "ribbed top",
+  "tops_q": "ribbed tank top",
   "bottoms_q": "baggy jeans",
-  "shoes_q": "ballet flats",
+  "shoes_q": "split toe flats",
   "accessories_q": "shoulder bag"
  },
  "New York": {
   "intro": "NYC off-duty — clean-girl minimalism. A perfect white tank, easy greys, and a great bag do all the talking.",
   "tops": [
    {
-    "name": "Baseline Square Neck Rib Tank Top Black",
+    "name": "Kasper Cinched Longline Tank Top White",
     "price": "$35",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-olivia-us2_7ae45795-34e9-46fe-b0ad-188202bed78a.jpg",
-    "url": "https://us.princesspolly.com/products/baseline-square-neck-rib-to-black",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-chiara-us4_55d936d5-d044-4cb2-9283-474c7c0ea927.jpg",
+    "url": "https://us.princesspolly.com/products/kasper-cinched-longline-tank-top-white",
     "store": "Princess Polly"
    },
    {
-    "name": "Baseline Square Neck Rib Tank Top White",
-    "price": "$35",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-leiza-us2.jpg",
-    "url": "https://us.princesspolly.com/products/baseline-square-neck-rib-top-white-1",
+    "name": "Zenaide Lace Detail Halter Tank Top White",
+    "price": "$45",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-milla-us2_f385e902-7747-4950-96a4-ceec92e8f056.jpg",
+    "url": "https://us.princesspolly.com/products/zenaide-lace-detail-halter-tank-top-white",
     "store": "Princess Polly"
    },
    {
-    "name": "Baseline V Neck Rib Tank Top White",
-    "price": "$35",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-lauren-us2_a4dd748f-00c3-4399-9bdc-eb53e689d31b.jpg",
-    "url": "https://us.princesspolly.com/products/baseline-v-neck-rib-tank-top-white",
+    "name": "Ceyla Layered Tank Top White",
+    "price": "$45",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-alex-us2_9deb5d92-0a5f-49d8-9f01-4af6b4ec3c9d.jpg",
+    "url": "https://us.princesspolly.com/products/ceyla-layered-tank-white",
     "store": "Princess Polly"
    }
   ],
@@ -149,24 +149,24 @@
   ],
   "shoes": [
    {
-    "name": "Zevra Sporty Ballet Flats Brown",
-    "price": "$60",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_f67c4323-6021-4508-9670-abb19c96e54b.jpg",
-    "url": "https://us.princesspolly.com/products/zevra-sporty-ballet-flats-brown",
+    "name": "Oliny Ballet Flats Burgundy",
+    "price": "$50",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_2_b9c68faa-4ed4-442b-abbe-dcba95a1e070.jpg",
+    "url": "https://us.princesspolly.com/products/oliny-ballet-flats-burgundy",
     "store": "Princess Polly"
    },
    {
-    "name": "Therapy Harajuku Split Toe Ballet Flats Black",
-    "price": "$79.95",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_36568a9b-98fa-4fb4-a98b-e7bfc2378975.jpg",
-    "url": "https://us.princesspolly.com/products/therapy-tabi-ballet-flats-black",
+    "name": "Ballet Club Flats Red",
+    "price": "$55",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_974a9433-3f65-4a1d-b796-891383ffd4d1.jpg",
+    "url": "https://us.princesspolly.com/products/ballet-club-flats-red",
     "store": "Princess Polly"
    },
    {
-    "name": "Adienne Ballet Flats Black",
-    "price": "$70",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_1ed4ed35-4760-4e82-a74e-bce13948bf0d.jpg",
-    "url": "https://us.princesspolly.com/products/adienne-ballet-flats-black",
+    "name": "Nova Ballet Flats Black",
+    "price": "$13",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/NOVABALLETFLATSBLACK.jpg",
+    "url": "https://us.princesspolly.com/products/nova-ballet-flats-black",
     "store": "Princess Polly"
    }
   ],
@@ -194,7 +194,7 @@
    }
   ],
   "country": "USA",
-  "tops_q": "ribbed tank top",
+  "tops_q": "white tank top",
   "bottoms_q": "parachute pants",
   "shoes_q": "ballet flats",
   "accessories_q": "tote bag"
@@ -249,24 +249,24 @@
   ],
   "shoes": [
    {
-    "name": "Capri Loafers Black",
-    "price": "$65",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_9a4b61ad-1413-471f-9e58-c6c64de068d4.jpg",
-    "url": "https://us.princesspolly.com/products/capri-loafers-black",
+    "name": "Therapy Ally Ballet Flats Cherry",
+    "price": "$27",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/Therapy-ally-ballet-flats-cherry.jpg",
+    "url": "https://us.princesspolly.com/products/therapy-ally-ballet-flats-cherry",
     "store": "Princess Polly"
    },
    {
-    "name": "Penny Lane Loafers Black",
-    "price": "$75",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_2633cf2e-a4ae-42d1-ba21-66ddb692b571.jpg",
-    "url": "https://us.princesspolly.com/products/recycled-pu-penny-lane-loafer-black",
+    "name": "Billini Haruna Ballet Flats Black",
+    "price": "$70",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_0d207560-b0b1-4d12-8b92-ac8493a60300.jpg",
+    "url": "https://us.princesspolly.com/products/billini-haruna-ballet-flats-black",
     "store": "Princess Polly"
    },
    {
-    "name": "Therapy Albert Faux Suede Loafers Brown",
-    "price": "$24",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_1cc98373-1f98-44ce-ad22-a6e8f28e45be.jpg",
-    "url": "https://us.princesspolly.com/products/therapy-albert-faux-suede-loafers-brown",
+    "name": "Billini Haruna Ballet Flats Silver Metallic",
+    "price": "$35",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_5a239d5c-f8ec-4021-9874-6c21f7570550.jpg",
+    "url": "https://us.princesspolly.com/products/billini-haruna-ballet-flats-silver-metallic",
     "store": "Princess Polly"
    }
   ],
@@ -317,10 +317,10 @@
     "store": "Edikted"
    },
    {
-    "name": "Chantal Asymmetric Striped Top",
-    "price": "$23",
-    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Frame3_52b76859-20ae-45d1-a247-892c518879f5.jpg",
-    "url": "https://edikted.com/products/s24084_light-blue",
+    "name": "Lorenza Striped Halter Top",
+    "price": "$20",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/s19747_navy-and-white_28.jpg",
+    "url": "https://edikted.com/products/s19747_navy",
     "store": "Edikted"
    }
   ],
@@ -333,70 +333,70 @@
     "store": "Princess Polly"
    },
    {
-    "name": "Elka Wrap Trousers Truffle",
-    "price": "$30",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-olivia-us2_3618da25-cac3-45cf-8d97-f39f8e3d4b51.jpg",
-    "url": "https://us.princesspolly.com/products/elka-wrap-trousers-truffle",
-    "store": "Princess Polly"
-   },
-   {
     "name": "Enmu Capri Trouser Charcoal Grey",
     "price": "$26.50",
     "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-emmah-us2_1.jpg",
     "url": "https://us.princesspolly.com/products/enmu-capri-trouser-charcoal-grey",
     "store": "Princess Polly"
+   },
+   {
+    "name": "Iria Capri Trouser Khaki",
+    "price": "$85",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0-modelinfo-aisha-us4_214e8e49-13bf-4c03-8813-7092c7a9d594.jpg",
+    "url": "https://us.princesspolly.com/products/iria-capri-trouser-khaki",
+    "store": "Princess Polly"
    }
   ],
   "shoes": [
    {
-    "name": "Zevra Sporty Ballet Flats Brown",
+    "name": "Billini Finnegan Ballet Flats Bone Patent",
+    "price": "$23",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/Billini-finnegan-ballet-flats-bone-patent.jpg",
+    "url": "https://us.princesspolly.com/products/billini-finnegan-ballet-flats-bone-patent",
+    "store": "Princess Polly"
+   },
+   {
+    "name": "Sophia Heels Cream",
     "price": "$60",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_f67c4323-6021-4508-9670-abb19c96e54b.jpg",
-    "url": "https://us.princesspolly.com/products/zevra-sporty-ballet-flats-brown",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/Sophia-Heels-Cream.jpg",
+    "url": "https://us.princesspolly.com/products/sophia-heels-cream",
     "store": "Princess Polly"
    },
    {
-    "name": "Therapy Harajuku Split Toe Ballet Flats Black",
-    "price": "$79.95",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_36568a9b-98fa-4fb4-a98b-e7bfc2378975.jpg",
-    "url": "https://us.princesspolly.com/products/therapy-tabi-ballet-flats-black",
-    "store": "Princess Polly"
-   },
-   {
-    "name": "Adienne Ballet Flats Black",
-    "price": "$70",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_1ed4ed35-4760-4e82-a74e-bce13948bf0d.jpg",
-    "url": "https://us.princesspolly.com/products/adienne-ballet-flats-black",
+    "name": "The Mona Heels Black",
+    "price": "$45",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_7f78b0de-a8be-48f1-9630-744d7a5ba023.jpg",
+    "url": "https://us.princesspolly.com/products/the-mona-heels-black",
     "store": "Princess Polly"
    }
   ],
   "accessories": [
    {
-    "name": "High Tide Mini Straw Bag",
-    "price": "$26",
-    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_03_17_2025185083_4f570532-7667-403e-8379-1dcd5a21cdb2.jpg",
-    "url": "https://edikted.com/products/acc1441_brown",
+    "name": "Two-Toned Faux Leather Shoulder Bag",
+    "price": "$20.40",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_03_26_20245567copy.jpg",
+    "url": "https://edikted.com/products/acc0916_brown",
     "store": "Edikted"
    },
    {
-    "name": "Mini Edikted Tote Bag Keychain",
-    "price": "$4.80",
-    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_09_24_202544614.jpg",
-    "url": "https://edikted.com/products/acc1829_cream",
+    "name": "So Chic Faux Leather Shoulder Bag",
+    "price": "$28.80",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_09_03_202460462.jpg",
+    "url": "https://edikted.com/products/acc1074_black",
     "store": "Edikted"
    },
    {
-    "name": "Classic Faux Leather Mini Bag",
-    "price": "$25.60",
-    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_01_29_2025160092_a03dca1b-b2fe-41cc-a2fc-9fd5d05ba0ed.jpg",
-    "url": "https://edikted.com/products/acc1352_ivory",
+    "name": "Polka Dot Shoulder Bag",
+    "price": "$15",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/acc2678_white_13-04-2615copy.jpg",
+    "url": "https://edikted.com/products/acc2678_white",
     "store": "Edikted"
    }
   ],
   "country": "France",
   "tops_q": "striped top",
-  "bottoms_q": "trousers",
-  "shoes_q": "ballet flats",
+  "bottoms_q": "capri trousers",
+  "shoes_q": "mary jane flats",
   "accessories_q": "mini bag"
  },
  "Bali": {
@@ -484,6 +484,13 @@
     "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_06549823-9907-4017-862f-590b14ac0259.jpg",
     "url": "https://us.princesspolly.com/products/love-like-this-straw-tote-bag-tan",
     "store": "Princess Polly"
+   },
+   {
+    "name": "Flirty Faux Leather Shoulder Bag",
+    "price": "$34",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_07_21_2025278958copy.jpg",
+    "url": "https://edikted.com/products/acc1650_blue",
+    "store": "Edikted"
    }
   ],
   "country": "Indonesia",
@@ -521,6 +528,13 @@
    {
     "name": "Raiyne Low Rise Wide Leg Jeans",
     "price": "$46",
+    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/s24071_navy_s21896_light-blue-washed_13copy_3cde1f2a-4389-4ff6-9d2f-9173ce95e83f.jpg",
+    "url": "https://edikted.com/products/s21896_light-blue-washed",
+    "store": "Edikted"
+   },
+   {
+    "name": "Raiyne Low Rise Wide Leg Jeans",
+    "price": "$46",
     "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/s14091_blue-washed_11-06-2622copy.jpg",
     "url": "https://edikted.com/products/s21896_dark-blue",
     "store": "Edikted"
@@ -531,65 +545,58 @@
     "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_Lookbook_07_21_2025279204_113b75f9-8731-45fb-8218-68f4de188b88.jpg",
     "url": "https://edikted.com/products/s21133_blue",
     "store": "Edikted"
-   },
-   {
-    "name": "Petite Meredith Low Rise Wide Leg Jeans",
-    "price": "$48",
-    "img": "https://cdn.shopify.com/s/files/1/0467/4148/7783/files/Edikted_lookbook_01_15_202628847_ac39d85b-8a25-42e6-ba4e-0cf89f934eb3.jpg",
-    "url": "https://edikted.com/products/s21133p_blue",
-    "store": "Edikted"
    }
   ],
   "shoes": [
    {
-    "name": "Zevra Sporty Ballet Flats Brown",
-    "price": "$60",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_f67c4323-6021-4508-9670-abb19c96e54b.jpg",
-    "url": "https://us.princesspolly.com/products/zevra-sporty-ballet-flats-brown",
+    "name": "Therapy Arlo Ballet Flats Black Mesh",
+    "price": "$12",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_2eb5e851-3a2f-40fa-b77b-f7da1bc61569.jpg",
+    "url": "https://us.princesspolly.com/products/therapy-arlo-ballet-flats-black-mesh",
     "store": "Princess Polly"
    },
    {
-    "name": "Therapy Harajuku Split Toe Ballet Flats Black",
-    "price": "$79.95",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_36568a9b-98fa-4fb4-a98b-e7bfc2378975.jpg",
-    "url": "https://us.princesspolly.com/products/therapy-tabi-ballet-flats-black",
+    "name": "The Mona Heels Chocolate",
+    "price": "$45",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_15c9c88d-8c3e-4902-a6e5-3ce3cf3e16cb.jpg",
+    "url": "https://us.princesspolly.com/products/the-mona-heels-chocolate",
     "store": "Princess Polly"
    },
    {
-    "name": "Adienne Ballet Flats Black",
-    "price": "$70",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/2_1ed4ed35-4760-4e82-a74e-bce13948bf0d.jpg",
-    "url": "https://us.princesspolly.com/products/adienne-ballet-flats-black",
+    "name": "Caroline Heels Black",
+    "price": "$45",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/1_003ce7a0-ea82-4326-a693-95fcecbcbccc.jpg",
+    "url": "https://us.princesspolly.com/products/caroline-heels-black",
     "store": "Princess Polly"
    }
   ],
   "accessories": [
    {
-    "name": "Summer Sorbet Tote Bag Jelly Mint",
-    "price": "$49",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_e7acf63c-aeeb-4b55-9d71-c04595d1cf37.jpg",
-    "url": "https://us.princesspolly.com/products/summer-sorbet-tote-bag-jelly-mint",
+    "name": "Zinny Crossbody Bag Black",
+    "price": "$24",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/ZINNY-CROSSBODY-BAG-BLACK.jpg",
+    "url": "https://us.princesspolly.com/products/zinny-crossbody-bag-black",
     "store": "Princess Polly"
    },
    {
-    "name": "Toddy Tote Bag Cream",
-    "price": "$17.50",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/Tote-bag-Crochet-material-Fixed-shoulder-straps-Toddy-Tote-Bag-Cream-Tote-bag-Crochet-material-Fixed-shoulder-straps-Toddy-tote-bag-cream.jpg",
-    "url": "https://us.princesspolly.com/products/toddy-tote-bag-cream",
+    "name": "Interlude Crossbody Bag Brown",
+    "price": "$16",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_c87fdd32-cefc-4232-aa3c-571de4600fa3.jpg",
+    "url": "https://us.princesspolly.com/products/interlude-crossbody-bag-brown",
     "store": "Princess Polly"
    },
    {
-    "name": "Isolda Mesh Tote Bag Khaki",
-    "price": "$19.50",
-    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_4220f540-7da4-41f6-86f5-4b5ca716b808.jpg",
-    "url": "https://us.princesspolly.com/products/isolda-mesh-tote-bag-khaki",
+    "name": "Weyes Crossbody Bag Black",
+    "price": "$40",
+    "img": "https://cdn.shopify.com/s/files/1/0061/8627/0804/files/0_546beef0-6048-45a6-a356-82e9465f33e2.jpg",
+    "url": "https://us.princesspolly.com/products/weyes-crossbody-bag-black",
     "store": "Princess Polly"
    }
   ],
   "country": "default",
   "tops_q": "ribbed top",
   "bottoms_q": "wide leg jeans",
-  "shoes_q": "ballet flats",
-  "accessories_q": "tote bag"
+  "shoes_q": "mesh flats",
+  "accessories_q": "crossbody bag"
  }
 }
