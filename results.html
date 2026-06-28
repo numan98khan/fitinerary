@@ -14,6 +14,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Fitinerary" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
     .results-page { max-width: 860px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
 
@@ -172,6 +173,21 @@
     .fave-btn:hover { transform: scale(1.12); }
     .fave-btn.is-faved { color: var(--pink, #ff6bb5); background: #fff; }
     .trip-actions { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    /* Shareable image card (rendered off-screen) */
+    #shareCard {
+      position: fixed; left: -10000px; top: 0; width: 540px; box-sizing: border-box;
+      background: #FFE135; border: 8px solid #2c2250; border-radius: 28px;
+      padding: 26px 26px 20px; font-family: "Nunito", sans-serif; color: #2c2250;
+    }
+    #shareCard .sc-top { display: flex; justify-content: space-between; align-items: center; }
+    #shareCard .sc-logo { font-family: "Pacifico", cursive; font-size: 30px; }
+    #shareCard .sc-tag { background: #2c2250; color: #FFE135; font-weight: 800; font-size: 12px; padding: 5px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.1em; }
+    #shareCard .sc-title { font-family: "Pacifico", cursive; font-size: 42px; margin: 16px 0 2px; line-height: 1.1; }
+    #shareCard .sc-sub { font-weight: 700; font-size: 16px; color: #6b4a36; margin-bottom: 16px; }
+    #shareCard .sc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    #shareCard .sc-grid img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; border: 4px solid #2c2250; border-radius: 14px; background: #fff; display: block; }
+    #shareCard .sc-foot { text-align: center; font-weight: 800; font-size: 15px; margin-top: 16px; }
     .product-img {
       width: 100%; aspect-ratio: 3/4;
       background-size: cover; background-position: center top;
@@ -259,6 +275,7 @@
         </div>
         <div class="trip-actions">
           <button class="trip-edit" id="saveTripBtn" type="button" onclick="saveTrip()">💾 Save trip</button>
+          <button class="trip-edit" id="shareBtn" type="button" onclick="shareEdit()">📸 Share</button>
           <a href="pack.html" class="trip-edit">✏️ Edit</a>
         </div>
       </div>
@@ -297,6 +314,18 @@
       </div>
     </div>
 
+    <!-- Hidden card used to generate the shareable image -->
+    <div id="shareCard" aria-hidden="true">
+      <div class="sc-top">
+        <span class="sc-logo">Fitinerary</span>
+        <span class="sc-tag">my travel edit</span>
+      </div>
+      <h2 class="sc-title" id="scTitle"></h2>
+      <p class="sc-sub" id="scSub"></p>
+      <div class="sc-grid" id="scGrid"></div>
+      <div class="sc-foot">✈︎ plan yours · numan98khan.github.io/fitinerary</div>
+    </div>
+
   </main>
 
   <script>
@@ -327,6 +356,35 @@
     }
     const btn = document.getElementById('saveTripBtn');
     if (btn) { btn.textContent = '✓ Saved!'; btn.disabled = true; }
+  }
+
+  // ── Shareable image card ──
+  let currentEdit = null; // {city, p, trip} — set in renderCityEdit
+  async function shareEdit() {
+    if (!currentEdit || typeof html2canvas === 'undefined') return;
+    const { city, p, trip } = currentEdit;
+    const btn = document.getElementById('shareBtn'); const old = btn.textContent;
+    btn.textContent = 'Making…'; btn.disabled = true;
+    document.getElementById('scTitle').textContent = `The ${city} Edit`;
+    document.getElementById('scSub').textContent = `${fmtDate(trip.departure)} → ${fmtDate(trip.return)} · packed & sorted ✨`;
+    const imgs = [];
+    ['tops','bottoms','shoes','accessories'].forEach(c => { if (p[c] && p[c][0]) imgs.push(p[c][0].img); });
+    ['tops','bottoms'].forEach(c => { if (p[c] && p[c][1]) imgs.push(p[c][1].img); });
+    const grid = document.getElementById('scGrid');
+    grid.innerHTML = imgs.slice(0, 6).map(src => `<img crossorigin="anonymous" src="${src}">`).join('');
+    await Promise.all([...grid.querySelectorAll('img')].map(im => im.complete ? null : new Promise(r => { im.onload = im.onerror = r; })));
+    try {
+      const canvas = await html2canvas(document.getElementById('shareCard'), { useCORS: true, scale: 2, backgroundColor: null, logging: false });
+      canvas.toBlob(async blob => {
+        const file = new File([blob], `fitinerary-${city}.png`, { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          try { await navigator.share({ files: [file], title: 'My Fitinerary edit', text: `Packing for ${city} ✈️` }); } catch (e) {}
+        } else {
+          const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = file.name; a.click();
+        }
+        btn.textContent = old; btn.disabled = false;
+      }, 'image/png');
+    } catch (e) { btn.textContent = 'Try again'; btn.disabled = false; }
   }
 
   // ── Load data ──
@@ -679,6 +737,7 @@
     const locals = LOCAL_BRANDS[p.country] || LOCAL_BRANDS['default'];
     const brands = [ASOS, ...locals, anchorBrand(isLux)];
     const vibes = tripVibes(trip).map(v => vibeLabel(v).replace(/^\S+\s/, ''));
+    currentEdit = { city, p, trip };
 
     document.getElementById('shopTitle').textContent = `✨ The ${city} Edit`;
     const vibeLine = vibes.length ? ` Leaning into your ${vibes.join(' + ')} mood.` : '';
