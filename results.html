@@ -156,12 +156,22 @@
     .product-scroll::-webkit-scrollbar { height: 5px; }
     .product-scroll::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 99px; }
     .product-card {
-      flex: 0 0 132px; width: 132px;
+      flex: 0 0 132px; width: 132px; position: relative;
       background: #fff; border: var(--border); border-radius: 14px;
       box-shadow: var(--shadow); overflow: hidden; text-decoration: none;
       color: var(--ink); transition: transform .14s ease, box-shadow .14s ease;
     }
     .product-card:hover { transform: translate(-2px,-2px); box-shadow: var(--shadow-lg); }
+    .fave-btn {
+      position: absolute; top: 6px; right: 6px; z-index: 3;
+      width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+      border: 2px solid var(--ink); background: rgba(255,255,255,0.92);
+      color: #d0c8d8; font-size: 13px; line-height: 1; display: grid; place-items: center;
+      padding: 0; transition: transform .12s ease, color .12s ease;
+    }
+    .fave-btn:hover { transform: scale(1.12); }
+    .fave-btn.is-faved { color: var(--pink, #ff6bb5); background: #fff; }
+    .trip-actions { display: flex; flex-direction: column; gap: 0.4rem; }
     .product-img {
       width: 100%; aspect-ratio: 3/4;
       background-size: cover; background-position: center top;
@@ -229,6 +239,7 @@
         </div>
         <span class="brand-name">Fitinerary</span>
       </a>
+      <a href="favorites.html" class="saved-link">♥ Saved</a>
       <div class="brand-badge">✈︎ beta</div>
     </header>
 
@@ -246,7 +257,10 @@
           <div class="trip-dates" id="bannerDates"></div>
           <div class="trip-tags" id="bannerTags"></div>
         </div>
-        <a href="pack.html" class="trip-edit">✏️ Edit trip</a>
+        <div class="trip-actions">
+          <button class="trip-edit" id="saveTripBtn" type="button" onclick="saveTrip()">💾 Save trip</button>
+          <a href="pack.html" class="trip-edit">✏️ Edit</a>
+        </div>
       </div>
 
       <!-- Weather -->
@@ -286,6 +300,35 @@
   </main>
 
   <script>
+  // ── Favourites + saved trips (localStorage) ──
+  const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  function getFaves() { try { return JSON.parse(localStorage.getItem('fitinerary_faves') || '[]'); } catch { return []; } }
+  function isFaved(url) { return getFaves().some(f => f.url === url); }
+  function toggleFave(item) {
+    const a = getFaves(); const i = a.findIndex(f => f.url === item.url);
+    if (i >= 0) a.splice(i, 1); else a.unshift(item);
+    localStorage.setItem('fitinerary_faves', JSON.stringify(a));
+    return i < 0;
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.fave-btn'); if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const item = { name: b.dataset.name, price: b.dataset.price, img: b.dataset.img, url: b.dataset.url, store: b.dataset.store };
+    b.classList.toggle('is-faved', toggleFave(item));
+  });
+  function saveTrip() {
+    const r = localStorage.getItem('fitinerary_data'); if (!r) return;
+    const trip = JSON.parse(r);
+    let trips = []; try { trips = JSON.parse(localStorage.getItem('fitinerary_trips') || '[]'); } catch {}
+    const id = [trip.destination.name, trip.departure, trip.return].join('|');
+    if (!trips.some(t => t.id === id)) {
+      trips.unshift({ id, savedAt: Date.now(), trip });
+      localStorage.setItem('fitinerary_trips', JSON.stringify(trips));
+    }
+    const btn = document.getElementById('saveTripBtn');
+    if (btn) { btn.textContent = '✓ Saved!'; btn.disabled = true; }
+  }
+
   // ── Load data ──
   const raw = localStorage.getItem('fitinerary_data');
   if (!raw) {
@@ -647,6 +690,8 @@
 
     const productCards = items => (items || []).map(it => `
       <a class="product-card" href="${it.url}" target="_blank" rel="noopener">
+        <button class="fave-btn ${isFaved(it.url) ? 'is-faved' : ''}" type="button" aria-label="Save to favourites"
+          data-name="${esc(it.name)}" data-price="${esc(it.price)}" data-img="${esc(it.img)}" data-url="${esc(it.url)}" data-store="${esc(it.store)}">♥</button>
         <div class="product-img" style="background-image:url('${it.img}')"></div>
         <div class="product-info">
           <span class="product-name">${it.name}</span>

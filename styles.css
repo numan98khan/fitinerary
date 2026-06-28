@@ -99,6 +99,19 @@ body::before {
   font-size: 1.5rem;
   letter-spacing: -0.01em;
 }
+.saved-link {
+  margin-left: auto;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-decoration: none;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.saved-link:hover { background: var(--pink); color: #fff; }
 .brand-badge {
   margin-left: auto;
   background: var(--pink);
