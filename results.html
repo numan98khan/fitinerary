@@ -171,6 +171,16 @@
     .product-store { font-size: 0.6rem; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: .04em; }
     .no-products { font-size: 0.82rem; color: #999; margin: 0.2rem 0 0.6rem; }
 
+    /* Complete looks */
+    .looks-block { background: #fff8ef; border: 2px dashed var(--line, #efe3d2); border-radius: 16px; padding: 1rem 1rem 0.4rem; }
+    .outfit { margin-bottom: 1rem; }
+    .outfit-label { font-weight: 900; font-size: 0.92rem; margin-bottom: 0.45rem; }
+    .outfit-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55rem; }
+    .look-thumb { display: block; text-decoration: none; }
+    .lt-img { width: 100%; aspect-ratio: 3/4; background-size: cover; background-position: center top; background-color: #f3ece0; border: var(--border); border-radius: 10px; transition: transform 0.14s ease, box-shadow 0.14s ease; }
+    .look-thumb:hover .lt-img { transform: translate(-2px,-2px); box-shadow: var(--shadow); }
+    .lt-price { display: block; text-align: center; font-size: 0.72rem; font-weight: 800; color: var(--coral, #e8703a); margin-top: 0.22rem; }
+
     /* City edit subsections (Tops / Bottoms / Shoes / Accessories) */
     .edit-sub { margin-bottom: 1.4rem; }
     .edit-sub:last-child { margin-bottom: 0; }
@@ -646,10 +656,29 @@
       </div>`;
 
     document.getElementById('shoppingContent').innerHTML =
+      renderLooks(p) +
       cardSection('👚 Tops',        p.tops,        p.tops_q) +
       cardSection('👖 Bottoms',     p.bottoms,     p.bottoms_q) +
       cardSection('👟 Shoes',       p.shoes,       p.shoes_q || 'shoes women') +
       cardSection('👜 Accessories', p.accessories, p.accessories_q || 'bag women');
+  }
+
+  // Complete looks: combine one of each piece into styled outfits
+  function renderLooks(p) {
+    const labels = ['Easy daytime', 'Out for dinner', 'Explore & wander'];
+    const n = Math.min((p.tops||[]).length, (p.bottoms||[]).length, (p.shoes||[]).length, (p.accessories||[]).length, 3);
+    if (!n) return '';
+    let cards = '';
+    for (let i = 0; i < n; i++) {
+      const pieces = [p.tops[i], p.bottoms[i], p.shoes[i], p.accessories[i]];
+      const thumbs = pieces.map(it => `
+        <a class="look-thumb" href="${it.url}" target="_blank" rel="noopener" title="${it.name} · ${it.price}">
+          <div class="lt-img" style="background-image:url('${it.img}')"></div>
+          <span class="lt-price">${it.price}</span>
+        </a>`).join('');
+      cards += `<div class="outfit"><div class="outfit-label">Look ${i + 1} · ${labels[i] || ''}</div><div class="outfit-row">${thumbs}</div></div>`;
+    }
+    return `<div class="edit-sub looks-block"><div class="edit-sub-head"><h3>👗 Complete looks</h3></div>${cards}</div>`;
   }
   </script>
 </body>
