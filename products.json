@@ -1,0 +1,302 @@
+{
+ "top": [
+  {
+   "name": "Mini T-Shirt",
+   "price": "$14.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465760/item/usgoods_69_465760_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E465760-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Ribbed Cropped Bra Top",
+   "price": "$19.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482195/item/usgoods_60_482195_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E482195-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Mini T-Shirt | Striped",
+   "price": "$14.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487277/item/usgoods_14_487277_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E487277-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Mini T-Shirt",
+   "price": "$9.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465760/item/usgoods_14_465760_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E465760-000/01",
+   "store": "Uniqlo"
+  }
+ ],
+ "shorts": [
+  {
+   "name": "Linen Cotton Shorts",
+   "price": "$29.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482171/item/usgoods_32_482171_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E482171-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Linen Cotton Shorts | Striped",
+   "price": "$29.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482173/item/usgoods_64_482173_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E482173-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Linen Blend Easy Shorts",
+   "price": "$19.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485251/item/usgoods_69_485251_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E485251-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Linen Blend Easy Shorts | Stripe",
+   "price": "$19.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485575/item/usgoods_63_485575_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E485575-000/00",
+   "store": "Uniqlo"
+  }
+ ],
+ "sweater": [
+  {
+   "name": "Boxy Knitted T-Shirt",
+   "price": "$29.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482979/item/usgoods_38_482979_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E482979-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Cotton Sweater | Sleeveless",
+   "price": "$9.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484193/item/usgoods_69_484193_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E484193-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Polo Short Sleeve Sweater",
+   "price": "$39.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484607/item/usgoods_59_484607_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E484607-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Polo Short Sleeve Sweater | Color Block",
+   "price": "$39.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485224/item/usgoods_01_485224_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E485224-000/00",
+   "store": "Uniqlo"
+  }
+ ],
+ "jeans": [
+  {
+   "name": "Barrel Jeans",
+   "price": "$49.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/479000/item/usgoods_69_479000_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E479000-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Barrel Jeans",
+   "price": "$49.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482280/item/usgoods_64_482280_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E482280-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Barrel Jeans | Short",
+   "price": "$49.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484808/item/usgoods_64_484808_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E484808-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Barrel Jeans | Tall",
+   "price": "$49.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/488700/item/usgoods_64_488700_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E488700-000/00",
+   "store": "Uniqlo"
+  }
+ ],
+ "coat": [
+  {
+   "name": "Zip-Up Short Jacket",
+   "price": "$59.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/479208/item/usgoods_30_479208_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E479208-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Barn Short Jacket",
+   "price": "$59.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483807/item/usgoods_33_483807_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E483807-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Zip-Up Short Jacket",
+   "price": "$59.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487516/item/usgoods_30_487516_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E487516-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Barn Short Jacket | Denim",
+   "price": "$59.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484664/item/usgoods_69_484664_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E484664-000/00",
+   "store": "Uniqlo"
+  }
+ ],
+ "dress": [
+  {
+   "name": "Ultra Stretch AIRism Dress",
+   "price": "$39.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482982/item/usgoods_68_482982_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E482982-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Shirring Dress",
+   "price": "$59.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/488216001/item/usgoods_01_488216001_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E488216-001/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Shirring Dress",
+   "price": "$59.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/488216/item/usgoods_09_488216_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E488216-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Linen Blend Tiered Dress | Stripe",
+   "price": "$59.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484787/item/usgoods_01_484787_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E484787-000/00",
+   "store": "Uniqlo"
+  }
+ ],
+ "trousers": [
+  {
+   "name": "Linen Blend Easy Pants",
+   "price": "$39.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_69_473791_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E473791-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Linen Blend Easy Pants",
+   "price": "$14.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/473791/item/usgoods_50_473791_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E473791-000/01",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Jersey Barrel Pants",
+   "price": "$49.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/475344/item/usgoods_09_475344_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E475344-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Jersey Barrel Pants | Tall",
+   "price": "$49.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/477345/item/usgoods_58_477345_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E477345-000/00",
+   "store": "Uniqlo"
+  }
+ ],
+ "activewear": [
+  {
+   "name": "Active Flare Tennis Skirt",
+   "price": "$19.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483548/item/usgoods_00_483548_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E483548-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Ultra Stretch Active Wide Pants",
+   "price": "$39.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/474481/item/usgoods_39_474481_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E474481-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Ultra Stretch Active Wide Pants | Line",
+   "price": "$39.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/488935/item/usgoods_09_488935_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E488935-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Ultra Stretch Active Flare Leggings",
+   "price": "$39.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483296/item/usgoods_08_483296_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E483296-000/00",
+   "store": "Uniqlo"
+  }
+ ],
+ "loungewear": [
+  {
+   "name": "Mini T-Shirt",
+   "price": "$14.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465760/item/usgoods_69_465760_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E465760-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Gathered Babydoll Camisole",
+   "price": "$19.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483523/item/usgoods_63_483523_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E483523-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Ribbed Mini T-Shirt",
+   "price": "$9.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484457/item/usgoods_50_484457_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E484457-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Balloon Gathered Camisole",
+   "price": "$14.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487771/item/usgoods_55_487771_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E487771-000/00",
+   "store": "Uniqlo"
+  }
+ ],
+ "light-jacket": [
+  {
+   "name": "Zip-Up Short Jacket",
+   "price": "$59.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487516/item/usgoods_30_487516_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E487516-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Barn Short Jacket | Denim",
+   "price": "$59.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484664/item/usgoods_69_484664_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E484664-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Soft Brushed Short Jacket",
+   "price": "$19.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/485706/item/usgoods_32_485706_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E485706-000/00",
+   "store": "Uniqlo"
+  },
+  {
+   "name": "Windproof Stand Blouson",
+   "price": "$39.90",
+   "img": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/484709/item/usgoods_01_484709_3x4.jpg",
+   "url": "https://www.uniqlo.com/us/en/products/E484709-000/00",
+   "store": "Uniqlo"
+  }
+ ]
+}

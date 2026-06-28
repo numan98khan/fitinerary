@@ -140,6 +140,36 @@
     }
     .shop-link:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--ink); }
     .shop-link.lux { background: var(--purple); color: #fff; }
+    .shop-links-label { font-size: 0.78rem; font-weight: 700; color: #888; align-self: center; }
+
+    /* Real product cards */
+    .product-scroll {
+      display: flex; gap: 0.7rem; overflow-x: auto;
+      padding: 0.2rem 0.1rem 0.7rem; margin-bottom: 0.5rem;
+    }
+    .product-scroll::-webkit-scrollbar { height: 5px; }
+    .product-scroll::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 99px; }
+    .product-card {
+      flex: 0 0 132px; width: 132px;
+      background: #fff; border: var(--border); border-radius: 14px;
+      box-shadow: var(--shadow); overflow: hidden; text-decoration: none;
+      color: var(--ink); transition: transform .14s ease, box-shadow .14s ease;
+    }
+    .product-card:hover { transform: translate(-2px,-2px); box-shadow: var(--shadow-lg); }
+    .product-img {
+      width: 100%; aspect-ratio: 3/4;
+      background-size: cover; background-position: center top;
+      background-color: #f3ece0; border-bottom: 2px solid var(--ink);
+    }
+    .product-info { padding: 0.5rem 0.55rem 0.6rem; }
+    .product-name {
+      display: block; font-size: 0.74rem; font-weight: 700; line-height: 1.25;
+      height: 2.5em; overflow: hidden;
+    }
+    .product-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 0.35rem; }
+    .product-price { font-size: 0.82rem; font-weight: 900; color: var(--coral, #e8703a); }
+    .product-store { font-size: 0.6rem; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: .04em; }
+    .no-products { font-size: 0.82rem; color: #999; margin: 0.2rem 0 0.6rem; }
 
     .confetti { text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; }
 
@@ -224,8 +254,11 @@
     init(trip);
   }
 
+  let CATALOG = {};
   async function init(trip) {
     renderBanner(trip);
+    // Load the product catalog (real items with images + buy links)
+    try { CATALOG = await (await fetch('products.json')).json(); } catch { CATALOG = {}; }
     const weather = await fetchWeather(trip);
     renderWeather(weather, trip);
     const packItems = buildPackingList(trip, weather);
@@ -378,62 +411,62 @@
       { icon:'☀️', name:'Sunscreen SPF 30+', key:'none' },
     ];
 
-    // Temperature-driven clothing
+    // Temperature-driven clothing  (cat = catalog category for real product cards)
     if (isHot) {
-      clothing.push({ icon:'👕', name:`Lightweight tops (×${tops})`, key:'tshirts', searchTerm:'light summer top women' });
-      clothing.push({ icon:'🩳', name:`Shorts or light trousers (×${bottoms})`, key:'jeans', searchTerm:'summer shorts women' });
-      clothing.push({ icon:'👡', name:'Sandals or open shoes', key:'sneakers', searchTerm:'sandals women summer' });
+      clothing.push({ icon:'👕', name:`Lightweight tops (×${tops})`, key:'tshirts', cat:'top', searchTerm:'light summer top women' });
+      clothing.push({ icon:'🩳', name:`Shorts or light trousers (×${bottoms})`, key:'jeans', cat:'shorts', searchTerm:'summer shorts women' });
+      clothing.push({ icon:'👡', name:'Sandals or open shoes', key:'sneakers', cat:null, searchTerm:'sandals women summer' });
     } else if (isCold) {
-      clothing.push({ icon:'🧥', name:`Warm jumpers / tops (×${tops})`, key:'tshirts', searchTerm:'knit jumper women' });
-      clothing.push({ icon:'👖', name:`Warm trousers / jeans (×${bottoms})`, key:'jeans', searchTerm:'warm jeans women' });
-      clothing.push({ icon:'🧣', name:'Heavy coat or puffer jacket', key:'warmcoat', searchTerm:'puffer coat women' });
-      clothing.push({ icon:'🥾', name:'Warm boots', key:'boots', searchTerm:'ankle boots women winter' });
-      clothing.push({ icon:'🧤', name:'Scarf, gloves & hat', key:'none', searchTerm:'scarf gloves women' });
+      clothing.push({ icon:'🧥', name:`Warm jumpers / tops (×${tops})`, key:'tshirts', cat:'sweater', searchTerm:'knit jumper women' });
+      clothing.push({ icon:'👖', name:`Warm trousers / jeans (×${bottoms})`, key:'jeans', cat:'jeans', searchTerm:'warm jeans women' });
+      clothing.push({ icon:'🧣', name:'Heavy coat or puffer jacket', key:'warmcoat', cat:'coat', searchTerm:'puffer coat women' });
+      clothing.push({ icon:'🥾', name:'Warm boots', key:'boots', cat:null, searchTerm:'ankle boots women winter' });
+      clothing.push({ icon:'🧤', name:'Scarf, gloves & hat', key:'none', cat:null, searchTerm:'scarf gloves women' });
     } else {
-      clothing.push({ icon:'👕', name:`T-shirts & casual tops (×${tops})`, key:'tshirts', searchTerm:'casual top women' });
-      clothing.push({ icon:'👖', name:`Jeans or trousers (×${bottoms})`, key:'jeans', searchTerm:'jeans women' });
-      clothing.push({ icon:'🧥', name:'Light jacket or cardigan', key:'lightjacket', searchTerm:'light jacket women' });
-      clothing.push({ icon:'👟', name:'Comfortable shoes/sneakers', key:'sneakers', searchTerm:'sneakers women white' });
+      clothing.push({ icon:'👕', name:`T-shirts & casual tops (×${tops})`, key:'tshirts', cat:'top', searchTerm:'casual top women' });
+      clothing.push({ icon:'👖', name:`Jeans or trousers (×${bottoms})`, key:'jeans', cat:'jeans', searchTerm:'jeans women' });
+      clothing.push({ icon:'🧥', name:'Light jacket or cardigan', key:'lightjacket', cat:'light-jacket', searchTerm:'light jacket women' });
+      clothing.push({ icon:'👟', name:'Comfortable shoes/sneakers', key:'sneakers', cat:null, searchTerm:'sneakers women white' });
     }
 
     // Vibe extras
     if (vibe === 'fancy') {
-      clothing.push({ icon:'👗', name:'Dressy / evening outfit', key:'formaloutfit', searchTerm:'evening dress women' });
-      clothing.push({ icon:'👠', name:'Heels or smart shoes', key:'none', searchTerm:'heels women evening' });
-      accessories.push({ icon:'💍', name:'Statement jewellery', key:'none', searchTerm:'statement jewellery women' });
-      accessories.push({ icon:'👜', name:'Evening bag / clutch', key:'none', searchTerm:'clutch bag women evening' });
+      clothing.push({ icon:'👗', name:'Dressy / evening outfit', key:'formaloutfit', cat:'dress', searchTerm:'evening dress women' });
+      clothing.push({ icon:'👠', name:'Heels or smart shoes', key:'none', cat:null, searchTerm:'heels women evening' });
+      accessories.push({ icon:'💍', name:'Statement jewellery', key:'none', cat:null, searchTerm:'statement jewellery women' });
+      accessories.push({ icon:'👜', name:'Evening bag / clutch', key:'none', cat:null, searchTerm:'clutch bag women evening' });
     }
     if (vibe === 'beach') {
-      clothing.push({ icon:'👙', name:'Swimsuit or bikini (×2)', key:'swimwear', searchTerm:'bikini women swimwear' });
-      clothing.push({ icon:'🩱', name:'Beach cover-up / kaftan', key:'none', searchTerm:'beach cover up women' });
-      clothing.push({ icon:'🩴', name:'Flip flops', key:'sneakers', searchTerm:'flip flops women' });
-      accessories.push({ icon:'🏖️', name:'Beach bag (big enough for towel)', key:'none', searchTerm:'beach bag tote women' });
+      clothing.push({ icon:'👙', name:'Swimsuit or bikini (×2)', key:'swimwear', cat:null, searchTerm:'bikini women swimwear' });
+      clothing.push({ icon:'🩱', name:'Beach cover-up / kaftan', key:'none', cat:'dress', searchTerm:'beach cover up women' });
+      clothing.push({ icon:'🩴', name:'Flip flops', key:'sneakers', cat:null, searchTerm:'flip flops women' });
+      accessories.push({ icon:'🏖️', name:'Beach bag (big enough for towel)', key:'none', cat:null, searchTerm:'beach bag tote women' });
     }
     if (vibe === 'streetwear') {
-      clothing.push({ icon:'🧢', name:'Baseball cap or bucket hat', key:'sunhat', searchTerm:'bucket hat women streetwear' });
-      clothing.push({ icon:'👖', name:'Cargo or wide-leg trousers', key:'jeans', searchTerm:'cargo pants women streetwear' });
-      accessories.push({ icon:'🎒', name:'Crossbody or mini backpack', key:'none', searchTerm:'crossbody bag women streetwear' });
+      clothing.push({ icon:'🧢', name:'Baseball cap or bucket hat', key:'sunhat', cat:null, searchTerm:'bucket hat women streetwear' });
+      clothing.push({ icon:'👖', name:'Cargo or wide-leg trousers', key:'jeans', cat:'trousers', searchTerm:'cargo pants women streetwear' });
+      accessories.push({ icon:'🎒', name:'Crossbody or mini backpack', key:'none', cat:null, searchTerm:'crossbody bag women streetwear' });
     }
     if (vibe === 'adventure') {
-      clothing.push({ icon:'🏃', name:'Moisture-wicking activewear', key:'workout', searchTerm:'activewear women outdoor' });
-      clothing.push({ icon:'🥾', name:'Hiking / activity shoes', key:'boots', searchTerm:'hiking shoes women' });
-      accessories.push({ icon:'🎒', name:'Daypack / hydration bag', key:'none', searchTerm:'daypack women hiking' });
+      clothing.push({ icon:'🏃', name:'Moisture-wicking activewear', key:'workout', cat:'activewear', searchTerm:'activewear women outdoor' });
+      clothing.push({ icon:'🥾', name:'Hiking / activity shoes', key:'boots', cat:null, searchTerm:'hiking shoes women' });
+      accessories.push({ icon:'🎒', name:'Daypack / hydration bag', key:'none', cat:null, searchTerm:'daypack women hiking' });
       essentials.push({ icon:'🩹', name:'Mini first-aid kit', key:'none' });
     }
     if (vibe === 'comfort') {
-      clothing.push({ icon:'🩰', name:'Comfy flats or loafers', key:'sneakers', searchTerm:'flats loafers women comfortable' });
-      clothing.push({ icon:'🧤', name:'Cosy knit / loungewear', key:'none', searchTerm:'loungewear set women' });
+      clothing.push({ icon:'🩰', name:'Comfy flats or loafers', key:'sneakers', cat:null, searchTerm:'flats loafers women comfortable' });
+      clothing.push({ icon:'🧤', name:'Cosy knit / loungewear', key:'none', cat:'loungewear', searchTerm:'loungewear set women' });
     }
 
     // Rain layer
     if (willRain) {
-      clothing.push({ icon:'🌂', name:'Compact umbrella or rain jacket', key:'rainjacket', searchTerm:'compact umbrella travel' });
+      clothing.push({ icon:'🌂', name:'Compact umbrella or rain jacket', key:'rainjacket', cat:'light-jacket', searchTerm:'compact umbrella travel' });
     }
 
     // Accessories base
-    accessories.push({ icon:'🕶️', name:'Sunglasses', key:'sunglasses', searchTerm:'sunglasses women' });
+    accessories.push({ icon:'🕶️', name:'Sunglasses', key:'sunglasses', cat:null, searchTerm:'sunglasses women' });
     if (isHot || vibe === 'beach') {
-      accessories.push({ icon:'👒', name:'Sun hat', key:'sunhat', searchTerm:'sun hat women wide brim' });
+      accessories.push({ icon:'👒', name:'Sun hat', key:'sunhat', cat:null, searchTerm:'sun hat women wide brim' });
     }
 
     // Mark "have" items
@@ -562,16 +595,34 @@
 
     const needToBuy = [...packItems.clothing, ...packItems.accessories].filter(i => !i.have && i.searchTerm);
 
-    document.getElementById('shopTitle').textContent = isLux ? '✨ Let\'s go shopping (luxury picks!)' : '💸 Let\'s go shopping (budget finds!)';
-    document.getElementById('shopIntro').textContent = `Here are ${isLux ? 'elevated' : 'affordable'} options for the things you still need to pack for ${trip.destination.name}. Click any store to search!`;
+    document.getElementById('shopTitle').textContent = isLux ? '✨ Time to shop (luxury picks!)' : '💸 Time to shop (budget finds!)';
+    document.getElementById('shopIntro').textContent = `Real pieces you can buy for the things you still need for ${trip.destination.name}. Tap a card to shop that exact item, or browse the category at your favourite stores.`;
 
-    const html = needToBuy.slice(0, 8).map(item => `
-      <div class="shop-item">
-        <div class="shop-item-name">${item.icon} ${item.name}</div>
-        <div class="shop-links">
-          ${stores.map(s => `<a href="${s.url(item.searchTerm)}" target="_blank" rel="noopener" class="shop-link ${isLux?'lux':''}">${s.emoji} ${s.name}</a>`).join('')}
-        </div>
-      </div>`).join('');
+    const html = needToBuy.slice(0, 8).map(item => {
+      const products = (item.cat && CATALOG[item.cat]) ? CATALOG[item.cat] : [];
+      const cards = products.map(p => `
+        <a class="product-card" href="${p.url}" target="_blank" rel="noopener">
+          <div class="product-img" style="background-image:url('${p.img}')"></div>
+          <div class="product-info">
+            <span class="product-name">${p.name}</span>
+            <span class="product-meta"><span class="product-price">${p.price}</span><span class="product-store">${p.store}</span></span>
+          </div>
+        </a>`).join('');
+
+      const productRow = cards
+        ? `<div class="product-scroll">${cards}</div>`
+        : `<p class="no-products">No saved picks for this one yet — browse it at the stores below 👇</p>`;
+
+      return `
+        <div class="shop-item">
+          <div class="shop-item-name">${item.icon} ${item.name}</div>
+          ${productRow}
+          <div class="shop-links">
+            <span class="shop-links-label">Browse at:</span>
+            ${stores.map(s => `<a href="${s.url(item.searchTerm)}" target="_blank" rel="noopener" class="shop-link ${isLux?'lux':''}">${s.emoji} ${s.name}</a>`).join('')}
+          </div>
+        </div>`;
+    }).join('');
 
     document.getElementById('shoppingContent').innerHTML = html ||
       '<p style="color:#888;">Looks like you\'ve already got everything! Nothing to buy. 🎉</p>';
